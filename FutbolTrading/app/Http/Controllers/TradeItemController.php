@@ -13,9 +13,9 @@ class TradeController extends Controller
     public function index()
     {
         $viewData = [];
-        $viewData['title'] = 'Trade Item';
-        $viewData['subtitle'] = 'Available Items';
-        $viewData['description'] = 'Published by others';
+        $viewData['title'] = __('TradeIem.tradeItem');
+        $viewData['subtitle'] = __('TradeIem.available');
+        $viewData['description'] = __('TradeIem.published');
         $viewData['tradeItems'] = TradeItem::all();
 
         return view('trade.index')->with('viewData', $viewData);
@@ -26,8 +26,8 @@ class TradeController extends Controller
         try {
             $tradeItem = TradeItem::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = 'See Item ' . $tradeItem->getName();
-            $viewData['subtitle'] = 'See Item';
+            $viewData['title'] = __('TradeIem.see_item') . $tradeItem->getName();
+            $viewData['subtitle'] = __('TradeIem.see_item');
             $viewData['tradeItem'] = $tradeItem;
 
             return view('trade.show')->with('viewData', $viewData);
@@ -39,9 +39,9 @@ class TradeController extends Controller
     public function create(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Create Item';
-        $viewData['subtitle'] = 'Create Item to trade';
-        $viewData['description'] = 'Please fill in the following fields to publish your item';
+        $viewData['title'] = __('TradeIem.create');
+        $viewData['subtitle'] = __('TradeIem.create_item_to_trade');
+        $viewData['description'] = __('TradeIem.please_fill');
         $viewData['typeOptions'] = config('tradeItem.typeOptions');
         $viewData['offerOptions'] = config('tradeItem.offerOptions');
 
@@ -52,8 +52,8 @@ class TradeController extends Controller
     {
         TradeItem::create($request->only(['name', 'type', 'offerType', 'offerDescription', 'image']));
         $viewData = [];
-        $viewData['subtitle'] = 'Create Item';
-        $viewData['description'] = 'The Item ' . $request->input('name') . ' has been created successfully';
+        $viewData['subtitle'] = __('TradeIem.create');
+        $viewData['description'] = __('TradeIem.the_item') . $request->input('name') . __('TradeIem.has_been_created');;
 
         return view('trade.saved')->with('viewData', $viewData);
     }
