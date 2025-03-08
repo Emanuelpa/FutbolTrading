@@ -25,6 +25,17 @@ class TradeItem extends Model
 
     protected $fillable = ['name', 'type', 'offerType', 'offerDescription', 'image'];
 
+    public static function validate($request)
+    {
+        $request->validate([
+            'name' => 'required|string|min:5',
+            'type' => 'required|string',
+            'offerType' => 'required|string',
+            'offerDescription' => 'required|string',
+            'image' => 'required|string',
+        ]);
+    }
+
     public function getId(): int
     {
         return $this->attributes['id'];
