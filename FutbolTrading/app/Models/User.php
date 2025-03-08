@@ -5,7 +5,9 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use DateTime;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -25,6 +27,7 @@ class User extends Authenticatable
      * $this->attributes['remember_token'] - string - the remember me field
      * $this->attributes['created_at'] - DateTime - contains the date and time of the user creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the user last update
+     * $this->tradeItems - TradeItem[] - contains the associated TradeItems
      */
     protected $fillable = [
         'name',
@@ -120,5 +123,20 @@ class User extends Authenticatable
     public function getUpdatedAt(): DateTime
     {
         return $this->attributes['updated_at'];
+    }
+
+    public function tradeItems(): HasMany
+    {
+        return $this->hasMany(TradeItem::class);
+    }
+
+    public function getTradeItems(): ?Collection
+    {
+        return $this->tradeItems;
+    }
+
+    public function setTradeItems(Collection $tradeItems): void
+    {
+        $this->tradeItems = $tradeItems;
     }
 }
