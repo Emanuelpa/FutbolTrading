@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class TradeController extends Controller
+class TradeItemController extends Controller
 {
     public function index()
     {
