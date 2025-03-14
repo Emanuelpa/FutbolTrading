@@ -4,12 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Card;
-use App\Models\Order;
 
 class Item extends Model
 {
-
     use HasFactory;
 
     /**
@@ -32,7 +29,7 @@ class Item extends Model
             'quantity' => 'required|integer|min:1',
             'subtotal' => 'required|numeric|min:0',
             'order_id' => 'required|integer|exists:orders,id',
-            'card_id' => 'required|integer|exists:cards,id'
+            'card_id' => 'required|integer|exists:cards,id',
         ]);
     }
 
@@ -85,7 +82,6 @@ class Item extends Model
     {
         $this->order = $order;
     }
-
 
     public function card()
     {

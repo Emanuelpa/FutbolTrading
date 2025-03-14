@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Item;
 
 class Order extends Model
 {
@@ -34,7 +32,7 @@ class Order extends Model
             'total' => 'required|numeric',
             'address' => 'required|string',
             'payment_method' => 'required|string',
-            'user_id' => 'required|integer|exists:users,id'
+            'user_id' => 'required|integer|exists:users,id',
         ]);
     }
 
