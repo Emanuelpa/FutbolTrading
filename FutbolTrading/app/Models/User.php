@@ -123,6 +123,7 @@ class User extends Authenticatable
     {
         return $this->attributes['phone'];
     }
+
     public function setCity(string $city): void
     {
         $this->attributes['city'] = $city;
@@ -132,6 +133,7 @@ class User extends Authenticatable
     {
         return $this->attributes['city'];
     }
+
     public function setAddress(string $address): void
     {
         $this->attributes['address'] = $address;
