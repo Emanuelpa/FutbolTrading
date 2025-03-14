@@ -6,4 +6,6 @@ return [
     'welcome' => 'Welcome to FutbolTrading',
     'slogan' => 'Your Best Option',
     'rights' => 'All Rights Reserved',
+    'login' => 'Login',
+    'register' => 'Register',
 ];
