@@ -21,12 +21,12 @@ class TradeItemController extends Controller
         return view('trade.index')->with('viewData', $viewData);
     }
 
-    public function show(string $id): View | RedirectResponse
+    public function show(string $id): View|RedirectResponse
     {
         try {
             $tradeItem = TradeItem::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('TradeIem.see_item') . $tradeItem->getName();
+            $viewData['title'] = __('TradeIem.see_item').$tradeItem->getName();
             $viewData['subtitle'] = __('TradeIem.see_item');
             $viewData['tradeItem'] = $tradeItem;
 
@@ -53,7 +53,7 @@ class TradeItemController extends Controller
         TradeItem::create($request->only(['name', 'type', 'offerType', 'offerDescription', 'image']));
         $viewData = [];
         $viewData['subtitle'] = __('TradeIem.create');
-        $viewData['description'] = __('TradeIem.the_item') . $request->input('name') . __('TradeIem.has_been_created');;
+        $viewData['description'] = __('TradeIem.the_item').$request->input('name').__('TradeIem.has_been_created');
 
         return view('trade.saved')->with('viewData', $viewData);
     }

@@ -24,6 +24,9 @@ class User extends Authenticatable
      * $this->attributes['password'] - string - contain the user password
      * $this->attributes['role'] - string - contain the user role (admin, user)
      * $this->attributes['budget'] - float - contain the user budget
+     * $this->attributes['phone'] - string - contain the user phone number
+     * $this->attributes['city'] - string - contain the user main city to be set as the default orders city
+     * $this->attributes['address'] - string - contain the user default address
      * $this->attributes['remember_token'] - string - the remember me field
      * $this->attributes['created_at'] - DateTime - contains the date and time of the user creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the user last update
@@ -33,8 +36,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
-        'budget',
+        'phone',
+        'city',
+        'address',
     ];
 
     protected $hidden = [
@@ -108,6 +112,36 @@ class User extends Authenticatable
     public function getBudget(): float
     {
         return $this->attributes['budget'];
+    }
+
+    public function setPhone(string $phone): void
+    {
+        $this->attributes['phone'] = $phone;
+    }
+
+    public function getPhone(): string
+    {
+        return $this->attributes['phone'];
+    }
+
+    public function setCity(string $city): void
+    {
+        $this->attributes['city'] = $city;
+    }
+
+    public function getCity(): string
+    {
+        return $this->attributes['city'];
+    }
+
+    public function setAddress(string $address): void
+    {
+        $this->attributes['address'] = $address;
+    }
+
+    public function getAddress(): string
+    {
+        return $this->attributes['address'];
     }
 
     public function getRememberToken(): string

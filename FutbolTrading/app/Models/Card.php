@@ -5,10 +5,9 @@ namespace App\Models;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
-
 class Card extends Model
 {
-        /**
+    /**
      * CARD ATTRIBUTES
      * $this->attributes['id'] - int - contains the card primary key (id)
      * $this->attributes['name'] - string - contains the card name
@@ -24,11 +23,11 @@ class Card extends Model
     public function validate($request): void
     {
         $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'image' => 'nullable|string',
-        'price' => 'required|float|min:0',
-        'quantity' => 'required|integer|min:0',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'image' => 'nullable|string',
+            'price' => 'required|float|min:0',
+            'quantity' => 'required|integer|min:0',
         ]);
     }
 
