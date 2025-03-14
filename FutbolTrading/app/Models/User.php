@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Order;
 
 class User extends Authenticatable
 {
@@ -28,6 +29,7 @@ class User extends Authenticatable
      * $this->attributes['created_at'] - DateTime - contains the date and time of the user creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the user last update
      * $this->tradeItems - TradeItem[] - contains the associated TradeItems
+     * $this->orders - Order[] - contains the associated Orders
      */
     protected $fillable = [
         'name',
@@ -138,5 +140,20 @@ class User extends Authenticatable
     public function setTradeItems(Collection $tradeItems): void
     {
         $this->tradeItems = $tradeItems;
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function getOrders(): ?Collection
+    {
+        return $this->orders;
+    }
+
+    public function setOrders(Collection $orders): void
+    {
+        $this->orders = $orders;
     }
 }
