@@ -4,6 +4,7 @@ namespace App\Models;
 
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Item;
 
 class Card extends Model
 {
@@ -17,6 +18,7 @@ class Card extends Model
      * $this->attributes['quantity'] - int - contains the card stock
      * $this->attributes['created_at'] - DateTime - contains the date and time of the Card creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the Card last update
+     * $this->items - Item[] - contains the associated Items
      */
     protected $fillable = ['name', 'description', 'image', 'price', 'quantity'];
 
@@ -99,5 +101,20 @@ class Card extends Model
     public function getUpdatedAt(): DateTime
     {
         return $this->attributes['updated_at'];
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function getItems(): ?Collection
+    {
+        return $this->items;
+    }
+
+    public function setItems(Collection $items): void
+    {
+        $this->items = $items;
     }
 }
