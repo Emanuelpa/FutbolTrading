@@ -18,6 +18,11 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
@@ -26,38 +31,43 @@
 
 <body>
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="{{ route("home.index") }}">
-                <img src="{{ asset("images/logo.png") }}" alt="Online Store Logo" width="30" height="30" class="me-2" />
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white text-bold ms-4 align-middle" href="{{ route("home.index") }}">
+                <img src="{{ asset("images/logo.png") }}" alt="" width="40" height="40"
+                    class="d-inline-block align-text-center text-white me-2 fs-5">
                 {{ __('Layout.name') }}
             </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ route("home.index") }}">
-                            {{ __('Layout.home') }}
-                        </a>
+            <div class="collapse navbar-collapse align-middle" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-2 mb-2 mb-lg-0 fs-5 align-middle">
+                    <li class="nav-item me-2">
+                        <a class="nav-link active text-white" aria-current="page" href="#">{{ __('Layout.shop') }}</a>
                     </li>
-                    <li>
-                        <a class="nav-link active text-white" href={{ route("cart.index") }}>
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
+                    <li class="nav-item me-2">
+                        <a class="nav-link text-white" href="#">{{ __('Layout.marketplace') }}</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link disabled text-white" href="#" tabindex="-1"
+                            aria-disabled="true">{{ __('Layout.your_orders') }}</a>
                     </li>
                 </ul>
+                <li class="d-flex ms-auto me-3">
+                    <a class="nav-link active text-white" href={{ route("cart.index") }}>
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
     <div class="container my-5">
-        <div class="row">
+        <div class="row mb-20">
             <div class="col-lg-8 mx-auto">@yield("content")</div>
         </div>
     </div>
@@ -65,17 +75,6 @@
     <!-- Footer -->
     <footer class="bg-dark text-white py-4">
         <div class="container text-center">
-            <div class="mb-3">
-                <a href="#" class="text-white me-3">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="#" class="text-white me-3">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="text-white me-3">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
             <small>
                 &copy; {{ date("Y") }} {{ __('Layout.rights') }} -
                 <a class="text-reset fw-bold text-decoration-none" target="_blank">

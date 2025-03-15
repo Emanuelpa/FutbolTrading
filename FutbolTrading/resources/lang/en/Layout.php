@@ -8,4 +8,7 @@ return [
     'rights' => 'All Rights Reserved',
     'login' => 'Login',
     'register' => 'Register',
+    'your_orders' => 'Your Orders',
+    'marketplace' => 'Marketplace',
+    'shop' => 'Shop',
 ];
