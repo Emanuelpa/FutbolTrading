@@ -116,4 +116,14 @@ class Card extends Model
     {
         $this->items = $items;
     }
+
+    public static function sumPricesByQuantities($cards, $cardsInSession): float
+    {
+        $total = 0;
+        foreach ($cards as $card) {
+            $total += $card->getPrice() * $cardsInSession[$card->getId()];
+        }
+
+        return $total;
+    }
 }

@@ -45,6 +45,11 @@
                             {{ __('Layout.home') }}
                         </a>
                     </li>
+                    <li>
+                        <a class="nav-link active text-white" href={{ route("cart.index") }}>
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
