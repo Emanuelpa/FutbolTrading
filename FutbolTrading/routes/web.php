@@ -17,3 +17,8 @@ Route::get('/tradeItem/create', 'App\Http\Controllers\TradeItemController@create
 Route::post('/tradeItem/save', 'App\Http\Controllers\TradeItemController@save')->name('tradeItem.save');
 Route::delete('/trade/{id}/delete', 'App\Http\Controllers\TradeItemController@delete')->name('tradeItem.delete');
 Route::get('/tradeItem/{id}', 'App\Http\Controllers\TradeItemController@show')->name('tradeItem.show');
+// Card routes
+Route::get('/cards', 'App\Http\Controllers\CardController@index')->name('card.index');
+Route::get('/cards/create', 'App\Http\Controllers\CardController@create')->name('card.create');
+Route::post('/cards/save', 'App\Http\Controllers\CardController@save')->name('card.save');
+Route::get('/cards/{id}', 'App\Http\Controllers\CardController@show')->name('card.show');
