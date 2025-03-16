@@ -9,3 +9,11 @@ Auth::routes();
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
 Route::delete('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
+
+// TradeItem routes
+Route::get('/tradeItems', 'App\Http\Controllers\TradeItemController@index')->name('tradeItem.index');
+Route::get('/tradeItem/yourItems', 'App\Http\Controllers\TradeItemController@userTradeItemsIndex')->name('tradeItem.userTradeItem');
+Route::get('/tradeItem/create', 'App\Http\Controllers\TradeItemController@create')->name('tradeItem.create');
+Route::post('/tradeItem/save', 'App\Http\Controllers\TradeItemController@save')->name('tradeItem.save');
+Route::delete('/trade/{id}/delete', 'App\Http\Controllers\TradeItemController@delete')->name('tradeItem.delete');
+Route::get('/tradeItem/{id}', 'App\Http\Controllers\TradeItemController@show')->name('tradeItem.show');

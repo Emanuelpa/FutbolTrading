@@ -17,6 +17,7 @@ body {
     padding: 0;
     background-color: #18230F;
     color: white;
+    width: 100% !important;
 }
 
 
@@ -120,9 +121,30 @@ footer {
 }
 
 
+input{
+    color: white;
+}
+
+
+input:focus {
+    color: white !important;
+}
+
+
+textarea{
+    color: white;
+}
+
+
+textarea:focus {
+    color: white !important;
+}
+
+
 .auth-field{
     background-color: #1F7D53 !important;
     border: #1F7D53;
+    color: white;
 }
 
 
@@ -147,3 +169,31 @@ footer {
     color: #255F38;
     box-shadow: none;
 }
+
+
+select {
+    background-color: #165d31 !important;
+    color: #1b783f;
+}
+
+select:focus {
+    outline: none;
+    border-color: #fff;
+    color: white;
+}
+
+option {
+    background-color: #165d31;
+    color: white;
+}
+
+option:checked {
+    background-color: #1b783f !important;
+    color: white !important;
+}
+
+option:hover {
+    background-color: #1b783f !important;
+    color: white !important;
+}
+

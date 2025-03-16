@@ -145,7 +145,7 @@ class User extends Authenticatable
         return $this->attributes['address'];
     }
 
-    public function getRememberToken(): string
+    public function getRememberToken(): ?string
     {
         return $this->attributes['remember_token'];
     }
@@ -162,7 +162,7 @@ class User extends Authenticatable
 
     public function tradeItems(): HasMany
     {
-        return $this->hasMany(TradeItem::class);
+        return $this->hasMany(TradeItem::class, 'user');
     }
 
     public function getTradeItems(): ?Collection

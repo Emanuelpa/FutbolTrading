@@ -6,4 +6,4 @@ return [
     'purchase' => 'Purchase',
     'remove_all' => 'Remove all products from Cart',
 
-    ];
+];

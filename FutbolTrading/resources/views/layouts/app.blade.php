@@ -49,25 +49,53 @@
                         <a class="nav-link active text-white" aria-current="page" href="#">{{ __('Layout.shop') }}</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link text-white" href="#">{{ __('Layout.marketplace') }}</a>
+                        <a class="nav-link active text-white"
+                            href="{{ route('tradeItem.index') }}">{{ __('Layout.marketplace') }}</a>
+                    </li>
+                    @auth
+                    <li class="nav-item me-2">
+                        <a class="nav-link active text-white" href="#">{{ __('Layout.your_orders') }}</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link disabled text-white" href="#" tabindex="-1"
-                            aria-disabled="true">{{ __('Layout.your_orders') }}</a>
+                        <a class="nav-link active text-white"
+                            href="{{ route('tradeItem.userTradeItem') }}">{{ __('Layout.your_items') }}</a>
                     </li>
+                    @endauth
                 </ul>
-                <li class="d-flex ms-auto me-3">
-                    <a class="nav-link active text-white" href={{ route("cart.index") }}>
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </li>
+
+                <ul class="navbar-nav mx-2 mb-2 mb-lg-0 fs-5 ms-auto">
+                    <li class="d-flex ms-auto me-3">
+                        @guest
+                        <a class="nav-link active fs-5 text-white"
+                            href="{{ route('login') }}">{{ __('Layout.login') }}</a>
+                        @endguest
+                    </li>
+
+                    @auth
+                    <li class="d-flex"><a class="nav-link active text-white fs-5" href={{ route("cart.index") }}>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a></li>
+                    <li class="d-flex ms-auto me-3">
+                        <form id="logout" action="{{ route('logout') }}" method="POST">
+                            <a role="button" class="nav-link active text-white fs-5"
+                                onclick="document.getElementById('logout').submit();">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </a>
+                            @csrf
+                        </form>
+                    </li>
+                    @endauth
+                </ul>
+
+
+
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <div class="container my-5">
-        <div class="row mb-20">
+    <div class="container-fluid my-5">
+        <div class="container-fluid">
             <div class="col-lg-8 mx-auto">@yield("content")</div>
         </div>
     </div>

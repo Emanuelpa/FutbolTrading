@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,12 +17,12 @@ class TradeItem extends Model
         $this->attributes['offerType'] - string - contains the type of offer for TradeItem (To trade, To sell or Any)
         $this->attributes['offerDescription'] - string - contains more info about the TradeItem (To trade, To sell or Any)
         $this->attributes['image'] - string - image url
-        $this->attributes['created_at'] - DateTime - contains the date and time of the TradeItem creation
-        $this->attributes['updated_at'] - DateTime - contains the date and time of the TradeItem last update
+        $this->attributes['created_at'] - string - contains the date and time of the TradeItem creation
+        $this->attributes['updated_at'] - string - contains the date and time of the TradeItem last update
         $this->user - User - contains the associated User
     */
 
-    protected $fillable = ['name', 'type', 'offerType', 'offerDescription', 'image'];
+    protected $fillable = ['name', 'type', 'offerType', 'offerDescription', 'image', 'user'];
 
     public static function validate($request)
     {
@@ -33,6 +32,7 @@ class TradeItem extends Model
             'offerType' => 'required|string',
             'offerDescription' => 'required|string',
             'image' => 'required|string',
+            'user' => 'required|int',
         ]);
     }
 
@@ -91,12 +91,12 @@ class TradeItem extends Model
         $this->attributes['image'] = $image;
     }
 
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): string
     {
         return $this->attributes['created_at'];
     }
 
-    public function getUpdatedAt(): DateTime
+    public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
     }
@@ -108,10 +108,10 @@ class TradeItem extends Model
 
     public function getUser(): User
     {
-        return $this->attributes['user'];
+        return User::findOrFail($this->attributes['user']);
     }
 
-    public function setUser(User $user): void
+    public function setUser(int $user): void
     {
         $this->attributes['user'] = $user;
     }

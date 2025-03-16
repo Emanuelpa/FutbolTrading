@@ -14,7 +14,7 @@ class TradeItemFactory extends Factory
             'type' => $this->faker->randomElement(['Card', 'Clothes', 'Exclusive', 'Signed Item', 'Virtual Item']),
             'offerType' => $this->faker->randomElement(['To trade', 'To sell', 'Open to offers']),
             'offerDescription' => $this->faker->paragraph,
-            'image' => fake()->imageUrl(200, 200, 'sports'),
+            'image' => 'https://m.media-amazon.com/images/I/91XnBcq-+rL.jpg',
             'user' => User::inRandomOrder()->first()->id,
         ];
     }
