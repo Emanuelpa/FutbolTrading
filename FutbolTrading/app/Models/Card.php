@@ -4,6 +4,7 @@ namespace App\Models;
 
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 
 class Card extends Model
 {
@@ -15,6 +16,7 @@ class Card extends Model
      * this->attributes['image'] - string - contains the card image
      * $this->attributes['price'] - decimal - contains the card price
      * $this->attributes['quantity'] - int - contains the card stock
+     * $this->attributes['item_id'] - int - contains the associated item id
      * $this->attributes['created_at'] - DateTime - contains the date and time of the Card creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the Card last update
      * $this->items - Item[] - contains the associated Items
@@ -37,17 +39,12 @@ class Card extends Model
         return $this->attributes['id'];
     }
 
-    public function setId($id): void
-    {
-        $this->attributes['id'] = $id;
-    }
-
     public function getName(): string
     {
         return $this->attributes['name'];
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
     }
@@ -57,7 +54,7 @@ class Card extends Model
         return $this->attributes['description'];
     }
 
-    public function setDescription($description): void
+    public function setDescription(string $description): void
     {
         $this->attributes['description'] = $description;
     }
@@ -77,7 +74,7 @@ class Card extends Model
         return $this->attributes['price'];
     }
 
-    public function setPrice($price): void
+    public function setPrice(int $price): void
     {
         $this->attributes['price'] = $price;
     }
@@ -87,7 +84,7 @@ class Card extends Model
         return $this->attributes['quantity'];
     }
 
-    public function setQuantity($quantity): void
+    public function setQuantity(int $quantity): void
     {
         $this->attributes['quantity'] = $quantity;
     }
