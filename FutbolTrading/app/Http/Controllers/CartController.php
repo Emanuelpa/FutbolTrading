@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CartController extends Controller
 {
