@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -62,12 +63,12 @@ class Wishlist extends Model
         return $this->hasMany(Card::class);
     }
 
-    public function getCards(): Card
+    public function getCards(): ?Collection
     {
         return $this->attributes['cards'];
     }
 
-    public function setCards(int $cards):void
+    public function setCards(Collection $cards): void
     {
         $this->attributes['cards'] = $cards;
     }
