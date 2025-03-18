@@ -5,11 +5,8 @@ namespace App\Models;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
-<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-=======
->>>>>>> 4ed80b6 (fix: implemented missing imports)
 
 class Card extends Model
 {
