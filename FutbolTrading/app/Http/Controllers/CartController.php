@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\Item;
+use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
-use App\Models\Order;
-use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class CartController extends Controller
 {
@@ -33,7 +33,7 @@ class CartController extends Controller
         return view('cart.index')->with('viewData', $viewData);
     }
 
-    public function add(Request $request, $id) 
+    public function add(Request $request, $id)
     {
         $cards = $request->session()->get('cards');
         $cards[$id] = $request->input('quantity');
@@ -49,12 +49,12 @@ class CartController extends Controller
         return back();
     }
 
-    public function purchase(Request $request) 
+    public function purchase(Request $request)
     {
         $cardsInSession = $request->session()->get('cards');
         if ($cardsInSession) {
             $userId = Auth::user()->getId();
-            $order = new Order();
+            $order = new Order;
             $order->setUserId($userId);
             $order->setTotal(0);
             $order->setAddress(Auth::user()->getAddress());
@@ -65,7 +65,7 @@ class CartController extends Controller
             $cardsInCart = Card::findMany(array_keys($cardsInSession));
             foreach ($cardsInCart as $card) {
                 $quantity = $cardsInSession[$card->getId()];
-                $item = new Item();
+                $item = new Item;
                 $item->setQuantity($quantity);
                 $item->setSubtotal($card->getPrice());
                 $item->setCardId($card->getId());
@@ -76,22 +76,20 @@ class CartController extends Controller
             $order->setTotal($total);
             $order->save();
 
-            //$newBalance = Auth::user()->getBalance() - $total;
-            //Auth::user()->setBalance($newBalance);
-            //Auth::user()->save();
+            // $newBalance = Auth::user()->getBalance() - $total;
+            // Auth::user()->setBalance($newBalance);
+            // Auth::user()->save();
 
             $request->session()->forget('cards');
-            
+
             $viewData = [];
             $viewData['title'] = 'Purchase completed';
             $viewData['subtitle'] = 'Purchase completed successfully';
             $viewData['order'] = $order;
-            
+
             return view('cart.purchase')->with('viewData', $viewData);
-        }else{
+        } else {
             return redirect()->route('cart.index');
         }
     }
-
-
 }
