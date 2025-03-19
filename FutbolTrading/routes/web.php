@@ -25,3 +25,4 @@ Route::get('/cards/{id}', 'App\Http\Controllers\CardController@show')->name('car
 //Wishlist routes
 Route::get('/wishlist', 'App\Http\Controllers\WishlistController@index')->name('wishlist.index');
 Route::delete('/wishlist/remove/{card}', 'App\Http\Controllers\WishlistController@remove')->name('wishlist.remove');
+Route::post('/wishlist/add/{card}', 'App\Http\Controllers\WishlistController@add')->name('wishlist.add');

@@ -39,9 +39,19 @@
                             </small>
                         </p>
 
-                        <a href="{{ route('card.index') }}" class="btn btn-primary active">
-                            {{ __('Back') }}
-                        </a>
+                        <div class="d-flex">
+                            <a href="{{ route('card.index') }}" class="btn btn-primary me-2">
+                                {{ __('Back') }}
+                            </a>
+
+                            <form method="POST" action="{{ route('wishlist.add', $viewData['card']->getId()) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa-solid fa-heart"></i> {{ __('Add to Wishlist') }}
+                                </button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>

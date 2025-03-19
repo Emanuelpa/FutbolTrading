@@ -32,7 +32,6 @@ class WishlistController extends Controller
 
     public function add(int $cardId): RedirectResponse
 {
-    // Verifica si la carta ya está en la wishlist del usuario
     $exists = Wishlist::where('user', Auth::id())->where('card', $cardId)->exists();
 
     if (!$exists) {
