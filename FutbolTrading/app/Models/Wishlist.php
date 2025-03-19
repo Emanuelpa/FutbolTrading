@@ -17,14 +17,13 @@ class Wishlist extends Model
      * $this->user - User[] - contains the associated User
      * $this->cards - Card[] - contains the associated Cards
      */
-
     protected $fillable = ['user'];
 
     public static function validate($request): void
     {
         $request->validate([
             'user' => 'required|int',
-            'card' => 'nullable|int'
+            'card' => 'nullable|int',
         ]);
     }
 
@@ -43,7 +42,7 @@ class Wishlist extends Model
         return $this->attributes['updated_at'];
     }
 
-    public function user() : BelongsTo 
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

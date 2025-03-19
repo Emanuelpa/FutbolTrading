@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Item;
 
 class Order extends Model
 {
@@ -41,7 +40,7 @@ class Order extends Model
     {
         return $this->attributes['id'];
     }
-    
+
     public function items()
     {
         return $this->hasMany(Item::class);
@@ -121,5 +120,4 @@ class Order extends Model
     {
         return $this->attributes['updated_at'];
     }
-
 }
