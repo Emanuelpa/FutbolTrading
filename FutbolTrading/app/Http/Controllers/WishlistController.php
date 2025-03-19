@@ -29,5 +29,19 @@ class WishlistController extends Controller
     
         return redirect()->route('wishlist.index')->with('success', 'Card removed from your wishlist.');
     }
-    
+
+    public function add(int $cardId): RedirectResponse
+{
+    // Verifica si la carta ya está en la wishlist del usuario
+    $exists = Wishlist::where('user', Auth::id())->where('card', $cardId)->exists();
+
+    if (!$exists) {
+        Wishlist::create([
+            'user' => Auth::id(),
+            'card' => $cardId
+        ]);
+    }
+
+    return redirect()->route('wishlist.index')->with('success', 'Card added to your wishlist.');
+}
 }
