@@ -9,4 +9,5 @@
             Congratulations, Order number <b>{{ $viewData["order"]->getId() }} </b>
         </div>
     </div>
+    </div> 
 @endsection

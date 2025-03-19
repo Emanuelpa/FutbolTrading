@@ -46,7 +46,7 @@ class Order extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function getItems(): string
+    public function getItems()
     {
         return $this->items;
     }

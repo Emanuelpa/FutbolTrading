@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Models\Item;
 use App\Models\Order;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -75,13 +76,7 @@ class CartController extends Controller
             }
             $order->setTotal($total);
             $order->save();
-
-            // $newBalance = Auth::user()->getBalance() - $total;
-            // Auth::user()->setBalance($newBalance);
-            // Auth::user()->save();
-
             $request->session()->forget('cards');
-
             $viewData = [];
             $viewData['title'] = 'Purchase completed';
             $viewData['subtitle'] = 'Purchase completed successfully';
@@ -89,7 +84,38 @@ class CartController extends Controller
 
             return view('cart.purchase')->with('viewData', $viewData);
         } else {
+
             return redirect()->route('cart.index');
         }
+    }
+
+    public function downloadInvoice($id)
+    {
+        $order = Order::findOrFail($id);
+        $cardsInCart = Card::findMany(explode(', ', $order->item));
+        $cardsInSession = session('cards');
+
+        $quantities = [];
+        if ($cardsInSession) {
+            foreach ($cardsInCart as $card) {
+                if (isset($cardsInSession[$card->getId()])) {
+                    $quantities[$card->getId()] = $cardsInSession[$card->getId()];
+                } else {
+                    $quantities[$card->getId()] = 1;
+                }
+            }
+        } else {
+            foreach ($cardsInCart as $card) {
+                $quantities[$card->getId()] = 1;
+            }
+        }
+
+        $pdf = Pdf::loadView('cart.invoice', [
+            'order' => $order,
+            'cards' => $cardsInCart,
+            'quantities' => $quantities,
+        ]);
+
+        return $pdf->download('factura_'.$order->getId().'.pdf');
     }
 }

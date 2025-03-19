@@ -4,10 +4,10 @@
 @section('content') 
 @forelse ($viewData["orders"] as $order) 
 <div class="card mb-4"> 
-  <div class="card-header"> 
+  <div class="card-header text-dark"> 
     Order #{{ $order->getId() }} 
   </div> 
-  <div class="card-body"> 
+  <div class="card-body text-dark"> 
     <b>Date:</b> {{ $order->getCreatedAt() }}<br /> 
     <b>Total:</b> ${{ $order->getTotal() }}<br />
     <table class="table table-bordered table-striped text-center mt-3"> 
@@ -22,13 +22,13 @@
       <tbody> 
         @foreach ($order->getItems() as $item) 
         <tr> 
-          <td>{{ $item->getIds() }}</td> 
+          <td>{{ $item->getId() }}</td> 
           <td> 
             <a class="link-success" href="{{ route('card.show', ['id'=> $item->getCard()->getId()]) }}"> 
               {{ $item->getCard()->getName() }} 
             </a> 
           </td> 
-          <td>${{ $item->getPrice() }}</td> 
+          <td>${{ $item->getSubtotal() }}</td> 
           <td>{{ $item->getQuantity() }}</td> 
         </tr> 
         @endforeach 
