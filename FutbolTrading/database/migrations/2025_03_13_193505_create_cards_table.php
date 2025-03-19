@@ -18,9 +18,9 @@ return new class extends Migration
             $table->text('image');
             $table->float('price');
             $table->integer('quantity');
-            $table->unsignedBigInteger('item_id');
-            $table->foreign('item_id')->references('id')->on('items');
             $table->timestamps();
+            $table->foreign('item')->references('id')->on('items');
+            $table->foreign('wishlist')->references('id')->on('wishlists');
         });
     }
 
