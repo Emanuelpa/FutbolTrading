@@ -55,7 +55,7 @@ class CardController extends Controller
     {
         $card = Card::findOrFail($id);
         $card->delete();
-
+        
         return redirect()->route('card.index')->with('success', 'Card deleted successfully.');
     }
 }

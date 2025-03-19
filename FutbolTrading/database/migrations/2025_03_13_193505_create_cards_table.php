@@ -18,11 +18,11 @@ return new class extends Migration
             $table->text('image');
             $table->float('price');
             $table->integer('quantity');
-            $table->unsignedBigInteger('item');
-            $table->unsignedBigInteger('wishlist');
+            //$table->unsignedBigInteger('item');
+            //$table->unsignedBigInteger('wishlist');
             $table->timestamps();
-            $table->foreign('item')->references('id')->on('items');
-            $table->foreign('wishlist')->references('id')->on('wishlists');
+            //$table->foreign('item')->references('id')->on('items');
+            //$table->foreign('wishlist')->references('id')->on('wishlists');
         });
     }
 
