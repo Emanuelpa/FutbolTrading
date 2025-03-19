@@ -30,9 +30,9 @@
       <div class="text-end"> 
         <a class="btn btn-outline-secondary mb-2"><b>{{__('Cart.total_to_pay')}}:</b> ${{ $viewData["total"] }}</a> 
         @if (count($viewData["cards"]) > 0) 
-        <a href="{{ route('cart.purchase') }}" class="btn bg-primary text-dark mb-2">{{__('Cart.purchase')}}</a>  
+        <a href="{{ route('cart.purchase') }}" class="btn bg-success text-white mb-2">{{__('Cart.purchase')}}</a>  
         <a href="{{ route('cart.delete') }}"> 
-          <button class="btn btn-danger mb-2"> 
+          <button class="btn bg-success text-white mb-2" style="background-color: #28a745 !important;"> 
             {{__('Cart.remove_all')}} 
           </button> 
         </a>
