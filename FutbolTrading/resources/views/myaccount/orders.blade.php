@@ -5,7 +5,7 @@
 @forelse ($viewData["orders"] as $order) 
 <div class="card mb-4"> 
   <div class="card-header text-dark"> 
-    Order #{{ $order->getId() }} 
+  {{__('MyAccount.order')}} {{ $order->getId() }} 
   </div> 
   <div class="card-body text-dark"> 
     <b>Date:</b> {{ $order->getCreatedAt() }}<br /> 
@@ -38,7 +38,7 @@
 </div> 
 @empty 
 <div class="alert alert-danger" role="alert"> 
-  Seems to be that you have not purchased anything in our store =(. 
+{{__('MyAccount.not_purchased')}}
 </div> 
 @endforelse 
 @endsection

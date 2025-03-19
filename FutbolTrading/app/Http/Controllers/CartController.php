@@ -22,8 +22,9 @@ class CartController extends Controller
             $cardsInCart = Card::findMany(array_keys($cardsInSession));
             $total = Card::sumPricesByQuantities($cardsInCart, $cardsInSession);
         }
+
         $viewData = [];
-        $viewData['title'] = 'Shopping Cart';
+        $viewData['title'] = __('Cart.title');
         $viewData['products_in_cart'] = __('Cart.products_in_cart');
         $viewData['total_to_pay'] = __('Cart.total_to_pay');
         $viewData['purchase'] = __('Cart.purchase');
@@ -34,7 +35,7 @@ class CartController extends Controller
         return view('cart.index')->with('viewData', $viewData);
     }
 
-    public function add(Request $request, $id)
+    public function add(Request $request, $id): RedirectResponse
     {
         $cards = $request->session()->get('cards');
         $cards[$id] = $request->input('quantity');
@@ -50,7 +51,7 @@ class CartController extends Controller
         return back();
     }
 
-    public function purchase(Request $request)
+    public function purchase(Request $request): View|RedirectResponse
     {
         $cardsInSession = $request->session()->get('cards');
         if ($cardsInSession) {
@@ -78,8 +79,9 @@ class CartController extends Controller
             $order->save();
             $request->session()->forget('cards');
             $viewData = [];
-            $viewData['title'] = 'Purchase completed';
-            $viewData['subtitle'] = 'Purchase completed successfully';
+            $viewData['purchase_complete'] = __('Purchase.purchase_complete');
+            $viewData['congratulations'] = __('Purchase.congratulations');
+            $viewData['downloadPDF'] = __('Purchase.downloadPDF');
             $viewData['order'] = $order;
 
             return view('cart.purchase')->with('viewData', $viewData);

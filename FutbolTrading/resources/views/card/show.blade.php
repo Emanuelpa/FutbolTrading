@@ -45,12 +45,12 @@
                         <form method="POST" action="{{ route('cart.add', ['id' => $viewData['card']->getId()]) }}" class="mt-3">
                             @csrf
                             <div class="input-group" style="max-width: 200px;">
-                                <span class="input-group-text bg-secondary text-white">
-                                    <i class="fa-solid fa-cart-plus"></i> <!-- Ícono de FontAwesome -->
+                                <span class="input-group-text bg-secondary text-dark">
+                                    <i class="fa-solid fa-cart-plus text-dark"></i> 
                                 </span>
-                                <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['card']->getQuantity() }}" class="form-control text-center" required>
+                                <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['card']->getQuantity() }}" class="form-control text-light bg-dark border-secondary" required>
                                 <button type="submit" class="btn btn-success">
-                                    {{ __('ADD') }}
+                                    ADD
                                 </button>
                             </div>
                         </form>
