@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user')->unique();
+            $table->unsignedBigInteger('user');
             $table->unsignedBigInteger('card');
             $table->timestamps();
             $table->foreign('user')->references('id')->on('users');
