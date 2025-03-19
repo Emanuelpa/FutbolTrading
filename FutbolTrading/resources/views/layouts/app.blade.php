@@ -54,7 +54,7 @@
                     </li>
                     @auth
                     <li class="nav-item me-2">
-                        <a class="nav-link active text-white" href="#">{{ __('Layout.your_orders') }}</a>
+                        <a class="nav-link active text-white" href="{{route('myaccount.orders')}}" >{{ __('Layout.your_orders') }}</a>
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link active text-white"

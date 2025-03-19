@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Item;
 
 class Order extends Model
 {
@@ -16,14 +17,14 @@ class Order extends Model
      * $this->attributes['item'] - string - contains the card name
      * $this->attributes['total'] - float - contains the card total
      * $this->attributes['address'] - string - contains the card description
-     * $this->attributes['payment_method'] - string - contains the user payment method
+     * $this->attributes['paymentMethod'] - string - contains the user payment method
      * $this->attributes['created_at'] - DateTime - contains the date and time of the card creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the card last update
      * $this->['user_id'] - int - contains the associated User id
      * $this->user - User - contains the associated User
      * $this->items - Item[] - contains the associated Items
      */
-    protected $fillable = ['item', 'total', 'address', 'payment_method'];
+    protected $fillable = ['total', 'address', 'paymentMethod'];
 
     public static function validate($request)
     {
@@ -31,7 +32,7 @@ class Order extends Model
             'item' => 'required|string|min:5',
             'total' => 'required|numeric',
             'address' => 'required|string',
-            'payment_method' => 'required|string',
+            'paymentMethod' => 'required|string',
             'user_id' => 'required|integer|exists:users,id',
         ]);
     }
@@ -40,20 +41,20 @@ class Order extends Model
     {
         return $this->attributes['id'];
     }
-
+    
     public function items()
     {
         return $this->hasMany(Item::class);
     }
 
-    public function getItem(): string
+    public function getItems(): string
     {
-        return $this->attributes['item'];
+        return $this->items;
     }
 
-    public function setItem(string $item): void
+    public function setItems(string $item): void
     {
-        $this->attributes['item'] = $item;
+        $this->attributes['items'] = $items;
     }
 
     public function getTotal(): float
@@ -78,12 +79,12 @@ class Order extends Model
 
     public function getPaymentMethod(): string
     {
-        return $this->attributes['payment_method'];
+        return $this->attributes['paymentMethod'];
     }
 
     public function setPaymentMethod(string $paymentMethod): void
     {
-        $this->attributes['payment_method'] = $paymentMethod;
+        $this->attributes['paymentMethod'] = $paymentMethod;
     }
 
     public function getUserId(): int
@@ -120,4 +121,5 @@ class Order extends Model
     {
         return $this->attributes['updated_at'];
     }
+
 }

@@ -42,6 +42,12 @@
                         <a href="{{ route('card.index') }}" class="btn btn-primary active">
                             {{ __('Back') }}
                         </a>
+                        <form method="POST" action="{{route('cart.add',['id'=>$viewData['card']->getId()])}}">
+                            @csrf
+                            <div class="input-group-text">Quantity</div>
+                            <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['card']->getQuantity() }}" class="form-control" required>
+                            <button type="submit" class="btn btn-success active">ADD</button>
+                        </form>
                     </div>
                 </div>
             </div>
