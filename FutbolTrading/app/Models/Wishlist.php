@@ -14,7 +14,7 @@ class Wishlist extends Model
      * $this->attributes['id'] - int - contains the wishlist primary key (id)
      * $this->attributes['created_at'] - DateTime - contains the date and time of the Wishlist creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the Wishlist last update
-     * $this->user - User[] - contains the associated User
+     * $this->user - User - contains the associated User
      * $this->cards - Card[] - contains the associated Cards
      */
 
