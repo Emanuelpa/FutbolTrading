@@ -19,9 +19,7 @@ return new class extends Migration
             $table->float('price');
             $table->integer('quantity');
             $table->unsignedBigInteger('item')->nullable()->default(null);
-            $table->unsignedBigInteger('wishlist')->nullable()->default(null);
             $table->foreign('item')->references('id')->on('items');
-            $table->foreign('wishlist')->references('id')->on('wishlists');
             $table->timestamps();
         });
     }

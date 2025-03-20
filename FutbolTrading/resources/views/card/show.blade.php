@@ -38,10 +38,6 @@
                                 {{ __('Published on: ') }} {{ $viewData['card']->getCreatedAt() }}
                             </small>
                         </p>
-
-                        <a href="{{ route('card.index') }}" class="btn btn-primary active">
-                            {{ __('Back') }}
-                        </a>
                         <form method="POST" action="{{ route('cart.add', ['id' => $viewData['card']->getId()]) }}" class="mt-3">
                             @csrf
                             <div class="input-group" style="max-width: 200px;">
@@ -54,6 +50,19 @@
                                 </button>
                             </div>
                         </form>
+
+                        <div class="d-flex">
+                            <a href="{{ route('card.index') }}" class="btn btn-primary me-2">
+                                {{ __('Back') }}
+                            </a>
+
+                            <form method="POST" action="{{ route('wishlist.add', $viewData['card']->getId()) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa-solid fa-heart"></i> {{ __('Add to Wishlist') }}
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Wishlist extends Model
 {
@@ -14,17 +13,22 @@ class Wishlist extends Model
      * $this->attributes['id'] - int - contains the wishlist primary key (id)
      * $this->attributes['created_at'] - DateTime - contains the date and time of the Wishlist creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the Wishlist last update
-     * $this->user - User[] - contains the associated User
+     * $this->user - User - contains the associated User
      * $this->cards - Card[] - contains the associated Cards
      */
 
-    protected $fillable = ['user'];
+    protected $fillable = ['user', 'cards'];
+
+    protected $casts = [
+        'cards' => 'array', 
+    ];
+    
 
     public static function validate($request): void
     {
         $request->validate([
             'user' => 'required|int',
-            'card' => 'nullable|int'
+            'cards' => 'nullable'
         ]);
     }
 
@@ -58,18 +62,14 @@ class Wishlist extends Model
         $this->attributes['user'] = $user;
     }
 
-    public function cards(): HasMany
+    public function getCards(): Collection
     {
-        return $this->hasMany(Card::class);
-    }
+        $cardIds = is_array($this->cards) ? $this->cards : [];
+        return Card::whereIn('id', $cardIds)->get();
+    }    
 
-    public function getCards(): ?Collection
+    public function setCards(array $cards): void
     {
-        return $this->attributes['cards'];
-    }
-
-    public function setCards(Collection $cards): void
-    {
-        $this->attributes['cards'] = $cards;
+        $this->update(['cards' => $cards]);
     }
 }

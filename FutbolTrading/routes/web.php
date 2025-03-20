@@ -22,3 +22,7 @@ Route::get('/cards', 'App\Http\Controllers\CardController@index')->name('card.in
 Route::get('/cards/create', 'App\Http\Controllers\CardController@create')->name('card.create');
 Route::post('/cards/save', 'App\Http\Controllers\CardController@save')->name('card.save');
 Route::get('/cards/{id}', 'App\Http\Controllers\CardController@show')->name('card.show');
+//Wishlist routes
+Route::get('/wishlist', 'App\Http\Controllers\WishlistController@index')->name('wishlist.index');
+Route::post('/wishlist/remove/{cardId}', 'App\Http\Controllers\WishlistController@remove')->name('wishlist.remove');
+Route::post('/wishlist/add/{cardId}', 'App\Http\Controllers\WishlistController@add')->name('wishlist.add');
