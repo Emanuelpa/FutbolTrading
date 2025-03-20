@@ -2,6 +2,14 @@
 @section('title', $viewData["title"]) 
 @section('subtitle', $viewData["subtitle"]) 
 @section('content') 
+
+<form action="{{ route('myaccount.orders') }}" method="GET" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="search ID" value="{{ request('search') }}" style="color: black; background-color: white; caret-color: black;">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
 @forelse ($viewData["orders"] as $order) 
 <div class="card mb-4"> 
   <div class="card-header text-dark"> 
@@ -10,6 +18,7 @@
   <div class="card-body text-dark"> 
     <b>Date:</b> {{ $order->getCreatedAt() }}<br /> 
     <b>Total:</b> ${{ $order->getTotal() }}<br />
+    <b>Método de Pago:</b> {{ $order->getPaymentMethod() }}<br />
     <table class="table table-bordered table-striped text-center mt-3"> 
       <thead> 
         <tr> 

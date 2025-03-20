@@ -16,18 +16,17 @@ class Wishlist extends Model
      * $this->user - User - contains the associated User
      * $this->cards - Card[] - contains the associated Cards
      */
-
     protected $fillable = ['user', 'cards'];
 
     protected $casts = [
-        'cards' => 'array', 
+        'cards' => 'array',
     ];
 
     public static function validate($request): void
     {
         $request->validate([
             'user' => 'required|int',
-            'cards' => 'nullable'
+            'cards' => 'nullable',
         ]);
     }
 
@@ -64,8 +63,9 @@ class Wishlist extends Model
     public function getCards(): Collection
     {
         $cardIds = is_array($this->cards) ? $this->cards : [];
+
         return Card::whereIn('id', $cardIds)->get();
-    }    
+    }
 
     public function setCards(array $cards): void
     {
