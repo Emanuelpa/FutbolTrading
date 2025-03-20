@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('image');
             $table->float('price');
             $table->integer('quantity');
-            $table->unsignedBigInteger('item');
-            $table->unsignedBigInteger('wishlist');
+            $table->unsignedBigInteger('item')->nullable()->default(null);
+            $table->unsignedBigInteger('wishlist')->nullable()->default(null);
             $table->foreign('item')->references('id')->on('items');
             $table->foreign('wishlist')->references('id')->on('wishlists');
             $table->timestamps();

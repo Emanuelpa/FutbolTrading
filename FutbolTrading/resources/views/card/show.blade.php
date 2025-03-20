@@ -35,13 +35,25 @@
 
                         <p class="card-text fw-lighter mb-3">
                             <small class="text-white">
-                                {{ __('Published_on: ') }} {{ $viewData['card']->getCreatedAt() }}
+                                {{ __('Published on: ') }} {{ $viewData['card']->getCreatedAt() }}
                             </small>
                         </p>
 
                         <a href="{{ route('card.index') }}" class="btn btn-primary active">
                             {{ __('Back') }}
                         </a>
+                        <form method="POST" action="{{ route('cart.add', ['id' => $viewData['card']->getId()]) }}" class="mt-3">
+                            @csrf
+                            <div class="input-group" style="max-width: 200px;">
+                                <span class="input-group-text bg-secondary text-white">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </span>
+                                <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['card']->getQuantity() }}" class="form-control text-center" required>
+                                <button type="submit" class="btn btn-success">
+                                    {{ __('ADD') }}
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
