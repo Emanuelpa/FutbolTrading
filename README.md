@@ -44,17 +44,13 @@ Esto ejecutará el proyecto en `http://127.0.0.1:8000/`.
 
 ## 6. Rutas principales
 
-http://127.0.0.1:8000/home
+- http://127.0.0.1:8000/home
 
 (Al autenticarce)
-http://127.0.0.1:8000/
-
-Una vez iniciado el servidor, abre el navegador y accede a localhost:
-
-http://127.0.0.1:8000/cards
-http://127.0.0.1:8000/tradeItem
-http://127.0.0.1:8000/cart
-http://127.0.0.1:8000/whishlist
+- http://127.0.0.1:8000/cards
+- http://127.0.0.1:8000/tradeItem
+- http://127.0.0.1:8000/cart
+- http://127.0.0.1:8000/whishlist
 
 
 ## Sobre Laravel
