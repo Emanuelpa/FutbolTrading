@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Wishlist;
-use App\Models\Card;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
 {
@@ -28,7 +27,7 @@ class WishlistController extends Controller
 
         $cards = is_array($wishlist->cards) ? $wishlist->cards : [];
 
-        if (!in_array($cardId, $cards)) {
+        if (! in_array($cardId, $cards)) {
             $cards[] = $cardId;
             $wishlist->update(['cards' => $cards]);
         }
@@ -42,7 +41,7 @@ class WishlistController extends Controller
 
         if ($wishlist) {
             $cards = is_array($wishlist->cards) ? $wishlist->cards : [];
-            $cards = array_filter($cards, fn($id) => $id != $cardId);
+            $cards = array_filter($cards, fn ($id) => $id != $cardId);
 
             $wishlist->update(['cards' => array_values($cards)]);
         }

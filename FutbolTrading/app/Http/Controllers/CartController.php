@@ -91,7 +91,7 @@ class CartController extends Controller
         }
     }
 
-    public function downloadInvoice($id)
+    public function downloadInvoice(string $id)
     {
         $order = Order::findOrFail($id);
         $cardsInCart = Card::findMany(explode(', ', $order->item));
