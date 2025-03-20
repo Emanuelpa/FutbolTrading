@@ -2,7 +2,7 @@
 @section('title', $viewData["title"]) 
 @section('content') 
 <div class="card"> 
-  <div class="card-header"> 
+  <div class="card-header text-dark"> 
   {{__('Cart.products_in_cart')}}
   </div> 
   <div class="card-body"> 
@@ -16,7 +16,7 @@
         </tr> 
       </thead> 
       <tbody> 
-        @foreach ($viewData['cards'] as $cards)
+        @foreach ($viewData['cards'] as $card)
         <tr> 
             <td>{{ $card->getId() }}</td>
             <td>{{ $card->getName() }}</td>
@@ -30,9 +30,9 @@
       <div class="text-end"> 
         <a class="btn btn-outline-secondary mb-2"><b>{{__('Cart.total_to_pay')}}:</b> ${{ $viewData["total"] }}</a> 
         @if (count($viewData["cards"]) > 0) 
-        <a href="{{ route('cart.purchase') }}" class="btn bg-primary text-white mb-2">{{__('Cart.purchase')}}</a>  
+        <a href="{{ route('cart.purchase') }}" class="btn bg-success text-white mb-2">{{__('Cart.purchase')}}</a>  
         <a href="{{ route('cart.delete') }}"> 
-          <button class="btn btn-danger mb-2"> 
+          <button class="btn bg-success text-white mb-2" style="background-color: #28a745 !important;"> 
             {{__('Cart.remove_all')}} 
           </button> 
         </a>

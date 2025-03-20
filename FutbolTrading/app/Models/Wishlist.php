@@ -22,7 +22,6 @@ class Wishlist extends Model
     protected $casts = [
         'cards' => 'array', 
     ];
-    
 
     public static function validate($request): void
     {
@@ -47,7 +46,7 @@ class Wishlist extends Model
         return $this->attributes['updated_at'];
     }
 
-    public function user() : BelongsTo 
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

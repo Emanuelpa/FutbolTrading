@@ -7,9 +7,11 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index')
 Auth::routes();
 // cart routes
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
-Route::delete('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
+Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
-
+Route::get('cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');
+Route::get('/cart/downloadInvoice/{id}', 'App\Http\Controllers\CartController@downloadInvoice')->name('cart.downloadInvoice');
+Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');
 // TradeItem routes
 Route::get('/tradeItems', 'App\Http\Controllers\TradeItemController@index')->name('tradeItem.index');
 Route::get('/tradeItem/yourItems', 'App\Http\Controllers\TradeItemController@userTradeItemsIndex')->name('tradeItem.userTradeItem');
