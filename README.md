@@ -50,7 +50,7 @@ Esto ejecutará el proyecto en `http://127.0.0.1:8000/`.
 - http://127.0.0.1:8000/cards
 - http://127.0.0.1:8000/tradeItem
 - http://127.0.0.1:8000/cart
-- http://127.0.0.1:8000/whishlist
+- http://127.0.0.1:8000/wishlist
 
 
 ## Sobre Laravel
