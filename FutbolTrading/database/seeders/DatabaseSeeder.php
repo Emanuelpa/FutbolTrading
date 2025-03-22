@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Card;
 use App\Models\TradeItem;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -16,5 +17,6 @@ class DatabaseSeeder extends Seeder
 
         // User::factory(5)->create();
         TradeItem::factory(10)->create();
+        // Card::factory(10)->create();
     }
 }

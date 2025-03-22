@@ -23,7 +23,7 @@ return [
     'published_on' => 'Published On',
     'in' => 'In ',
     'offered_by' => 'Offered By  ',
-    'description' => 'Description:  ',
+    'description' => 'Description  ',
     'item_to' => 'Item ',
     'phone' => 'Cellphone  ',
     'type' => 'Type:  ',
@@ -32,4 +32,6 @@ return [
     'offer_type' => 'Offer Type',
     'offer_description' => 'Offer Description',
     'image' => 'Image',
+    'user' => 'User',
+    'name' => 'Name',
 ];

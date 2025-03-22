@@ -15,7 +15,7 @@
                         @endforeach
                     </ul>
                     @endif
-                    <form method="POST" action="{{ route('admin.tradeItem.save') }}">
+                    <form method="POST" action="{{ route('tradeItem.save') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -34,16 +34,14 @@
                             </div>
                         </div>
 
-
-
                         <div class="row mb-3">
                             <label for="image"
                                 class="col-md-4 col-form-label text-md-end">{{ __('TradeItem.image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file"
+                                <input id="image" type="text"
                                     class="form-control auth-field @error('image') is-invalid @enderror" name="image"
-                                    accept="image/*" autofocus>
+                                    value="{{ old('image') }}" required autocomplete="name" autofocus>
 
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -52,9 +50,6 @@
                                 @enderror
                             </div>
                         </div>
-
-
-
 
                         <div class="row mb-3">
                             <label for="type"
@@ -99,6 +94,20 @@
                                 @enderror
                             </div>
 
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="user"
+                                class="col-md-4 col-form-label text-md-end">{{ __('TradeItem.user') }}</label>
+                            <div class="col-md-6">
+                                <select aria-placeholder="Select the type" name="user" class="form-control auth-field"
+                                    required>
+                                    @foreach ($viewData['users'] as $user)
+                                    <option value="{{ $user->getId() }}" class="text-white">{{ $user->getName() }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
 
                         <div class="row mb-0 mt-5 col-md-20 ms-5">

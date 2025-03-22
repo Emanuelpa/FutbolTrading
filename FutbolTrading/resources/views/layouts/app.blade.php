@@ -46,7 +46,8 @@
             <div class="collapse navbar-collapse align-middle" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-2 mb-2 mb-lg-0 fs-5 align-middle">
                     <li class="nav-item me-2">
-                        <a class="nav-link active text-white" aria-current="page" href="{{ route('card.index') }}">{{ __('Layout.shop') }}</a>
+                        <a class="nav-link active text-white" aria-current="page"
+                            href="{{ route('card.index') }}">{{ __('Layout.shop') }}</a>
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link active text-white"
@@ -54,7 +55,8 @@
                     </li>
                     @auth
                     <li class="nav-item me-2">
-                        <a class="nav-link active text-white" href="{{route('myaccount.orders')}}" >{{ __('Layout.your_orders') }}</a>
+                        <a class="nav-link active text-white"
+                            href="{{route('myaccount.orders')}}">{{ __('Layout.your_orders') }}</a>
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link active text-white"
@@ -72,6 +74,12 @@
                     </li>
 
                     @auth
+                    @if(auth()->user()->getRole() === 'admin')
+                    <li class="d-flex ms-auto me-3">
+                        <a class="nav-link active fs-5 text-white"
+                            href="{{ route('admin.index') }}">{{ __('Layout.admin') }}</a>
+                    </li>
+                    @endif
                     <li class="d-flex"><a class="nav-link active text-white fs-5" href={{ route("cart.index") }}>
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a></li>
@@ -86,9 +94,6 @@
                     </li>
                     @endauth
                 </ul>
-
-
-
             </div>
         </div>
     </nav>

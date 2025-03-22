@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('trade_items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
-            $table->string('image');
-            $table->string('offerType');
-            $table->string('offerDescription');
+            $table->string('description');
+            $table->text('image');
+            $table->float('price');
+            $table->integer('quantity');
+            $table->unsignedBigInteger('item')->nullable(); // Permitir valores nulos
+            $table->foreign('item')->references('id')->on('items')->nullOnDelete(); // Evita errores si el item se elimina
             $table->timestamps();
-            $table->unsignedBigInteger('user');
-            $table->foreign('user')->references('id')->on('users');
         });
     }
 

@@ -7,4 +7,5 @@ return [
     'published_on' => 'Published On',
     'create' => 'Create',
     'delete' => 'Delete',
+    'are_you_sure' => 'Are you sure?',
 ];

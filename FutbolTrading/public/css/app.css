@@ -196,3 +196,37 @@ option:hover {
     background-color: #1b783f !important;
     color: white !important;
 }
+
+.custom-dark-table {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.custom-dark-table thead {
+    background-color: #333;
+}
+
+.custom-dark-table tbody tr:nth-child(odd) {
+    background-color: #222;
+}
+
+.custom-dark-table tbody tr:nth-child(even) {
+    background-color: #292929;
+}
+
+.custom-dark-table tbody tr:hover td {
+    background-color: #444 !important;
+    color:#1F7D53 !important;
+}
+
+.btn-light {
+    background-color: #ffffff !important;
+    color: #000 !important;
+    border-radius: 5px;
+}
+
+.btn-light:hover {
+    background-color: #e6e6e6 !important;
+}

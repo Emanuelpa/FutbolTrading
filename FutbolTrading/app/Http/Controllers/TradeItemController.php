@@ -27,7 +27,7 @@ class TradeItemController extends Controller
         try {
             $tradeItem = TradeItem::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('TradeItem.see_item').$tradeItem->getName();
+            $viewData['title'] = __('TradeItem.see_item') . $tradeItem->getName();
             $viewData['subtitle'] = __('TradeItem.see_item');
             $viewData['tradeItem'] = $tradeItem;
 
@@ -74,7 +74,7 @@ class TradeItemController extends Controller
         ]);
         $viewData = [];
         $viewData['subtitle'] = __('TradeItem.create');
-        $viewData['description'] = __('TradeItem.the_item').$request->input('name').__('TradeItem.has_been_created');
+        $viewData['description'] = __('TradeItem.the_item') . $request->input('name') . __('TradeItem.has_been_created');
 
         return redirect()->back();
     }

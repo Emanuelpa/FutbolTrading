@@ -32,7 +32,6 @@ class TradeItem extends Model
             'offerType' => 'required|string',
             'offerDescription' => 'required|string',
             'image' => 'required|string',
-            'user' => 'required|int',
         ]);
     }
 
