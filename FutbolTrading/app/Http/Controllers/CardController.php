@@ -7,8 +7,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-use Illuminate\Support\Facades\Log;
-
 class CardController extends Controller
 {
     public function index(): View
