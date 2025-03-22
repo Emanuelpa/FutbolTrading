@@ -5,8 +5,13 @@
     <h1 class="text-white">{{ $viewData['title'] }}</h1>
     <h3 class="text-white">{{ $viewData['subtitle'] }}</h3>
 
+    <form action="{{ route('card.search') }}" method="GET">
+        <input type="text" name="query" class="form-control text-dark" placeholder="Buscar cartas..." required>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
     @if ($viewData['cards']->isEmpty())
-        <p class="text-white">No cards available.</p>
+        <p class="text-white">No results found.</p>
     @else
         <div class="row">
             @foreach ($viewData['cards'] as $card)

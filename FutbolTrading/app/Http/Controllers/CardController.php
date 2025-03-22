@@ -7,6 +7,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+use Illuminate\Support\Facades\Log;
+
 class CardController extends Controller
 {
     public function index(): View
@@ -58,4 +60,17 @@ class CardController extends Controller
 
         return redirect()->route('card.index')->with('success', 'Card deleted successfully.');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $cards = Card::where('name', 'LIKE', "%{$query}%")->get();
+
+        $viewData = [];
+        $viewData['title'] = 'Search Results';
+        $viewData['subtitle'] = 'Results for "'.$query.'"';
+        $viewData['cards'] = $cards;
+    
+        return view('card.index')->with('viewData', $viewData);
+    }    
 }
