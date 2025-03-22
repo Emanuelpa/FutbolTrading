@@ -5,8 +5,8 @@
     <h1 class="text-white">{{ $viewData['title'] }}</h1>
     <h3 class="text-white">{{ $viewData['subtitle'] }}</h3>
 
-    <form action="{{ route('card.search') }}" method="GET">
-        <input type="text" name="query" class="form-control text-dark" placeholder="Buscar cartas..." required>
+    <form action="{{ route('card.search') }}" method="GET" class="d-flex mb-4">
+        <input type="text" name="query" class="form-control text-dark me-2" placeholder="Buscar cartas..." required>
         <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
 

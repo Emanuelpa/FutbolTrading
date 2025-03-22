@@ -14,7 +14,7 @@
         @guest
         <a href="{{ route('login') }}" class="btn btn-primary active">{{ __('Home.login') }}</a>
         @else
-        <a href="" class="btn btn-primary active">{{ __('Home.shop') }}</a>
+        <a href="{{ route('card.index') }}" class="btn btn-primary active">{{ __('Home.shop') }}</a>
         @endguest
 
     </div>

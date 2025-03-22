@@ -60,6 +60,10 @@
                         <a class="nav-link active text-white"
                             href="{{ route('tradeItem.userTradeItem') }}">{{ __('Layout.your_items') }}</a>
                     </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link active text-white" 
+                            href="{{route('wishlist.index')}}" >{{ __('Layout.wishlist') }}</a>
+                    </li>
                     @endauth
                 </ul>
 
