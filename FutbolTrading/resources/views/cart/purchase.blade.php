@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="card">
     <div class="card-header text-dark">{{__('Purchase.purchase_complete')}}</div>
     <div class="card-body">

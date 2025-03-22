@@ -8,6 +8,7 @@ use App\Models\Order;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -67,6 +68,8 @@ class CartController extends Controller
             $cardsInCart = Card::findMany(array_keys($cardsInSession));
             foreach ($cardsInCart as $card) {
                 $quantity = $cardsInSession[$card->getId()];
+                $card->setQuantity($card->getQuantity() - $quantity);
+                $card->save();
                 $item = new Item;
                 $item->setQuantity($quantity);
                 $item->setSubtotal($card->getPrice());
@@ -91,7 +94,7 @@ class CartController extends Controller
         }
     }
 
-    public function downloadInvoice(string $id)
+    public function downloadInvoice(string $id): Response
     {
         $order = Order::findOrFail($id);
         $cardsInCart = Card::findMany(explode(', ', $order->item));

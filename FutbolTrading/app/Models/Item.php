@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends Model
 {
@@ -58,7 +59,7 @@ class Item extends Model
         $this->attributes['subtotal'] = $subtotal;
     }
 
-    public function order()
+    public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
@@ -83,7 +84,7 @@ class Item extends Model
         $this->order = $order;
     }
 
-    public function card()
+    public function card(): BelongsTo
     {
         return $this->belongsTo(Card::class);
     }
