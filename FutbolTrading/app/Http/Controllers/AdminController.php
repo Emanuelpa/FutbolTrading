@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use App\Models\User;
-use App\Models\TradeItem;
+use App\Models\TradeProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -40,19 +40,19 @@ class AdminController extends Controller
         $viewData = [];
         $viewData['title'] = __('Admin.trade_dash');
         $viewData['subtitle'] = __('Admin.trade_admin_panel');
-        $viewData['tradeItems'] = TradeItem::all();
+        $viewData['tradeProducts'] = TradeProduct::all();
 
         return view('admin.trade.dashboard')->with('viewData', $viewData);
     }
 
-    public function showTradeItem(string $id): View | RedirectResponse
+    public function showTradeProduct(string $id): View | RedirectResponse
     {
         try {
-            $tradeItem = TradeItem::findOrFail($id);
+            $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('Admin.see_item') . $tradeItem->getName();
-            $viewData['subtitle'] = __('Admin.see_item');
-            $viewData['tradeItem'] = $tradeItem;
+            $viewData['title'] = __('Admin.see_product') . $tradeProduct->getName();
+            $viewData['subtitle'] = __('Admin.see_product');
+            $viewData['tradeProduct'] = $tradeProduct;
 
             return view('admin.trade.show')->with('viewData', $viewData);
         } catch (ModelNotFoundException $e) {
@@ -76,17 +76,17 @@ class AdminController extends Controller
         }
     }
 
-    public function editTradeItem(string $id): View | RedirectResponse
+    public function editTradeProduct(string $id): View | RedirectResponse
     {
         try {
-            $tradeItem = TradeItem::findOrFail($id);
+            $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('Admin.see_item') . $tradeItem->getName();
-            $viewData['subtitle'] = __('Admin.see_item');
-            $viewData['typeOptions'] = config('tradeItem.typeOptions');
-            $viewData['offerOptions'] = config('tradeItem.offerOptions');
+            $viewData['title'] = __('Admin.see_product') . $tradeProduct->getName();
+            $viewData['subtitle'] = __('Admin.see_product');
+            $viewData['typeOptions'] = config('tradeProduct.typeOptions');
+            $viewData['offerOptions'] = config('tradeProduct.offerOptions');
             $viewData['users'] = User::all();
-            $viewData['tradeItem'] = $tradeItem;
+            $viewData['tradeProduct'] = $tradeProduct;
 
             return view('admin.trade.update')->with('viewData', $viewData);
         } catch (ModelNotFoundException $e) {
@@ -110,14 +110,14 @@ class AdminController extends Controller
         }
     }
 
-    public function updateTradeItem(Request $request, string $id): RedirectResponse
+    public function updateTradeProduct(Request $request, string $id): RedirectResponse
     {
 
-        TradeItem::validate($request);
+        TradeProduct::validate($request);
         $storeInterface = app(ImageStorage::class);
         $imagePath = $storeInterface->store($request);
 
-        $tradeItem = TradeItem::findOrFail($id);
+        $tradeProduct = TradeProduct::findOrFail($id);
 
         $updateData = $request->only([
             'name',
@@ -131,7 +131,7 @@ class AdminController extends Controller
             $updateData['image'] = $imagePath;
         }
 
-        $tradeItem->update($updateData);
+        $tradeProduct->update($updateData);
 
         return redirect()->back()->with(__('Admin.success'), __('Admin.has_been_updated'));
     }
@@ -161,15 +161,15 @@ class AdminController extends Controller
         return redirect()->back()->with(__('Admin.success'), __('Admin.has_been_updated'));
     }
 
-    public function createTradeItem(): View
+    public function createTradeProduct(): View
     {
         $viewData = [];
         $viewData['title'] = __('Admin.create');
-        $viewData['subtitle'] = __('Admin.create_item_to_trade');
+        $viewData['subtitle'] = __('Admin.create_product_to_trade');
         $viewData['description'] = __('Admin.please_fill');
         $viewData['users'] = User::all();
-        $viewData['typeOptions'] = config('tradeItem.typeOptions');
-        $viewData['offerOptions'] = config('tradeItem.offerOptions');
+        $viewData['typeOptions'] = config('tradeProduct.typeOptions');
+        $viewData['offerOptions'] = config('tradeProduct.offerOptions');
 
         return view('admin.trade.create')->with('viewData', $viewData);
     }
@@ -184,19 +184,19 @@ class AdminController extends Controller
         return view('admin.card.create')->with('viewData', $viewData);
     }
 
-    public function saveTradeItem(Request $request): View | RedirectResponse
+    public function saveTradeProduct(Request $request): View | RedirectResponse
     {
-        TradeItem::validate($request);
+        TradeProduct::validate($request);
         $storeInterface = app(ImageStorage::class);
         $imagePath = $storeInterface->store($request);
-        TradeItem::create(array_merge(
+        TradeProduct::create(array_merge(
             $request->only(['name', 'type', 'offerType', 'offerDescription', 'user']),
             ['image' => $imagePath]
         ));
 
         $viewData = [];
         $viewData['subtitle'] = __('admin.create');
-        $viewData['description'] = __('admin.the_item') . $request->input('name') . __('admin.has_been_created');
+        $viewData['description'] = __('admin.the_product') . $request->input('name') . __('admin.has_been_created');
 
         return redirect()->back();
     }
@@ -215,9 +215,9 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Item created successfully');
     }
 
-    public function deleteTradeItem(string $id): RedirectResponse
+    public function deleteTradeProduct(string $id): RedirectResponse
     {
-        TradeItem::destroy($id);
+        TradeProduct::destroy($id);
 
         return redirect()->route('admin.trade.dashboard');
     }

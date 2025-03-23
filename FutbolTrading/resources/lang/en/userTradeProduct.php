@@ -1,11 +1,12 @@
 <?php
 
 return [
-    'your_items' => 'Your Items',
-    'no_items' => 'Here you will find your published items',
+    'your_products' => 'Your Products',
+    'no_products' => 'Here you will find your published products',
     'see_more' => 'See more',
     'published_on' => 'Published On',
     'create' => 'Create',
     'delete' => 'Delete',
     'are_you_sure' => 'Are you sure?',
+    'you_dont' => 'You do not have products yet',
 ];

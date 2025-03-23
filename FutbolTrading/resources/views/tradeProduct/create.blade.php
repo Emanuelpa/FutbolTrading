@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card bg-dark">
-                <div class="card-header fs-4">{{ __('TradeItem.create_item') }}</div>
+                <div class="card-header fs-4">{{ __('TradeProduct.create_product') }}</div>
 
                 <div class="card-body">
                     @if($errors->any())
@@ -15,7 +15,7 @@
                         @endforeach
                     </ul>
                     @endif
-                    <form method="POST" action="{{ route('tradeItem.save') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('tradeProduct.save') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -33,12 +33,9 @@
                                 @enderror
                             </div>
                         </div>
-
-
-
                         <div class="row mb-3">
                             <label for="image"
-                                class="col-md-4 col-form-label text-md-end">{{ __('TradeItem.image') }}</label>
+                                class="col-md-4 col-form-label text-md-end">{{ __('TradeProduct.image') }}</label>
 
                             <div class="col-md-6">
                                 <input id="image" type="file"
@@ -52,13 +49,9 @@
                                 @enderror
                             </div>
                         </div>
-
-
-
-
                         <div class="row mb-3">
                             <label for="type"
-                                class="col-md-4 col-form-label text-md-end">{{ __('TradeItem.type') }}</label>
+                                class="col-md-4 col-form-label text-md-end">{{ __('TradeProduct.type') }}</label>
                             <div class="col-md-6">
                                 <select aria-placeholder="Select the type" name="type" class="form-control auth-field"
                                     required>
@@ -71,7 +64,7 @@
 
                         <div class="row mb-3">
                             <label for="offerType"
-                                class="col-md-4 col-form-label text-md-end">{{ __('TradeItem.offer_type') }}</label>
+                                class="col-md-4 col-form-label text-md-end">{{ __('TradeProduct.offer_type') }}</label>
                             <div class="col-md-6">
                                 <select aria-placeholder="Select the type" name="offerType"
                                     class="form-control auth-field" required>
@@ -84,7 +77,7 @@
 
                         <div class="row mb-3">
                             <label for="offerDescription"
-                                class="col-md-4 col-form-label text-md-end">{{ __('TradeItem.offer_description') }}</label>
+                                class="col-md-4 col-form-label text-md-end">{{ __('TradeProduct.offer_description') }}</label>
 
                             <div class="col-md-6">
                                 <textarea id="offerDescription"
@@ -103,10 +96,10 @@
 
                         <div class="row mb-0 mt-5 col-md-20 ms-5">
                             <div class="col-md-6 offset-md-4">
-                                <a href="{{ route('tradeItem.userTradeItem') }}"
-                                    class="btn btn-primary me-2 active">{{ __('TradeItem.back') }}</a>
+                                <a href="{{ route('tradeProduct.userTradeProduct') }}"
+                                    class="btn btn-primary me-2 active">{{ __('TradeProduct.back') }}</a>
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('TradeItem.create') }}
+                                    {{ __('TradeProduct.create') }}
                                 </button>
                             </div>
                         </div>

@@ -31,7 +31,7 @@ class User extends Authenticatable
      * $this->attributes['remember_token'] - string - the remember me field
      * $this->attributes['created_at'] - DateTime - contains the date and time of the user creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the user last update
-     * $this->tradeItems - TradeItem[] - contains the associated TradeItems
+     * $this->tradeProducts - TradeProduct[] - contains the associated TradeProducts
      * $this->orders - Order[] - contains the associated Orders
      */
     protected $fillable = [
@@ -161,19 +161,19 @@ class User extends Authenticatable
         return $this->attributes['updated_at'];
     }
 
-    public function tradeItems(): HasMany
+    public function tradeProducts(): HasMany
     {
-        return $this->hasMany(TradeItem::class, 'user');
+        return $this->hasMany(TradeProduct::class, 'user');
     }
 
-    public function getTradeItems(): ?Collection
+    public function getTradeProducts(): ?Collection
     {
-        return $this->tradeItems;
+        return $this->tradeProducts;
     }
 
-    public function setTradeItems(Collection $tradeItems): void
+    public function setTradeProducts(Collection $tradeProducts): void
     {
-        $this->tradeItems = $tradeItems;
+        $this->tradeProducts = $tradeProducts;
     }
 
     public function orders(): HasMany

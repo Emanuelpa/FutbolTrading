@@ -31,29 +31,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($viewData["tradeItems"] as $tradeItem)
+                        @foreach ($viewData["tradeProducts"] as $tradeProduct)
                         <tr>
-                            <td>{{ $tradeItem->getId() }}</td>
-                            <td>{{ $tradeItem->getName() }}</td>
-                            <td>{{ $tradeItem->getType() }}</td>
+                            <td>{{ $tradeProduct->getId() }}</td>
+                            <td>{{ $tradeProduct->getName() }}</td>
+                            <td>{{ $tradeProduct->getType() }}</td>
                             <td>
-                                <img src="{{ asset('storage/' . $tradeItem->getImage()) }}" class="img-fluid rounded"
+                                <img src="{{ asset('storage/' . $tradeProduct->getImage()) }}" class="img-fluid rounded"
                                     width="50">
                             </td>
-                            <td>{{ $tradeItem->getOfferType() }}</td>
-                            <td>{{ Str::limit($tradeItem->getOfferDescription(), 20, '...') }}</td>
-                            <td>{{ $tradeItem->getUser()->getName() }}</td>
-                            <td>{{ Str::limit($tradeItem->getCreatedAt(),10, '') }}</td> <!-- ESTA CELDA FALTABA -->
+                            <td>{{ $tradeProduct->getOfferType() }}</td>
+                            <td>{{ Str::limit($tradeProduct->getOfferDescription(), 20, '...') }}</td>
+                            <td>{{ $tradeProduct->getUser()->getName() }}</td>
+                            <td>{{ Str::limit($tradeProduct->getCreatedAt(),10, '') }}</td>
                             <td>
-                                <a href="{{ route('admin.trade.show', ['id'=> $tradeItem->getId()]) }}"
+                                <a href="{{ route('admin.trade.show', ['id'=> $tradeProduct->getId()]) }}"
                                     class="btn btn-primary active">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="{{ route('admin.trade.edit', ['id'=> $tradeItem->getId()]) }}"
+                                <a href="{{ route('admin.trade.edit', ['id'=> $tradeProduct->getId()]) }}"
                                     class="btn btn-primary active">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <form action="{{ route('admin.trade.delete', $tradeItem->getId()) }}" method="POST"
+                                <form action="{{ route('admin.trade.delete', $tradeProduct->getId()) }}" method="POST"
                                     class="d-inline">
                                     @csrf
                                     @method('DELETE')

@@ -12,6 +12,6 @@ return [
     'marketplace' => 'Marketplace',
     'shop' => 'Shop',
     'logout' => 'Logout',
-    'your_items' => 'Your Items',
+    'your_products' => 'Your Products',
     'admin' => 'Admin',
 ];

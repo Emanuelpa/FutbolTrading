@@ -51,7 +51,7 @@
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link active text-white"
-                            href="{{ route('tradeItem.index') }}">{{ __('Layout.marketplace') }}</a>
+                            href="{{ route('tradeProduct.index') }}">{{ __('Layout.marketplace') }}</a>
                     </li>
                     @auth
                     <li class="nav-item me-2">
@@ -60,7 +60,7 @@
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link active text-white"
-                            href="{{ route('tradeItem.userTradeItem') }}">{{ __('Layout.your_items') }}</a>
+                            href="{{ route('tradeProduct.userTradeProduct') }}">{{ __('Layout.your_products') }}</a>
                     </li>
                     @endauth
                 </ul>

@@ -12,19 +12,19 @@
                 <div class="card-body p-4">
                     <h4 class="card-title text-uppercase fw-bold mb-3 text-center">{{ __('Admin.edit') }}</h4>
 
-                    <form action="{{ route('admin.trade.update', $viewData['tradeItem']->getId()) }}" method="POST"
+                    <form action="{{ route('admin.trade.update', $viewData['tradeProduct']->getId()) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
                         <div class="mb-3">
-                            <label class="form-label">{{ __('TradeItem.name') }}</label>
+                            <label class="form-label">{{ __('TradeProduct.name') }}</label>
                             <input type="text" name="name" class="form-control auth-field"
-                                value="{{ $viewData['tradeItem']->getName() }}" required>
+                                value="{{ $viewData['tradeProduct']->getName() }}" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">{{ __('TradeItem.type') }}</label>
+                            <label class="form-label">{{ __('TradeProduct.type') }}</label>
                             <select aria-placeholder="Select the type" name="type" class="form-control auth-field"
                                 required>
                                 @foreach ($viewData['typeOptions'] as $type)
@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">{{ __('TradeItem.item_to') }}</label>
+                            <label class="form-label">{{ __('TradeProduct.product_to') }}</label>
                             <select aria-placeholder="Select the type" name="offerType" class="form-control auth-field"
                                 required>
                                 @foreach ($viewData['offerOptions'] as $offerOption)
@@ -44,13 +44,13 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">{{ __('TradeItem.description') }}</label>
+                            <label class="form-label">{{ __('TradeProduct.description') }}</label>
                             <textarea name="offerDescription" class="form-control auth-field" rows="3"
-                                required>{{ $viewData['tradeItem']->getOfferDescription() }}</textarea>
+                                required>{{ $viewData['tradeProduct']->getOfferDescription() }}</textarea>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">{{ __('TradeItem.user') }}</label>
+                            <label class="form-label">{{ __('TradeProduct.user') }}</label>
                             <select aria-placeholder="Select the type" name="user" class="form-control auth-field"
                                 required>
                                 @foreach ($viewData['users'] as $user)
@@ -81,11 +81,11 @@
 
                         <div class="row mb-0 mt-5 col-md-20 ">
                             <div class="col-md-6 offset-md-4">
-                                <a href="{{ route('tradeItem.index') }}" class="btn btn-secondary">
+                                <a href="{{ route('tradeProduct.index') }}" class="btn btn-secondary">
                                     {{ __('Admin.back') }}
                                 </a>
                                 <button type="submit" class="btn btn-success">
-                                    {{ __('Admin.update_item') }}
+                                    {{ __('Admin.update_product') }}
                                 </button>
                             </div>
                         </div>

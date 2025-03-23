@@ -6,19 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class TradeItem extends Model
+class TradeProduct extends Model
 {
     use HasFactory;
 
     /*  TRADEITEM ATTRIBUTES
-        $this->attributes['id'] - int - contains the item primary key (id)
-        $this->attributes['name'] - string - contains the TradeItem name
-        $this->attributes['type'] - string - contains the TradeItem type (card, clothes, virtual content...)
-        $this->attributes['offerType'] - string - contains the type of offer for TradeItem (To trade, To sell or Any)
-        $this->attributes['offerDescription'] - string - contains more info about the TradeItem (To trade, To sell or Any)
+        $this->attributes['id'] - int - contains the product primary key (id)
+        $this->attributes['name'] - string - contains the TradeProduct name
+        $this->attributes['type'] - string - contains the TradeProduct type (card, clothes, virtual content...)
+        $this->attributes['offerType'] - string - contains the type of offer for TradeProduct (To trade, To sell or Any)
+        $this->attributes['offerDescription'] - string - contains more info about the TradeProduct (To trade, To sell or Any)
         $this->attributes['image'] - string - image url
-        $this->attributes['created_at'] - string - contains the date and time of the TradeItem creation
-        $this->attributes['updated_at'] - string - contains the date and time of the TradeItem last update
+        $this->attributes['created_at'] - string - contains the date and time of the TradeProduct creation
+        $this->attributes['updated_at'] - string - contains the date and time of the TradeProduct last update
         $this->user - User - contains the associated User
     */
 
