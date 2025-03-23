@@ -16,8 +16,8 @@ class Card extends Model
      * CARD ATTRIBUTES
      * $this->attributes['id'] - int - contains the card primary key (id)
      * $this->attributes['name'] - string - contains the card name
-     * this->attributes['description'] - string - contains the card description
-     * this->attributes['image'] - string - contains the card image
+     * $this->attributes['description'] - string - contains the card description
+     * $this->attributes['image'] - string - contains the card image
      * $this->attributes['price'] - decimal - contains the card price
      * $this->attributes['quantity'] - int - contains the card stock
      * $this->attributes['created_at'] - DateTime - contains the date and time of the Card creation

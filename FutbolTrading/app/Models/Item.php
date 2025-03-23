@@ -14,7 +14,7 @@ class Item extends Model
      * ITEM ATTRIBUTES
      * $this->attributes['id'] - int - contains the item primary key (id)
      * $this->attributes['quantity'] - int - contains the item quantity
-     * $this->attributes['subtotal'] - decimal - contains the item subtotal
+     * $this->attributes['subtotal'] - float - contains the item subtotal
      * $this->attributes['order_id'] - int - contains the associated Order id
      * $this->attributes['card_id'] - int - contains the associated Card id
      * $this->attributes['created_at'] - DateTime - contains the date and time of the item creation

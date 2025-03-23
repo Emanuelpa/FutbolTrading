@@ -8,29 +8,23 @@
     <meta name="keywords" content="FutbolTrading" />
     <meta name="author" content="Marcela Londoño, Emanuel Patiño & Tomás Pineda" />
 
-    <!-- Favicon -->
     <link rel="icon" href="{{ asset("favicon.ico") }}" type="image/x-icon" />
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous" />
 
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 
-    <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
         rel="stylesheet">
 
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <title>@yield("title", __('Layout.name'))</title>
 </head>
 
 <body>
-    <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand text-white text-bold ms-4 align-middle" href="{{ route("home.index") }}">
@@ -63,8 +57,8 @@
                             href="{{ route('tradeProduct.userTradeProduct') }}">{{ __('Layout.your_products') }}</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link active text-white" 
-                            href="{{route('wishlist.index')}}" >{{ __('Layout.wishlist') }}</a>
+                        <a class="nav-link active text-white"
+                            href="{{route('wishlist.index')}}">{{ __('Layout.wishlist') }}</a>
                     </li>
                     @endauth
                 </ul>
@@ -102,14 +96,12 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="container-fluid my-5">
         <div class="container-fluid">
             <div class="col-lg-8 mx-auto">@yield("content")</div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-dark text-white py-4">
         <div class="container text-center">
             <small>
@@ -121,10 +113,8 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-    <!-- Custom JS -->
     <script src="{{ asset("/js/app.js") }}"></script>
 </body>
 
