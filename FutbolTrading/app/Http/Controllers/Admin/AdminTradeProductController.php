@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
-use App\Models\TradeProduct;
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use App\Interfaces\ImageStorage;
 use App\Http\Controllers\Controller;
-
-
+use App\Interfaces\ImageStorage;
+use App\Models\TradeProduct;
+use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminTradeProductController extends Controller
 {
@@ -25,12 +23,12 @@ class AdminTradeProductController extends Controller
         return view('admin.trade.dashboard')->with('viewData', $viewData);
     }
 
-    public function show(string $id): View | RedirectResponse
+    public function show(string $id): View|RedirectResponse
     {
         try {
             $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('Admin.see_product') . $tradeProduct->getName();
+            $viewData['title'] = __('Admin.see_product').$tradeProduct->getName();
             $viewData['subtitle'] = __('Admin.see_product');
             $viewData['tradeProduct'] = $tradeProduct;
 
@@ -40,12 +38,12 @@ class AdminTradeProductController extends Controller
         }
     }
 
-    public function edit(string $id): View | RedirectResponse
+    public function edit(string $id): View|RedirectResponse
     {
         try {
             $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('Admin.see_product') . $tradeProduct->getName();
+            $viewData['title'] = __('Admin.see_product').$tradeProduct->getName();
             $viewData['subtitle'] = __('Admin.see_product');
             $viewData['typeOptions'] = config('tradeProduct.typeOptions');
             $viewData['offerOptions'] = config('tradeProduct.offerOptions');
@@ -81,7 +79,7 @@ class AdminTradeProductController extends Controller
 
         $tradeProduct->update($updateData);
 
-        $success = __('Admin.the_product') . ' ' . $request->input('name') . ' ' . __('Admin.has_been_updated');
+        $success = __('Admin.the_product').' '.$request->input('name').' '.__('Admin.has_been_updated');
 
         return redirect()->route('admin.trade.dashboard')->with('success', $success);
     }
@@ -109,7 +107,7 @@ class AdminTradeProductController extends Controller
             ['image' => $imagePath]
         ));
 
-        $success = __('Admin.the_product') . ' ' . $request->input('name') . ' ' . __('Admin.has_been_created');
+        $success = __('Admin.the_product').' '.$request->input('name').' '.__('Admin.has_been_created');
 
         return redirect()->route('admin.trade.dashboard')->with('success', $success);
     }
@@ -118,7 +116,7 @@ class AdminTradeProductController extends Controller
     {
         TradeProduct::destroy($id);
 
-        $success = __('Admin.the_product') . ' ' . __('Admin.has_been_deleted');
+        $success = __('Admin.the_product').' '.__('Admin.has_been_deleted');
 
         return redirect()->route('admin.trade.dashboard')->with('success', $success);
     }

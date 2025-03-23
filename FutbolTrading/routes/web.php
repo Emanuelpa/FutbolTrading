@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 // Admin Routes
 Route::middleware(['auth', 'App\Http\Middleware\Admin'])->group(function () {
     Route::get('/admin/index', 'App\Http\Controllers\AdminController@index')->name('admin.index');
-    //TradeProduct Routes
+    // TradeProduct Routes
     Route::get('/admin/trades/dashboard', 'App\Http\Controllers\Admin\AdminTradeProductController@dashboard')->name('admin.trade.dashboard');
     Route::get('/admin/trades/create', 'App\Http\Controllers\Admin\AdminTradeProductController@create')->name('admin.trade.create');
     Route::post('/admin/trades/save', 'App\Http\Controllers\Admin\AdminTradeProductController@save')->name('admin.tradeProduct.save');
@@ -29,7 +29,7 @@ Route::middleware(['auth', 'App\Http\Middleware\Admin'])->group(function () {
     Route::get('/admin/trades/{id}/update', 'App\Http\Controllers\Admin\AdminTradeProductController@edit')->name('admin.trade.edit');
     Route::put('/admin/trades/{id}/update', 'App\Http\Controllers\Admin\AdminTradeProductController@update')->name('admin.trade.update');
     Route::get('/admin/trades/{id}', 'App\Http\Controllers\Admin\AdminTradeProductController@show')->name('admin.trade.show');
-    //Card Routes
+    // Card Routes
     Route::get('/admin/cards/dashboard', 'App\Http\Controllers\Admin\AdminCardController@dashboard')->name('admin.card.dashboard');
     Route::get('/admin/cards/create', 'App\Http\Controllers\Admin\AdminCardController@create')->name('admin.card.create');
     Route::post('/admin/cards/save', 'App\Http\Controllers\Admin\AdminCardController@save')->name('admin.card.save');

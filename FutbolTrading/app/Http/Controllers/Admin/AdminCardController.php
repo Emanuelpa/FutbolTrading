@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Card;
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use App\Interfaces\ImageStorage;
 use App\Http\Controllers\Controller;
-
+use App\Interfaces\ImageStorage;
+use App\Models\Card;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminCardController extends Controller
 {
@@ -23,13 +22,13 @@ class AdminCardController extends Controller
         return view('admin.card.dashboard')->with('viewData', $viewData);
     }
 
-    public function show(string $id): View | RedirectResponse
+    public function show(string $id): View|RedirectResponse
     {
         try {
 
             $viewData = [];
             $card = Card::findOrFail($id);
-            $viewData['title'] = __('Admin.see_card') . $card->getName();
+            $viewData['title'] = __('Admin.see_card').$card->getName();
             $viewData['subtitle'] = __('Admin.see_card');
             $viewData['card'] = $card;
 
@@ -39,13 +38,13 @@ class AdminCardController extends Controller
         }
     }
 
-    public function edit(string $id): View | RedirectResponse
+    public function edit(string $id): View|RedirectResponse
     {
         try {
 
             $viewData = [];
             $card = Card::findOrFail($id);
-            $viewData['title'] = __('Admin.see_card') . $card->getName();
+            $viewData['title'] = __('Admin.see_card').$card->getName();
             $viewData['subtitle'] = __('Admin.see_card');
             $viewData['card'] = $card;
 
@@ -77,7 +76,7 @@ class AdminCardController extends Controller
 
         $card->update($updateData);
 
-        $success = __('Admin.the_card') . ' ' . $request->input('name') . ' ' . __('Admin.has_been_updated');
+        $success = __('Admin.the_card').' '.$request->input('name').' '.__('Admin.has_been_updated');
 
         return redirect()->route('admin.card.dashboard')->with('success', $success);
     }
@@ -104,7 +103,7 @@ class AdminCardController extends Controller
             ['image' => $imagePath]
         ));
 
-        $success = __('Admin.the_card') . ' ' . $request->input('name') . ' ' . __('Admin.has_been_created');
+        $success = __('Admin.the_card').' '.$request->input('name').' '.__('Admin.has_been_created');
 
         return redirect()->route('admin.card.dashboard')->with('success', $success);
     }
@@ -113,7 +112,7 @@ class AdminCardController extends Controller
     {
         Card::destroy($id);
 
-        $success = __('Admin.the_card') . ' ' . __('Admin.has_been_deleted');
+        $success = __('Admin.the_card').' '.__('Admin.has_been_deleted');
 
         return redirect()->route('admin.card.dashboard')->with('success', $success);
     }
