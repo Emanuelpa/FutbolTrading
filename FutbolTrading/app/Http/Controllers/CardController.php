@@ -23,8 +23,8 @@ class CardController extends Controller
     {
         $viewData = [];
         $card = Card::findOrFail($id);
-        $viewData['title'] = $card->getName() . ' - Online Store';
-        $viewData['subtitle'] = $card->getName() . ' - Product information';
+        $viewData['title'] = $card->getName().' - Online Store';
+        $viewData['subtitle'] = $card->getName().' - Product information';
         $viewData['card'] = $card;
 
         return view('card.show')->with('viewData', $viewData);
@@ -66,7 +66,7 @@ class CardController extends Controller
 
         $viewData = [];
         $viewData['title'] = 'Search Results';
-        $viewData['subtitle'] = 'Results for "' . $query . '"';
+        $viewData['subtitle'] = 'Results for "'.$query.'"';
         $viewData['cards'] = $cards;
 
         return view('card.index')->with('viewData', $viewData);

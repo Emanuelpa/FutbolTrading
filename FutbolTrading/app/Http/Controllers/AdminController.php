@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\ImageStorage;
 use App\Models\Card;
-use App\Models\User;
 use App\Models\TradeProduct;
+use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use App\Interfaces\ImageStorage;
-
 
 class AdminController extends Controller
 {
@@ -19,7 +18,7 @@ class AdminController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('Admin.admin');
-        $viewData['subtitle'] = __('Admin.welcome') . Auth::user()->getName();
+        $viewData['subtitle'] = __('Admin.welcome').Auth::user()->getName();
         $viewData['description'] = __('Admin.what_would');
 
         return view('admin.index')->with('viewData', $viewData);
@@ -45,12 +44,12 @@ class AdminController extends Controller
         return view('admin.trade.dashboard')->with('viewData', $viewData);
     }
 
-    public function showTradeProduct(string $id): View | RedirectResponse
+    public function showTradeProduct(string $id): View|RedirectResponse
     {
         try {
             $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('Admin.see_product') . $tradeProduct->getName();
+            $viewData['title'] = __('Admin.see_product').$tradeProduct->getName();
             $viewData['subtitle'] = __('Admin.see_product');
             $viewData['tradeProduct'] = $tradeProduct;
 
@@ -60,13 +59,13 @@ class AdminController extends Controller
         }
     }
 
-    public function showCard(string $id): View | RedirectResponse
+    public function showCard(string $id): View|RedirectResponse
     {
         try {
 
             $viewData = [];
             $card = Card::findOrFail($id);
-            $viewData['title'] = __('Admin.see_card') . $card->getName();
+            $viewData['title'] = __('Admin.see_card').$card->getName();
             $viewData['subtitle'] = __('Admin.see_card');
             $viewData['card'] = $card;
 
@@ -76,12 +75,12 @@ class AdminController extends Controller
         }
     }
 
-    public function editTradeProduct(string $id): View | RedirectResponse
+    public function editTradeProduct(string $id): View|RedirectResponse
     {
         try {
             $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('Admin.see_product') . $tradeProduct->getName();
+            $viewData['title'] = __('Admin.see_product').$tradeProduct->getName();
             $viewData['subtitle'] = __('Admin.see_product');
             $viewData['typeOptions'] = config('tradeProduct.typeOptions');
             $viewData['offerOptions'] = config('tradeProduct.offerOptions');
@@ -94,13 +93,13 @@ class AdminController extends Controller
         }
     }
 
-    public function editCard(string $id): View | RedirectResponse
+    public function editCard(string $id): View|RedirectResponse
     {
         try {
 
             $viewData = [];
             $card = Card::findOrFail($id);
-            $viewData['title'] = __('Admin.see_card') . $card->getName();
+            $viewData['title'] = __('Admin.see_card').$card->getName();
             $viewData['subtitle'] = __('Admin.see_card');
             $viewData['card'] = $card;
 
@@ -184,7 +183,7 @@ class AdminController extends Controller
         return view('admin.card.create')->with('viewData', $viewData);
     }
 
-    public function saveTradeProduct(Request $request): View | RedirectResponse
+    public function saveTradeProduct(Request $request): View|RedirectResponse
     {
         TradeProduct::validate($request);
         $storeInterface = app(ImageStorage::class);
@@ -196,7 +195,7 @@ class AdminController extends Controller
 
         $viewData = [];
         $viewData['subtitle'] = __('admin.create');
-        $viewData['description'] = __('admin.the_product') . $request->input('name') . __('admin.has_been_created');
+        $viewData['description'] = __('admin.the_product').$request->input('name').__('admin.has_been_created');
 
         return redirect()->back();
     }
@@ -212,6 +211,7 @@ class AdminController extends Controller
             $request->only(['name', 'description', 'price', 'quantity']),
             ['image' => $imagePath]
         ));
+
         return redirect()->back()->with('success', 'Item created successfully');
     }
 

@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
 
         // User::factory(5)->create();
-        //TradeProduct::factory(10)->create();
+        // TradeProduct::factory(10)->create();
         // Card::factory(10)->create();
     }
 }

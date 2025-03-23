@@ -24,7 +24,7 @@ class Item extends Model
      */
     protected $fillable = ['quantity', 'subtotal', 'order_id', 'card_id'];
 
-    public static function validate($request)
+    public static function validate($request): void
     {
         $request->validate([
             'quantity' => 'required|integer|min:1',
@@ -89,12 +89,12 @@ class Item extends Model
         return $this->belongsTo(Card::class);
     }
 
-    public function getCardId(): int
+    public function getCardId(): string
     {
         return $this->attributes['card_id'];
     }
 
-    public function setCardId(int $cardId): void
+    public function setCardId(string $cardId): void
     {
         $this->attributes['card_id'] = $cardId;
     }

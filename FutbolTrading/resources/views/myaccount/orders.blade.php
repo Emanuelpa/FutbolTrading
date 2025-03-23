@@ -16,16 +16,16 @@
   {{__('MyAccount.order')}} {{ $order->getId() }} 
   </div> 
   <div class="card-body text-dark"> 
-    <b>Date:</b> {{ $order->getCreatedAt() }}<br /> 
-    <b>Total:</b> ${{ $order->getTotal() }}<br />
-    <b>Método de Pago:</b> {{ $order->getPaymentMethod() }}<br />
+    <b>{{__('MyAccount.date')}}</b> {{ $order->getCreatedAt() }}<br /> 
+    <b>{{__('MyAccount.total')}}:</b> ${{ $order->getTotal() }}<br />
+    <b>{{__('MyAccount.payment_method')}}</b> {{ $order->getPaymentMethod() }}<br />
     <table class="table table-bordered table-striped text-center mt-3"> 
       <thead> 
         <tr> 
-          <th scope="col">Item ID</th> 
-          <th scope="col">Product Name</th> 
-          <th scope="col">Price</th> 
-          <th scope="col">Quantity</th> 
+          <th scope="col">{{__('MyAccount.item_id')}}</th> 
+          <th scope="col">{{__('MyAccount.product_name')}}</th> 
+          <th scope="col">{{__('MyAccount.price')}}</th> 
+          <th scope="col">{{__('MyAccount.quantity')}}</th> 
         </tr> 
       </thead> 
       <tbody> 

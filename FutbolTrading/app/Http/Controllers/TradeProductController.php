@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TradeProduct;
 use App\Interfaces\ImageStorage;
+use App\Models\TradeProduct;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -23,12 +23,12 @@ class TradeProductController extends Controller
         return view('tradeProduct.index')->with('viewData', $viewData);
     }
 
-    public function show(string $id): View | RedirectResponse
+    public function show(string $id): View|RedirectResponse
     {
         try {
             $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('TradeProduct.see_product') . $tradeProduct->getName();
+            $viewData['title'] = __('TradeProduct.see_product').$tradeProduct->getName();
             $viewData['subtitle'] = __('TradeProduct.see_product');
             $viewData['tradeProduct'] = $tradeProduct;
 
@@ -61,7 +61,7 @@ class TradeProductController extends Controller
         return view('tradeProduct.create')->with('viewData', $viewData);
     }
 
-    public function save(Request $request): View | RedirectResponse
+    public function save(Request $request): View|RedirectResponse
     {
         $user = Auth::user();
         TradeProduct::validate($request);
@@ -79,7 +79,7 @@ class TradeProductController extends Controller
         ]);
         $viewData = [];
         $viewData['subtitle'] = __('TradeProduct.create');
-        $viewData['description'] = __('TradeProduct.the_product') . $request->input('name') . __('TradeProduct.has_been_created');
+        $viewData['description'] = __('TradeProduct.the_product').$request->input('name').__('TradeProduct.has_been_created');
 
         return redirect()->back();
     }
@@ -98,7 +98,7 @@ class TradeProductController extends Controller
         $viewData = [];
         $viewData['title'] = __('TradeProduct.tradeItem');
         $viewData['subtitle'] = __('TradeProduct.available');
-        $viewData['description'] = __('TradeProduct.filtered_by') . ' ' . $type;
+        $viewData['description'] = __('TradeProduct.filtered_by').' '.$type;
 
         $query = TradeProduct::where('user', '!=', Auth::id());
 

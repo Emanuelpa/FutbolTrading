@@ -32,11 +32,15 @@ class CartController extends Controller
         $viewData['remove_all'] = __('Cart.remove_all');
         $viewData['total'] = $total;
         $viewData['cards'] = $cardsInCart;
+        $viewData['id'] = __('Cart.id');
+        $viewData['product_name'] = __('Cart.product_name');
+        $viewData['price'] = __('Cart.price');
+        $viewData['quantity'] = __('Cart.quantity');
 
         return view('cart.index')->with('viewData', $viewData);
     }
 
-    public function add(Request $request, $id): RedirectResponse
+    public function add(Request $request, string $id): RedirectResponse
     {
         $cards = $request->session()->get('cards');
         $cards[$id] = $request->input('quantity');
@@ -86,6 +90,10 @@ class CartController extends Controller
             $viewData['congratulations'] = __('Purchase.congratulations');
             $viewData['downloadPDF'] = __('Purchase.downloadPDF');
             $viewData['order'] = $order;
+            $viewData['purchase_invoice'] = __('Purchase.purchase_invoice');
+            $viewData['order_number'] = __('Purchase.order_number');
+            $viewData['date'] = __('Purchase.date');
+            $viewData['total'] = __('Purchase.total');
 
             return view('cart.purchase')->with('viewData', $viewData);
         } else {
