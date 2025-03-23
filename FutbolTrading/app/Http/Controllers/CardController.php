@@ -23,8 +23,8 @@ class CardController extends Controller
     {
         $viewData = [];
         $card = Card::findOrFail($id);
-        $viewData['title'] = $card->getName().' - Online Store';
-        $viewData['subtitle'] = $card->getName().' - Product information';
+        $viewData['title'] = $card->getName() . ' - Online Store';
+        $viewData['subtitle'] = $card->getName() . ' - Product information';
         $viewData['card'] = $card;
 
         return view('card.show')->with('viewData', $viewData);

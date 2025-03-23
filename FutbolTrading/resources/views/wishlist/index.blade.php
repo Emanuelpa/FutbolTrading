@@ -5,33 +5,35 @@
     <h3 class="text-white">{{ $viewData['subtitle'] }}</h3>
 
     @if ($viewData['cards']->isEmpty())
-        <p class="text-white">{{ __('wishlist.nocards') }}</p>
+    <p class="text-white">{{ __('wishlist.nocards') }}</p>
     @else
-        <div class="row">
-            @foreach ($viewData['cards'] as $card)
-                <div class="col-md-4">
-                    <div class="card mb-4 bg-dark text-white">
-                        <img src="{{ $card->getImage() ?? 'https://via.placeholder.com/150' }}" 
-                            class="img-fluid rounded-top" 
-                            alt="{{ $card->getName() }}" 
-                            style="width: 100%; height: auto;">
+    <div class="row">
+        @foreach ($viewData['cards'] as $card)
+        <div class="col-md-4">
+            <div class="card mb-4 bg-dark text-white">
+                <img src="{{ $card->getImage() ?? 'https://via.placeholder.com/150' }}"
+                    class="img-fluid rounded-top"
+                    alt="{{ $card->getName() }}"
+                    style="width: 100%; height: auto;">
 
-                        <div class="card-body bg-dark">
-                            <h5 class="card-title text-uppercase fw-bold">{{ $card->getName() }}</h5>
-                            <p class="card-text"><i class="fa-solid fa-circle-info me-2"></i> {{ $card->getDescription() }}</p>
-                            <p class="card-text"><i class="fa-solid fa-money-bill me-2"></i> <strong>{{ __('wishlist.price') }}</strong> ${{ number_format($card->getPrice(), 2) }}</p>
+                <div class="card-body bg-dark">
+                    <h5 class="card-title text-uppercase fw-bold">{{ $card->getName() }}</h5>
+                    <p class="card-text"><i class="fa-solid fa-circle-info me-2"></i> {{ $card->getDescription() }}</p>
+                    <p class="card-text"><i class="fa-solid fa-money-bill me-2"></i> <strong>{{ __('wishlist.price') }}</strong> ${{ number_format($card->getPrice(), 2) }}</p>
 
-                            <form method="POST" action="{{ route('wishlist.remove', $card->getId()) }}">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fa-solid fa-trash"></i> {{ __('wishlist.remove') }}
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                    <form method="POST" action="{{ route('wishlist.remove', $card->getId()) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i> {{ __('wishlist.remove') }}
+                        </button>
+                    </form>
                 </div>
-            @endforeach
+            </div>
         </div>
-    @endif
+    </div>
+</div>
+@endforeach
+</div>
+@endif
 </div>
 @endsection

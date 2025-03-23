@@ -4,11 +4,14 @@ namespace App\Models;
 
 use DateTime;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Card extends Model
 {
+    use HasFactory;
+
     /**
      * CARD ATTRIBUTES
      * $this->attributes['id'] - int - contains the card primary key (id)
@@ -23,13 +26,13 @@ class Card extends Model
      */
     protected $fillable = ['name', 'description', 'image', 'price', 'quantity'];
 
-    public function validate($request): void
+    public static function validate($request): void
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|string',
-            'price' => 'required|float|min:0',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
         ]);
     }

@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TradeItemFactory extends Factory
+class TradeProductFactory extends Factory
 {
     public function definition(): array
     {
