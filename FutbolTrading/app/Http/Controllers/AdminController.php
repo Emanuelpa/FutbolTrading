@@ -15,7 +15,7 @@ use App\Interfaces\ImageStorage;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $viewData = [];
         $viewData['title'] = __('Admin.admin');
@@ -25,7 +25,7 @@ class AdminController extends Controller
         return view('admin.index')->with('viewData', $viewData);
     }
 
-    public function cardDashboard()
+    public function cardDashboard(): View
     {
         $viewData = [];
         $viewData['title'] = __('Admin.cards_dash');
@@ -35,7 +35,7 @@ class AdminController extends Controller
         return view('admin.card.dashboard')->with('viewData', $viewData);
     }
 
-    public function tradeDashboard()
+    public function tradeDashboard(): View
     {
         $viewData = [];
         $viewData['title'] = __('Admin.trade_dash');
