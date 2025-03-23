@@ -29,7 +29,7 @@
                                 class="text-white">{{ __('userTradeItem.published_on') }}
                                 {{ $userTradeItem->getCreatedAt() }}</small></p>
                         <div class="d-flex gap-2">
-                            <a href="" class="btn btn-primary active">{{ __('userTradeItem.see_more') }}</a>
+                            <a href="{{ route('tradeItem.show', ['id'=> $userTradeItem->getId()]) }}" class="btn btn-primary active">{{ __('userTradeItem.see_more') }}</a>
                             <form action="{{ route('tradeItem.delete', $userTradeItem->getId())}}" method="POST">
                                 @csrf
                                 @method('DELETE')

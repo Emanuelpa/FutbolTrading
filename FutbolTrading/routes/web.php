@@ -3,9 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
-Auth::routes();
-
 Route::middleware('auth')->group(function () {
     //TradeItem Routes
     Route::get('/tradeItem/yourItems', 'App\Http\Controllers\TradeItemController@userTradeItemsIndex')->name('tradeItem.userTradeItem');
@@ -40,6 +37,10 @@ Route::middleware(['auth', 'App\Http\Middleware\Admin'])->group(function () {
     Route::get('/admin/cards/{id}', 'App\Http\Controllers\AdminController@showCard')->name('admin.card.show');
 });
 
+//Home Route
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
+//Auth Routes
+Auth::routes();
 // Cart routes
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
