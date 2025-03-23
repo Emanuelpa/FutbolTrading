@@ -102,7 +102,7 @@
         </div>
     </div>
 
-    <footer class="bg-dark text-white py-4">
+    <footer class="bg-dark text-white py-4 fixed-bottom">
         <div class="container text-center">
             <small>
                 &copy; {{ date("Y") }} {{ __('Layout.rights') }} -

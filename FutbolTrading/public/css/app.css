@@ -230,3 +230,11 @@ option:hover {
 .btn-light:hover {
     background-color: #e6e6e6 !important;
 }
+
+.btn-secondary{
+    font-family: 'Ubuntu';
+}
+
+.btn-secondary:hover {
+    transform: translateY(-1px) !important;
+}
