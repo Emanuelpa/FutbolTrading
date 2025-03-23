@@ -61,7 +61,7 @@ class TradeProductController extends Controller
         return view('tradeProduct.create')->with('viewData', $viewData);
     }
 
-    public function save(Request $request): View | RedirectResponse
+    public function save(Request $request): RedirectResponse
     {
         $user = Auth::user();
         TradeProduct::validate($request);
@@ -77,18 +77,19 @@ class TradeProductController extends Controller
             'image' => $imagePath,
             'user' => $user->getId(),
         ]);
-        $viewData = [];
-        $viewData['subtitle'] = __('TradeProduct.create');
-        $viewData['description'] = __('TradeProduct.the_product') . $request->input('name') . __('TradeProduct.has_been_created');
 
-        return redirect()->back();
+        $success = __('TradeProduct.the_product') . ' ' . $request->input('name') . ' ' . __('TradeProduct.has_been_created');
+
+        return redirect()->route('tradeProduct.userTradeProduct')->with('success', $success);
     }
+
 
     public function delete(string $id): RedirectResponse
     {
         TradeProduct::destroy($id);
 
-        return redirect()->route('tradeProduct.userTradeProduct');
+        $success = __('TradeProduct.the_product') . ' ' . __('TradeProduct.has_been_deleted');
+        return redirect()->route('tradeProduct.userTradeProduct')->with('success', $success);
     }
 
     public function filterByType(Request $request)

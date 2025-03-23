@@ -21,20 +21,22 @@ Route::middleware('auth')->group(function () {
 // Admin Routes
 Route::middleware(['auth', 'App\Http\Middleware\Admin'])->group(function () {
     Route::get('/admin/index', 'App\Http\Controllers\AdminController@index')->name('admin.index');
-    Route::get('/admin/cards/dashboard', 'App\Http\Controllers\AdminController@cardDashboard')->name('admin.card.dashboard');
-    Route::get('/admin/trades/dashboard', 'App\Http\Controllers\AdminController@tradeDashboard')->name('admin.trade.dashboard');
-    Route::get('/admin/trades/create', 'App\Http\Controllers\AdminController@createTradeProduct')->name('admin.trade.create');
-    Route::get('/admin/cards/create', 'App\Http\Controllers\AdminController@createCard')->name('admin.card.create');
-    Route::post('/admin/trades/save', 'App\Http\Controllers\AdminController@saveTradeProduct')->name('admin.tradeProduct.save');
-    Route::post('/admin/cards/save', 'App\Http\Controllers\AdminController@saveCard')->name('admin.card.save');
-    Route::delete('/admin/trades/{id}/delete', 'App\Http\Controllers\AdminController@deleteTradeProduct')->name('admin.trade.delete');
-    Route::delete('/admin/cards/{id}/delete', 'App\Http\Controllers\AdminController@deleteCard')->name('admin.card.delete');
-    Route::get('/admin/trades/{id}/update', 'App\Http\Controllers\AdminController@editTradeProduct')->name('admin.trade.edit');
-    Route::get('/admin/cards/{id}/update', 'App\Http\Controllers\AdminController@editCard')->name('admin.card.edit');
-    Route::put('/admin/trades/{id}/update', 'App\Http\Controllers\AdminController@updateTradeProduct')->name('admin.trade.update');
-    Route::put('/admin/cards/{id}/update', 'App\Http\Controllers\AdminController@updateCard')->name('admin.card.update');
-    Route::get('/admin/trades/{id}', 'App\Http\Controllers\AdminController@showTradeProduct')->name('admin.trade.show');
-    Route::get('/admin/cards/{id}', 'App\Http\Controllers\AdminController@showCard')->name('admin.card.show');
+    //TradeProduct Routes
+    Route::get('/admin/trades/dashboard', 'App\Http\Controllers\Admin\AdminTradeProductController@dashboard')->name('admin.trade.dashboard');
+    Route::get('/admin/trades/create', 'App\Http\Controllers\Admin\AdminTradeProductController@create')->name('admin.trade.create');
+    Route::post('/admin/trades/save', 'App\Http\Controllers\Admin\AdminTradeProductController@save')->name('admin.tradeProduct.save');
+    Route::delete('/admin/trades/{id}/delete', 'App\Http\Controllers\Admin\AdminTradeProductController@delete')->name('admin.trade.delete');
+    Route::get('/admin/trades/{id}/update', 'App\Http\Controllers\Admin\AdminTradeProductController@edit')->name('admin.trade.edit');
+    Route::put('/admin/trades/{id}/update', 'App\Http\Controllers\Admin\AdminTradeProductController@update')->name('admin.trade.update');
+    Route::get('/admin/trades/{id}', 'App\Http\Controllers\Admin\AdminTradeProductController@show')->name('admin.trade.show');
+    //Card Routes
+    Route::get('/admin/cards/dashboard', 'App\Http\Controllers\Admin\AdminCardController@dashboard')->name('admin.card.dashboard');
+    Route::get('/admin/cards/create', 'App\Http\Controllers\Admin\AdminCardController@create')->name('admin.card.create');
+    Route::post('/admin/cards/save', 'App\Http\Controllers\Admin\AdminCardController@save')->name('admin.card.save');
+    Route::delete('/admin/cards/{id}/delete', 'App\Http\Controllers\Admin\AdminCardController@delete')->name('admin.card.delete');
+    Route::get('/admin/cards/{id}/update', 'App\Http\Controllers\Admin\AdminCardController@edit')->name('admin.card.edit');
+    Route::put('/admin/cards/{id}/update', 'App\Http\Controllers\Admin\AdminCardController@update')->name('admin.card.update');
+    Route::get('/admin/cards/{id}', 'App\Http\Controllers\Admin\AdminCardController@show')->name('admin.card.show');
 });
 
 //Home Route
