@@ -26,7 +26,7 @@ return [
     'description' => 'Description:  ',
     'item_to' => 'Item ',
     'phone' => 'Cellphone  ',
-    'type' => 'Type:  ',
+    'type:' => 'Type:  ',
     'back' => 'Back',
     'type' => 'Type',
     'offer_type' => 'Offer Type',

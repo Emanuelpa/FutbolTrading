@@ -13,5 +13,5 @@ return [
     'shop' => 'Shop',
     'logout' => 'Logout',
     'your_items' => 'Your Items',
-    'wishlist' => 'Wishlist'
+    'wishlist' => 'Wishlist',
 ];

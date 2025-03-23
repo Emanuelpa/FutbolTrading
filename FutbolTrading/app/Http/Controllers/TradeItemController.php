@@ -87,22 +87,21 @@ class TradeItemController extends Controller
     }
 
     public function filterByType(Request $request)
-{
-    $type = $request->input('type');
+    {
+        $type = $request->input('type');
 
-    $viewData = [];
-    $viewData['title'] = __('TradeItem.tradeItem');
-    $viewData['subtitle'] = __('TradeItem.available');
-    $viewData['description'] = __('TradeItem.filtered_by') . ' ' . $type;
+        $viewData = [];
+        $viewData['title'] = __('TradeItem.tradeItem');
+        $viewData['subtitle'] = __('TradeItem.available');
+        $viewData['description'] = __('TradeItem.filtered_by').' '.$type;
 
-    $query = TradeItem::where('user', '!=', Auth::id());
+        $query = TradeItem::where('user', '!=', Auth::id());
 
-    if (!empty($type)) {
-        $query->where('type', $type);
+        if (! empty($type)) {
+            $query->where('type', $type);
+        }
+        $viewData['tradeItems'] = $query->get();
+
+        return view('tradeItem.index')->with('viewData', $viewData);
     }
-    $viewData['tradeItems'] = $query->get();
-
-    return view('tradeItem.index')->with('viewData', $viewData);
-}
-
 }
