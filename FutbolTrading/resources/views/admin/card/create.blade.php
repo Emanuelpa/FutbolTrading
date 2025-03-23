@@ -17,7 +17,7 @@
                         @endforeach
                     </ul>
                     @endif
-                    <form method="POST" action="{{ route('admin.card.save') }}">
+                    <form method="POST" action="{{ route('admin.card.save') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -41,9 +41,9 @@
                                 class="col-md-4 col-form-label text-md-end">{{ __('Admin.image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="text"
+                                <input id="image" type="file"
                                     class="form-control auth-field @error('image') is-invalid @enderror" name="image"
-                                    value="{{ old('image') }}" required autocomplete="name" autofocus>
+                                    accept="image/*" autofocus>
 
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">

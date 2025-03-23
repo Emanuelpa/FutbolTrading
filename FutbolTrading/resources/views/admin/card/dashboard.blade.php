@@ -35,7 +35,8 @@
                             <td>{{ $card->getId() }}</td>
                             <td>{{ $card->getName() }}</td>
                             <td>
-                                <img src="#" class="img-fluid rounded" width="50">
+                                <img src="{{ asset('storage/' . $card->getImage()) }}" class="img-fluid rounded"
+                                    width="50">
                             </td>
                             <td>${{ number_format($card->getPrice(), 2) }}</td>
                             <td>{{ $card->getQuantity() }}</td>

@@ -114,14 +114,24 @@ class AdminController extends Controller
     {
 
         TradeItem::validate($request);
-        TradeItem::where('id', $id)->update($request->only([
+        $storeInterface = app(ImageStorage::class);
+        $imagePath = $storeInterface->store($request);
+
+        $tradeItem = TradeItem::findOrFail($id);
+
+        $updateData = $request->only([
             'name',
             'type',
             'offerType',
             'offerDescription',
-            'image',
-            'user'
-        ]));
+            'user',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $updateData['image'] = $imagePath;
+        }
+
+        $tradeItem->update($updateData);
 
         return redirect()->back()->with(__('Admin.success'), __('Admin.has_been_updated'));
     }
@@ -129,13 +139,24 @@ class AdminController extends Controller
     public function updateCard(Request $request, string $id): RedirectResponse
     {
         Card::validate($request);
-        Card::where('id', $id)->update($request->only([
+
+        $storeInterface = app(ImageStorage::class);
+        $imagePath = $storeInterface->store($request);
+
+        $card = Card::findOrFail($id);
+
+        $updateData = $request->only([
             'name',
             'description',
             'price',
             'quantity',
-            'image',
-        ]));
+        ]);
+
+        if ($request->hasFile('image')) {
+            $updateData['image'] = $imagePath;
+        }
+
+        $card->update($updateData);
 
         return redirect()->back()->with(__('Admin.success'), __('Admin.has_been_updated'));
     }

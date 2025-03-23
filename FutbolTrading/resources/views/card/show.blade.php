@@ -9,10 +9,8 @@
         <div class="card mb-3 w-100 bg-dark">
             <div class="row g-3">
                 <div class="col-md-4">
-                    <img src="{{ $viewData['card']->getImage() ?? 'https://via.placeholder.com/150' }}" 
-                        class="img-fluid rounded-start" 
-                        alt="{{ $viewData['card']->getName() }}" 
-                        style="width: 100%; height: auto;">
+                    <img src="{{ asset('storage/' . $viewData['card']->getImage()) }}" class="img-fluid rounded-start"
+                        alt="{{ $viewData['card']->getName() }}" style="width: 100%; height: auto;">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body bg-dark p-3">
@@ -20,7 +18,8 @@
 
                         <p class="card-text text-white mb-3">
                             <i class="fa-solid fa-circle-info me-2"></i>
-                            {{ __('Description: ') }} {{ $viewData['card']->getDescription() ?? 'No description available' }}
+                            {{ __('Description: ') }}
+                            {{ $viewData['card']->getDescription() ?? 'No description available' }}
                         </p>
 
                         <p class="card-text text-white mb-3">
@@ -38,13 +37,16 @@
                                 {{ __('Published on: ') }} {{ $viewData['card']->getCreatedAt() }}
                             </small>
                         </p>
-                        <form method="POST" action="{{ route('cart.add', ['id' => $viewData['card']->getId()]) }}" class="mt-3">
+                        <form method="POST" action="{{ route('cart.add', ['id' => $viewData['card']->getId()]) }}"
+                            class="mt-3">
                             @csrf
                             <div class="input-group" style="max-width: 200px;">
                                 <span class="input-group-text bg-secondary text-white">
                                     <i class="fa-solid fa-cart-plus"></i>
                                 </span>
-                                <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['card']->getQuantity() }}" class="form-control text-center" required>
+                                <input type="number" name="quantity" value="1" min="1"
+                                    max="{{ $viewData['card']->getQuantity() }}" class="form-control text-center"
+                                    required>
                                 <button type="submit" class="btn btn-success">
                                     {{ __('ADD') }}
                                 </button>

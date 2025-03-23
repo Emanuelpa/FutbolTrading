@@ -37,7 +37,8 @@
                             <td>{{ $tradeItem->getName() }}</td>
                             <td>{{ $tradeItem->getType() }}</td>
                             <td>
-                                <img src="#" class="img-fluid rounded" width="50">
+                                <img src="{{ asset('storage/' . $tradeItem->getImage()) }}" class="img-fluid rounded"
+                                    width="50">
                             </td>
                             <td>{{ $tradeItem->getOfferType() }}</td>
                             <td>{{ Str::limit($tradeItem->getOfferDescription(), 20, '...') }}</td>

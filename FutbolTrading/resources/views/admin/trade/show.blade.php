@@ -9,8 +9,8 @@
             <div class="row g-0 align-items-center">
 
                 <div class="col-md-4">
-                    <img src="{{ $viewData['tradeItem']->getImage() }}" class="img-fluid rounded-start object-fit-cover"
-                        alt="{{ $viewData['tradeItem']->getName() }}"
+                    <img src="{{ asset('storage/' . $viewData['tradeItem']->getImage()) }}"
+                        class="img-fluid rounded-start object-fit-cover" alt="{{ $viewData['tradeItem']->getName() }}"
                         style="width: 100%; height: 100%; max-height: 300px;">
                 </div>
 

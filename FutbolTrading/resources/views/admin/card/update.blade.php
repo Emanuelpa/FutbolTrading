@@ -12,7 +12,8 @@
                 <div class="card-body p-4">
                     <h4 class="card-title text-uppercase fw-bold mb-3 text-center">{{ __('Admin.edit') }}</h4>
 
-                    <form action="{{ route('admin.card.update', $viewData['card']->getId()) }}" method="POST">
+                    <form action="{{ route('admin.card.update', $viewData['card']->getId()) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -40,9 +41,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Admin.image') }}</label>
-                            <input type="text" name="image" class="form-control auth-field"
-                                value="{{ $viewData['card']->getImage() }}">
+                            <label for="image" class="form-label">{{ __('Admin.image') }}</label>
+                            <div class="col-md-6">
+                                <input id="image" type="file"
+                                    class="form-control auth-field @error('image') is-invalid @enderror" name="image"
+                                    accept="image/*" value="{{ $viewData['card']->getImage() }}" autofocus>
+                            </div>
                         </div>
 
                         <div class="row mb-0 mt-5 col-md-20 ">

@@ -9,8 +9,9 @@
             <div class="row g-0 align-items-center">
 
                 <div class="col-md-4">
-                    <img src="{{ $viewData['card']->getImage() }}" class="img-fluid rounded-start object-fit-cover"
-                        alt="{{ $viewData['card']->getName() }}" style="width: 100%; height: 100%; max-height: 300px;">
+                    <img src="{{ asset('storage/' . $viewData['card']->getImage()) }}"
+                        class="img-fluid rounded-start object-fit-cover" alt="{{ $viewData['card']->getName() }}"
+                        style="width: 100%; height: 100%; max-height: 300px;">
                 </div>
 
                 <div class="col-md-8">
