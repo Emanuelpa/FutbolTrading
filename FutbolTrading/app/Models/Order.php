@@ -54,7 +54,7 @@ class Order extends Model
         return $this->items;
     }
 
-    public function setItems(string $item): void
+    public function setItems(string $items): void
     {
         $this->attributes['items'] = $items;
     }

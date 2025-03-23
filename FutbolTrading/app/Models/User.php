@@ -33,6 +33,7 @@ class User extends Authenticatable
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the user last update
      * $this->tradeProducts - TradeProduct[] - contains the associated TradeProducts
      * $this->orders - Order[] - contains the associated Orders
+     * $this->wishlist - Wishlist - contains the associated Wishlist
      */
     protected $fillable = [
         'name',
