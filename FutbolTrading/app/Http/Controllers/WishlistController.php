@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Wishlist;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class WishlistController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $wishlist = Wishlist::where('user', Auth::id())->first();
 
-        $viewData = [
-            'title' => 'Wishlist - Online Store',
-            'subtitle' => 'Your saved cards',
-            'cards' => $wishlist ? $wishlist->getCards() : collect(),
-        ];
+        $viewData = [];
+        $viewData['title'] = __('wishlist.title');
+        $viewData['subtitle'] = __('wishlist.subtitle');
+        $viewData['cards'] = $wishlist ? $wishlist->getCards() : collect();
 
         return view('wishlist.index')->with('viewData', $viewData);
     }
@@ -32,7 +32,7 @@ class WishlistController extends Controller
             $wishlist->update(['cards' => $cards]);
         }
 
-        return redirect()->route('wishlist.index')->with('success', 'Card added to your wishlist.');
+        return redirect()->route('wishlist.index')->with('success', __('wishlist.added'));
     }
 
     public function remove(int $cardId): RedirectResponse
@@ -46,6 +46,6 @@ class WishlistController extends Controller
             $wishlist->update(['cards' => array_values($cards)]);
         }
 
-        return redirect()->route('wishlist.index')->with('success', 'Card removed from your wishlist.');
+        return redirect()->route('wishlist.index')->with('success', __('wishlist.removed'));
     }
 }

@@ -11,10 +11,10 @@ class Wishlist extends Model
     /**
      * CARD ATTRIBUTES
      * $this->attributes['id'] - int - contains the wishlist primary key (id)
+     * $this->attributes['cards'] - array - contains the cards id in an array
      * $this->attributes['created_at'] - DateTime - contains the date and time of the Wishlist creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the Wishlist last update
      * $this->user - User - contains the associated User
-     * $this->cards - Card[] - contains the associated Cards
      */
     protected $fillable = ['user', 'cards'];
 

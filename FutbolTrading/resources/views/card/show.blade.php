@@ -16,17 +16,17 @@
 
                         <p class="card-text text-white mb-3">
                             <i class="fa-solid fa-circle-info me-2"></i>
-                            {{ __('card.descriptionindex') }} {{ $viewData['card']->getDescription() ?? __('card.nodescription') }}
+                            {{ __('card.description_index') }} {{ $viewData['card']->getDescription() ?? __('card.nodescription') }}
                         </p>
 
                         <p class="card-text text-white mb-3">
                             <i class="fa-solid fa-money-bill me-2"></i>
-                            {{ __('card.priceindex') }} ${{ number_format($viewData['card']->getPrice(), 2) }}
+                            {{ __('card.price_index') }} ${{ number_format($viewData['card']->getPrice(), 2) }}
                         </p>
 
                         <p class="card-text text-white mb-3">
                             <i class="fa-solid fa-box me-2"></i>
-                            {{ __('card.quantityindex') }} {{ $viewData['card']->getQuantity() }}
+                            {{ __('card.quantity_index') }} {{ $viewData['card']->getQuantity() }}
                         </p>
 
                         <p class="card-text fw-lighter mb-3">
@@ -45,13 +45,13 @@
                                     max="{{ $viewData['card']->getQuantity() }}" class="form-control text-center"
                                     required>
                                 <button type="submit" class="btn btn-success">
-                                    {{ __('card.addcart') }}
+                                    {{ __('card.add_cart') }}
                                 </button>
                             </div>
                         </form>
 
                         <div class="d-flex mt-4">
-                            <a href="{{ route('card.index') }}" class="btn btn-primary me-2">
+                            <a href="{{ url()->previous() }}" class="btn btn-primary me-2">
                                 {{ __('card.back') }}
                             </a>
 

@@ -18,7 +18,7 @@ class Card extends Model
      * $this->attributes['name'] - string - contains the card name
      * $this->attributes['description'] - string - contains the card description
      * $this->attributes['image'] - string - contains the card image
-     * $this->attributes['price'] - decimal - contains the card price
+     * $this->attributes['price'] - float - contains the card price
      * $this->attributes['quantity'] - int - contains the card stock
      * $this->attributes['created_at'] - DateTime - contains the date and time of the Card creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the Card last update
@@ -77,7 +77,7 @@ class Card extends Model
         return $this->attributes['price'];
     }
 
-    public function setPrice(int $price): void
+    public function setPrice(float $price): void
     {
         $this->attributes['price'] = $price;
     }
@@ -117,7 +117,7 @@ class Card extends Model
         $this->items = $items;
     }
 
-    public static function sumPricesByQuantities($cards, $cardsInSession): float
+    public static function sumPricesByQuantities(Collection $cards, array $cardsInSession): float
     {
         $total = 0;
         foreach ($cards as $card) {

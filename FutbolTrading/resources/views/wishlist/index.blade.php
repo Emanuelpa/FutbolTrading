@@ -5,7 +5,7 @@
     <h3 class="text-white">{{ $viewData['subtitle'] }}</h3>
 
     @if ($viewData['cards']->isEmpty())
-    <p class="text-white">{{ __('wishlist.nocards') }}</p>
+        <p class="text-white">{{ __('wishlist.no_cards') }}</p>
     @else
     <div class="row">
         @foreach ($viewData['cards'] as $card)
