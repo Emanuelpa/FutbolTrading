@@ -28,7 +28,7 @@ class Order extends Model
      */
     protected $fillable = ['total', 'address', 'paymentMethod'];
 
-    public static function validate($request)
+    public static function validate($request): void
     {
         $request->validate([
             'item' => 'required|string|min:5',
@@ -89,14 +89,14 @@ class Order extends Model
         $this->attributes['paymentMethod'] = $paymentMethod;
     }
 
-    public function getUserId(): int
+    public function getUserId(): string
     {
-        return $this->attributes['user_id'];
+        return $this->attributes['user'];
     }
 
-    public function setUserId(int $userId): void
+    public function setUserId(string $userId): void
     {
-        $this->attributes['user_id'] = $userId;
+        $this->attributes['user'] = $userId;
     }
 
     public function user(): BelongsTo

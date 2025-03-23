@@ -10,10 +10,10 @@
     <table class="table table-bordered table-striped text-center"> 
       <thead> 
         <tr> 
-          <th scope="col">ID</th> 
-          <th scope="col">Name</th> 
-          <th scope="col">Price</th> 
-          <th scope="col">Quantity</th> 
+          <th scope="col">{{__('Cart.id')}}</th> 
+          <th scope="col">{{__('Cart.product_name')}}</th> 
+          <th scope="col">{{__('Cart.price')}}</th> 
+          <th scope="col">{{__('Cart.quantity')}}</th> 
         </tr> 
       </thead> 
       <tbody> 

@@ -60,6 +60,8 @@ class CardController extends Controller
         $cards = Card::where('name', 'LIKE', "%{$query}%")->get();
 
         $viewData = [];
+        $viewData['title'] = 'Search Results';
+        $viewData['subtitle'] = 'Results for "'.$query.'"';
         $viewData['title'] = __('card.search_results');
         $viewData['subtitle'] = __('card.results').' "'.$query.'"';
         $viewData['cards'] = $cards;
