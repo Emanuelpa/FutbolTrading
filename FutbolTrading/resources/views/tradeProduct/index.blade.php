@@ -5,6 +5,16 @@
 
 <div class="row w-100">
     <h4 class="text-center mb-5">{{ $viewData["subtitle"] }}</h4>
+    <form action="{{ route('tradeProduct.filter') }}" method="GET" class="d-flex mb-4">
+        <select name="type" class="form-control me-2 text-dark bg-white">
+            <option value="card" {{ request('type') == 'card' ? 'selected' : '' }}>{{ __('TradeProduct.card') }}</option>
+            <option value="clothes" {{ request('type') == 'clothes' ? 'selected' : '' }}>{{ __('TradeProduct.clothes') }}</option>
+            <option value="exclusive" {{ request('type') == 'exclusive' ? 'selected' : '' }}>{{ __('TradeProduct.exclusive') }}</option>
+            <option value="signed item" {{ request('type') == 'signed item' ? 'selected' : '' }}>{{ __('TradeProduct.signed') }}</option>
+            <option value="virtual item" {{ request('type') == 'virtual item' ? 'selected' : '' }}>{{ __('TradeProduct.virtual') }}</option>
+        </select>
+        <button type="submit" class="btn btn-primary">{{ __('TradeProduct.filter') }}</button>
+    </form>
     @if ($viewData["tradeProducts"])
     @foreach ($viewData["tradeProducts"] as $tradeProduct)
     <div class="col-md-6 col-lg-6 mb-3">

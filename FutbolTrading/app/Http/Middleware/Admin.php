@@ -18,7 +18,7 @@ class Admin
     public function handle(Request $request, Closure $next): Response|RedirectResponse
     {
         if (Auth::check() && Auth::user()->role === 'admin') {
-            return $next($request); // Permitir el acceso
+            return $next($request);
         }
 
         return redirect()->route('home.index')->withErrors('No auth');

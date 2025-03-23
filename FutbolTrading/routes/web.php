@@ -51,6 +51,8 @@ Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@order
 // TradeProduct routes
 Route::get('/tradeProducts', 'App\Http\Controllers\TradeProductController@index')->name('tradeProduct.index');
 Route::get('/tradeProduct/{id}', 'App\Http\Controllers\TradeProductController@show')->name('tradeProduct.show');
+Route::get('/tradeItem/filter', 'App\Http\Controllers\TradeProductController@filterByType')->name('tradeProduct.filter');
 // Card routes
 Route::get('/cards', 'App\Http\Controllers\CardController@index')->name('card.index');
 Route::get('/cards/{id}', 'App\Http\Controllers\CardController@show')->name('card.show');
+Route::get('/cards/search', 'App\Http\Controllers\CardController@search')->name('card.search');

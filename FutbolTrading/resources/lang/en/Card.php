@@ -19,4 +19,6 @@ return [
     'back' => 'Back',
     'details' => 'View details',
     'wishlist' => 'Add to wishlist',
+    'no_cards' => 'No cards available',
+    'title' => 'Cards',
 ];

@@ -66,7 +66,7 @@ class CardController extends Controller
 
         $viewData = [];
         $viewData['title'] = 'Search Results';
-        $viewData['subtitle'] = 'Results for "'.$query.'"';
+        $viewData['subtitle'] = 'Results for "' . $query . '"';
         $viewData['cards'] = $cards;
 
         return view('card.index')->with('viewData', $viewData);

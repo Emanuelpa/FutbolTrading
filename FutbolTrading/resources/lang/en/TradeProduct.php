@@ -28,7 +28,7 @@ return [
     'phone' => 'Cellphone  ',
     'type:' => 'Type:  ',
     'back' => 'Back',
-    'type' => 'Type',
+    'type:' => 'Type: ',
     'offer_type' => 'Offer Type',
     'offer_description' => 'Offer Description',
     'image' => 'Image',

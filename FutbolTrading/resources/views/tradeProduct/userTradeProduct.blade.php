@@ -6,7 +6,7 @@
 <div class="row w-100">
     <h4 class="text-center mb-2">{{ $viewData["subtitle"] }}</h4>
     <div class="container d-flex justify-content-center mb-3">
-        <a href="{{ route('tradeProduct.create') }}" class="btn btn-primary active">{{ __('userTradeProduct.create') }}</a>
+        <a href="{{ route('tradeProduct.create') }}" class="btn btn-primary active">{{ __('UserTradeProduct.create') }}</a>
     </div>
 
     @if ($viewData["userTradeProducts"])
@@ -27,10 +27,10 @@
                         <p class="card-text text-white"><i class="fa-solid fa-money-bill">
                             </i> {{ $userTradeProduct->getOfferType() }}</p>
                         <p class="card-text fw-lighter "><small
-                                class="text-white">{{ __('userTradeProduct.published_on') }}
+                                class="text-white">{{ __('UserTradeProduct.published_on') }}
                                 {{ $userTradeProduct->getCreatedAt() }}</small></p>
                         <div class="d-flex gap-2">
-                            <a href="{{ route('tradeProduct.show', ['id'=> $userTradeProduct->getId()]) }}" class="btn btn-primary active">{{ __('userTradeProduct.see_more') }}</a>
+                            <a href="{{ route('tradeProduct.show', ['id'=> $userTradeProduct->getId()]) }}" class="btn btn-primary active">{{ __('UserTradeProduct.see_more') }}</a>
                             <form action="{{ route('tradeProduct.delete', $userTradeProduct->getId())}}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -47,7 +47,7 @@
     </div>
     @endforeach
     @else
-    <p>{{ __('userTradeProduct.you_dont') }}</p>
+    <p>{{ __('UserTradeProduct.you_dont') }}</p>
     @endif
 </div>
 

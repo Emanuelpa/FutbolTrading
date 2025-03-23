@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('card.title'))
+@section('title', __('Card.title'))
 @section('content')
 <div class="container">
     <h1 class="text-white">{{ $viewData['title'] }}</h1>
@@ -11,7 +11,7 @@
     </form>
 
     @if ($viewData['cards']->isEmpty())
-    <p class="text-white">No cards available.</p>
+    <p class="text-white">{{ __('card.no_cars') }}</p>
     @else
     <div class="row">
         @foreach ($viewData['cards'] as $card)
@@ -23,18 +23,18 @@
                 <div class="card-body bg-dark">
                     <h5 class="card-title text-uppercase fw-bold">{{ $card->getName() }}</h5>
                     <p class="card-text"><i class="fa-solid fa-circle-info me-2"></i> {{ $card->getDescription() }}</p>
-                    <p class="card-text"><i class="fa-solid fa-money-bill me-2"></i> <strong>Price:</strong>
+                    <p class="card-text"><i class="fa-solid fa-money-bill me-2"></i> <strong>{{ __('card.price') }}:</strong>
                         ${{ number_format($card->getPrice(), 2) }}</p>
 
                     <div class="d-flex">
                         <a href="{{ route('card.show', $card->getId()) }}" class="btn btn-primary me-2">
-                            <i class="fa-solid fa-eye"></i> View details
+                            <i class="fa-solid fa-eye"></i> {{ __('card.details') }}
                         </a>
 
                         <form method="POST" action="{{ route('wishlist.add', $card->getId()) }}">
                             @csrf
                             <button type="submit" class="btn btn-success">
-                                <i class="fa-solid fa-heart"></i> Add to Wishlist
+                                <i class="fa-solid fa-heart"></i> {{ __('card.wishlist') }}
                             </button>
                         </form>
                     </div>

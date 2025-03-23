@@ -42,8 +42,8 @@ class TradeProductController extends Controller
     {
         $user = Auth::user();
         $viewData = [];
-        $viewData['title'] = __('userTradeProduct.your_products');
-        $viewData['subtitle'] = __('userTradeProduct.your_products');
+        $viewData['title'] = __('UserTradeProduct.your_products');
+        $viewData['subtitle'] = __('UserTradeProduct.your_products');
         $viewData['userTradeProducts'] = $user->getTradeProducts();
 
         return view('tradeProduct.userTradeProduct')->with('viewData', $viewData);
@@ -89,5 +89,24 @@ class TradeProductController extends Controller
         TradeProduct::destroy($id);
 
         return redirect()->route('tradeProduct.userTradeProduct');
+    }
+
+    public function filterByType(Request $request)
+    {
+        $type = $request->input('type');
+
+        $viewData = [];
+        $viewData['title'] = __('TradeProduct.tradeItem');
+        $viewData['subtitle'] = __('TradeProduct.available');
+        $viewData['description'] = __('TradeProduct.filtered_by') . ' ' . $type;
+
+        $query = TradeProduct::where('user', '!=', Auth::id());
+
+        if (! empty($type)) {
+            $query->where('type', $type);
+        }
+        $viewData['tradeProducts'] = $query->get();
+
+        return view('tradeProduct.index')->with('viewData', $viewData);
     }
 }

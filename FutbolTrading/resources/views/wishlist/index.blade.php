@@ -11,7 +11,7 @@
         @foreach ($viewData['cards'] as $card)
         <div class="col-md-4">
             <div class="card mb-4 bg-dark text-white">
-                <img src="{{ $card->getImage() ?? 'https://via.placeholder.com/150' }}"
+                <img src="{{ asset('storage/' . $card->getImage()) }}"
                     class="img-fluid rounded-top"
                     alt="{{ $card->getName() }}"
                     style="width: 100%; height: auto;">
