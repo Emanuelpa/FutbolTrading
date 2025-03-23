@@ -10,7 +10,7 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-
+use App\Interfaces\ImageStorage;
 
 
 class AdminController extends Controller
@@ -166,7 +166,12 @@ class AdminController extends Controller
     public function saveTradeItem(Request $request): View | RedirectResponse
     {
         TradeItem::validate($request);
-        TradeItem::create($request->only(['name', 'type', 'offerType', 'offerDescription', 'image', 'user']));
+        $storeInterface = app(ImageStorage::class);
+        $imagePath = $storeInterface->store($request);
+        TradeItem::create(array_merge(
+            $request->only(['name', 'type', 'offerType', 'offerDescription', 'user']),
+            ['image' => $imagePath]
+        ));
 
         $viewData = [];
         $viewData['subtitle'] = __('admin.create');
@@ -178,9 +183,14 @@ class AdminController extends Controller
     public function saveCard(Request $request): RedirectResponse
     {
         Card::validate($request);
-        Card::create($request->only(['name', 'description', 'price', 'image', 'quantity']));
 
+        $storeInterface = app(ImageStorage::class);
+        $imagePath = $storeInterface->store($request);
 
+        Card::create(array_merge(
+            $request->only(['name', 'description', 'price', 'quantity']),
+            ['image' => $imagePath]
+        ));
         return redirect()->back()->with('success', 'Item created successfully');
     }
 

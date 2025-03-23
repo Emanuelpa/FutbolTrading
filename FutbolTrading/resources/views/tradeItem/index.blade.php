@@ -10,7 +10,7 @@
         <div class="card mb-3 w-100 bg-dark">
             <div class="row g-2">
                 <div class="col-md-4">
-                    <img src="{{ $tradeItem->getImage() }}" class="img-fluid rounded-start"
+                    <img src="{{ asset('storage/' . $userTradeItem->getImage()) }}" class="img-fluid rounded-start"
                         alt="{{ $tradeItem->getName() }}" style="width: 100%; height: auto;">
                 </div>
                 <div class="col-md-8">

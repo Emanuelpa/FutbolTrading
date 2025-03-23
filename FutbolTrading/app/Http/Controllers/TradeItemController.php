@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TradeItem;
+use App\Interfaces\ImageStorage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -63,14 +64,18 @@ class TradeItemController extends Controller
     public function save(Request $request): View|RedirectResponse
     {
         $user = Auth::user();
+        TradeItem::validate($request);
+
+        $storeInterface = app(ImageStorage::class);
+        $imagePath = $storeInterface->store($request);
 
         TradeItem::create([
             'name' => $request->input('name'),
             'type' => $request->input('type'),
             'offerType' => $request->input('offerType'),
             'offerDescription' => $request->input('offerDescription'),
-            'image' => $request->input('image'),
-            'user' => $user->id,
+            'image' => $imagePath,
+            'user' => $user->getId(),
         ]);
         $viewData = [];
         $viewData['subtitle'] = __('TradeItem.create');

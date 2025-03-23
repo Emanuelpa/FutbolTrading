@@ -31,7 +31,7 @@ class TradeItem extends Model
             'type' => 'required|string',
             'offerType' => 'required|string',
             'offerDescription' => 'required|string',
-            'image' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     }
 
@@ -102,7 +102,7 @@ class TradeItem extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user');
     }
 
     public function getUser(): User

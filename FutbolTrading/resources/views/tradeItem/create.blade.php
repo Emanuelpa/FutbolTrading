@@ -15,7 +15,7 @@
                         @endforeach
                     </ul>
                     @endif
-                    <form method="POST" action="{{ route('admin.tradeItem.save') }}">
+                    <form method="POST" action="{{ route('tradeItem.save') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
