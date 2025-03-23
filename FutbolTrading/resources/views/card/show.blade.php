@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
-
 @section('content')
-
 <div class="row w-100">
     <div class="col">
         <div class="card mb-3 w-100 bg-dark">
@@ -20,22 +18,22 @@
 
                         <p class="card-text text-white mb-3">
                             <i class="fa-solid fa-circle-info me-2"></i>
-                            {{ __('Description: ') }} {{ $viewData['card']->getDescription() ?? 'No description available' }}
+                            {{ __('card.descriptionindex') }} {{ $viewData['card']->getDescription() ?? __('card.nodescription') }}
                         </p>
 
                         <p class="card-text text-white mb-3">
                             <i class="fa-solid fa-money-bill me-2"></i>
-                            {{ __('Price: ') }} ${{ number_format($viewData['card']->getPrice(), 2) }}
+                            {{ __('card.priceindex') }} ${{ number_format($viewData['card']->getPrice(), 2) }}
                         </p>
 
                         <p class="card-text text-white mb-3">
                             <i class="fa-solid fa-box me-2"></i>
-                            {{ __('Quantity: ') }} {{ $viewData['card']->getQuantity() }}
+                            {{ __('card.quantityindex') }} {{ $viewData['card']->getQuantity() }}
                         </p>
 
                         <p class="card-text fw-lighter mb-3">
                             <small class="text-white">
-                                {{ __('Published on: ') }} {{ $viewData['card']->getCreatedAt() }}
+                                {{ __('card.published') }} {{ $viewData['card']->getCreatedAt() }}
                             </small>
                         </p>
                         <form method="POST" action="{{ route('cart.add', ['id' => $viewData['card']->getId()]) }}" class="mt-3">
@@ -46,20 +44,20 @@
                                 </span>
                                 <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['card']->getQuantity() }}" class="form-control text-center" required>
                                 <button type="submit" class="btn btn-success">
-                                    {{ __('ADD') }}
+                                    {{ __('card.addcart') }}
                                 </button>
                             </div>
                         </form>
 
-                        <div class="d-flex">
+                        <div class="d-flex mt-4">
                             <a href="{{ route('card.index') }}" class="btn btn-primary me-2">
-                                {{ __('Back') }}
+                                {{ __('card.back') }}
                             </a>
 
                             <form method="POST" action="{{ route('wishlist.add', $viewData['card']->getId()) }}">
                                 @csrf
                                 <button type="submit" class="btn btn-success">
-                                    <i class="fa-solid fa-heart"></i> {{ __('Add to Wishlist') }}
+                                    <i class="fa-solid fa-heart"></i> {{ __('card.wishlist') }}
                                 </button>
                             </form>
                         </div>
@@ -69,5 +67,4 @@
         </div>
     </div>
 </div>
-
 @endsection
