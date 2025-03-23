@@ -32,4 +32,5 @@ return [
     'offer_type' => 'Offer Type',
     'offer_description' => 'Offer Description',
     'image' => 'Image',
+    'filter' => 'Filter',
 ];

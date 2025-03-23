@@ -14,6 +14,7 @@ Route::get('/cart/downloadInvoice/{id}', 'App\Http\Controllers\CartController@do
 Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');
 // TradeItem routes
 Route::get('/tradeItems', 'App\Http\Controllers\TradeItemController@index')->name('tradeItem.index');
+Route::get('/tradeItem/filter', 'App\Http\Controllers\TradeItemController@filterByType')->name('tradeItem.filter');
 Route::get('/tradeItem/yourItems', 'App\Http\Controllers\TradeItemController@userTradeItemsIndex')->name('tradeItem.userTradeItem');
 Route::get('/tradeItem/create', 'App\Http\Controllers\TradeItemController@create')->name('tradeItem.create');
 Route::post('/tradeItem/save', 'App\Http\Controllers\TradeItemController@save')->name('tradeItem.save');
