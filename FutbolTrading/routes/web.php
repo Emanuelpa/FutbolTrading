@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
-    //TradeProduct Routes
+    // TradeProduct Routes
     Route::get('/tradeProduct/yourItems', 'App\Http\Controllers\TradeProductController@userTradeProductsIndex')->name('tradeProduct.userTradeProduct');
     Route::get('/tradeProduct/create', 'App\Http\Controllers\TradeProductController@create')->name('tradeProduct.create');
     Route::post('/tradeProduct/save', 'App\Http\Controllers\TradeProductController@save')->name('tradeProduct.save');
     Route::delete('/trade/{id}/delete', 'App\Http\Controllers\TradeProductController@delete')->name('tradeProduct.delete');
-    //Card Routes
+    // Card Routes
     Route::get('/cards/create', 'App\Http\Controllers\CardController@create')->name('card.create');
     Route::post('/cards/save', 'App\Http\Controllers\CardController@save')->name('card.save');
     // Wishlist routes
@@ -37,9 +37,9 @@ Route::middleware(['auth', 'App\Http\Middleware\Admin'])->group(function () {
     Route::get('/admin/cards/{id}', 'App\Http\Controllers\AdminController@showCard')->name('admin.card.show');
 });
 
-//Home Route
+// Home Route
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
-//Auth Routes
+// Auth Routes
 Auth::routes();
 // Cart routes
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
