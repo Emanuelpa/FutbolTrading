@@ -54,5 +54,5 @@ Route::get('/tradeProduct/{id}', 'App\Http\Controllers\TradeProductController@sh
 Route::get('/tradeProducts/filter', 'App\Http\Controllers\TradeProductController@filterByType')->name('tradeProduct.filter');
 // Card routes
 Route::get('/cards', 'App\Http\Controllers\CardController@index')->name('card.index');
-Route::get('/cards/{id}', 'App\Http\Controllers\CardController@show')->name('card.show');
 Route::get('/cards/search', 'App\Http\Controllers\CardController@search')->name('card.search');
+Route::get('/cards/{id}', 'App\Http\Controllers\CardController@show')->name('card.show');
