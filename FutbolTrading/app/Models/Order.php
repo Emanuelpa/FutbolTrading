@@ -19,7 +19,6 @@ class Order extends Model
      * $this->attributes['paymentMethod'] - string - contains the user payment method
      * $this->attributes['created_at'] - DateTime - contains the date and time of the card creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the card last update
-     * $this->['user_id'] - int - contains the associated User id
      * $this->user - User - contains the associated User
      * $this->items - Item[] - contains the associated Items
      */
