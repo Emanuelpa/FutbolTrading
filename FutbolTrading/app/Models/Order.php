@@ -31,7 +31,7 @@ class Order extends Model
             'total' => 'required|numeric',
             'address' => 'required|string',
             'paymentMethod' => 'required|string',
-            'user_id' => 'required|integer|exists:users,id',
+            'user' => 'required|integer|exists:users,id',
         ]);
     }
 
@@ -42,7 +42,7 @@ class Order extends Model
 
     public function items(): HasMany
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Item::class, 'order');
     }
 
     public function getItems(): ?Collection
@@ -97,7 +97,7 @@ class Order extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user');
     }
 
     public function getUser(): User
