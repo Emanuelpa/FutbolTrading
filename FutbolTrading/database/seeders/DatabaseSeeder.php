@@ -12,11 +12,5 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
-    {
-
-        // User::factory(5)->create();
-        // TradeProduct::factory(10)->create();
-        // Card::factory(10)->create();
-    }
+    public function run(): void {}
 }

@@ -16,7 +16,7 @@
       <div class="card-header bg-secondary d-flex justify-content-between align-items-center">
         <h5 class="mb-0 p-1">{{ __('Admin.available') }}</h5>
         <div>
-          <a href="{{ route('admin.trade.create') }}" class="btn btn-primary">
+          <a href="{{ route('admin.tradeProduct.create') }}" class="btn btn-primary">
             <i class="fa-solid fa-plus"></i>
           </a>
         </div>
@@ -50,15 +50,16 @@
               <td>{{ $tradeProduct->getUser()->getName() }}</td>
               <td>{{ Str::limit($tradeProduct->getCreatedAt(), 10, '') }}</td>
               <td>
-                <a href="{{ route('admin.trade.show', ['id' => $tradeProduct->getId()]) }}"
+                <a href="{{ route('admin.tradeProduct.show', ['id' => $tradeProduct->getId()]) }}"
                   class="btn btn-primary active">
                   <i class="fa fa-eye"></i>
                 </a>
-                <a href="{{ route('admin.trade.edit', ['id' => $tradeProduct->getId()]) }}"
+                <a href="{{ route('admin.tradeProduct.edit', ['id' => $tradeProduct->getId()]) }}"
                   class="btn btn-primary active">
                   <i class="fa fa-edit"></i>
                 </a>
-                <form action="{{ route('admin.trade.delete', $tradeProduct->getId()) }}" method="POST" class="d-inline">
+                <form action="{{ route('admin.tradeProduct.delete', $tradeProduct->getId()) }}" method="POST"
+                  class="d-inline">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-primary active" onclick="return confirm(__('Admin.are_you_sure'))">

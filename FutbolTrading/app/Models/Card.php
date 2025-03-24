@@ -2,16 +2,12 @@
 
 namespace App\Models;
 
-use DateTime;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Card extends Model
 {
-    use HasFactory;
-
     /**
      * CARD ATTRIBUTES
      * $this->attributes['id'] - int - contains the card primary key (id)
@@ -35,6 +31,16 @@ class Card extends Model
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
         ]);
+    }
+
+    public static function sumPricesByQuantities(Collection $cards, array $cardsInSession): float
+    {
+        $total = 0;
+        foreach ($cards as $card) {
+            $total += $card->getPrice() * $cardsInSession[$card->getId()];
+        }
+
+        return $total;
     }
 
     public function getId(): int
@@ -115,15 +121,5 @@ class Card extends Model
     public function setItems(Collection $items): void
     {
         $this->items = $items;
-    }
-
-    public static function sumPricesByQuantities(Collection $cards, array $cardsInSession): float
-    {
-        $total = 0;
-        foreach ($cards as $card) {
-            $total += $card->getPrice() * $cardsInSession[$card->getId()];
-        }
-
-        return $total;
     }
 }

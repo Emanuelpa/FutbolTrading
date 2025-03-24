@@ -20,7 +20,7 @@ class AdminTradeProductController extends Controller
         $viewData['subtitle'] = __('Admin.trade_admin_panel');
         $viewData['tradeProducts'] = TradeProduct::all();
 
-        return view('admin.trade.dashboard')->with('viewData', $viewData);
+        return view('admin.tradeProduct.dashboard')->with('viewData', $viewData);
     }
 
     public function show(string $id): View|RedirectResponse
@@ -28,13 +28,13 @@ class AdminTradeProductController extends Controller
         try {
             $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('Admin.see_product').$tradeProduct->getName();
+            $viewData['title'] = __('Admin.see_product') . $tradeProduct->getName();
             $viewData['subtitle'] = __('Admin.see_product');
             $viewData['tradeProduct'] = $tradeProduct;
 
-            return view('admin.trade.show')->with('viewData', $viewData);
+            return view('admin.tradeProduct.show')->with('viewData', $viewData);
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('admin.trade.dashboard');
+            return redirect()->route('admin.tradeProduct.dashboard');
         }
     }
 
@@ -43,22 +43,21 @@ class AdminTradeProductController extends Controller
         try {
             $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('Admin.see_product').$tradeProduct->getName();
+            $viewData['title'] = __('Admin.see_product') . $tradeProduct->getName();
             $viewData['subtitle'] = __('Admin.see_product');
             $viewData['typeOptions'] = config('tradeProduct.typeOptions');
             $viewData['offerOptions'] = config('tradeProduct.offerOptions');
             $viewData['users'] = User::all();
             $viewData['tradeProduct'] = $tradeProduct;
 
-            return view('admin.trade.update')->with('viewData', $viewData);
+            return view('admin.tradeProduct.update')->with('viewData', $viewData);
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('admin.trade.dashboard');
+            return redirect()->route('admin.tradeProduct.dashboard');
         }
     }
 
     public function update(Request $request, string $id): RedirectResponse
     {
-
         TradeProduct::validate($request);
 
         $storeInterface = app(ImageStorage::class);
@@ -80,9 +79,9 @@ class AdminTradeProductController extends Controller
 
         $tradeProduct->update($updateData);
 
-        $success = __('Admin.the_product').' '.$request->input('name').' '.__('Admin.has_been_updated');
+        $success = __('Admin.the_product') . ' ' . $request->input('name') . ' ' . __('Admin.has_been_updated');
 
-        return redirect()->route('admin.trade.dashboard')->with('success', $success);
+        return redirect()->route('admin.tradeProduct.dashboard')->with('success', $success);
     }
 
     public function create(): View
@@ -95,7 +94,7 @@ class AdminTradeProductController extends Controller
         $viewData['typeOptions'] = config('tradeProduct.typeOptions');
         $viewData['offerOptions'] = config('tradeProduct.offerOptions');
 
-        return view('admin.trade.create')->with('viewData', $viewData);
+        return view('admin.tradeProduct.create')->with('viewData', $viewData);
     }
 
     public function save(Request $request): RedirectResponse
@@ -110,17 +109,17 @@ class AdminTradeProductController extends Controller
             ['image' => $imagePath]
         ));
 
-        $success = __('Admin.the_product').' '.$request->input('name').' '.__('Admin.has_been_created');
+        $success = __('Admin.the_product') . ' ' . $request->input('name') . ' ' . __('Admin.has_been_created');
 
-        return redirect()->route('admin.trade.dashboard')->with('success', $success);
+        return redirect()->route('admin.tradeProduct.dashboard')->with('success', $success);
     }
 
     public function delete(string $id): RedirectResponse
     {
         TradeProduct::destroy($id);
 
-        $success = __('Admin.the_product').' '.__('Admin.has_been_deleted');
+        $success = __('Admin.the_product') . ' ' . __('Admin.has_been_deleted');
 
-        return redirect()->route('admin.trade.dashboard')->with('success', $success);
+        return redirect()->route('admin.tradeProduct.dashboard')->with('success', $success);
     }
 }

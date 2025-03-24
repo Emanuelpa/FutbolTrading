@@ -3,21 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
-    use HasFactory;
-
     /**
      * ORDER ATTRIBUTES
 
      * $this->attributes['id'] - int - contains the card primary key (id)
      * $this->attributes['item'] - string - contains the card name
-     * $this->attributes['total'] - float - contains the card total
+     * $this->attributes['total'] - double - contains the card total
      * $this->attributes['address'] - string - contains the card description
      * $this->attributes['paymentMethod'] - string - contains the user payment method
      * $this->attributes['created_at'] - DateTime - contains the date and time of the card creation

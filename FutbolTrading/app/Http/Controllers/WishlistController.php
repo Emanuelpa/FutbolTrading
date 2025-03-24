@@ -21,7 +21,7 @@ class WishlistController extends Controller
         return view('wishlist.index')->with('viewData', $viewData);
     }
 
-    public function add(int $cardId): RedirectResponse
+    public function add(string $cardId): RedirectResponse
     {
         $wishlist = Wishlist::firstOrCreate(['user' => Auth::id()], ['cards' => []]);
 
@@ -41,7 +41,7 @@ class WishlistController extends Controller
 
         if ($wishlist) {
             $cards = is_array($wishlist->cards) ? $wishlist->cards : [];
-            $cards = array_filter($cards, fn ($id) => $id != $cardId);
+            $cards = array_filter($cards, fn($id) => $id != $cardId);
 
             $wishlist->update(['cards' => array_values($cards)]);
         }

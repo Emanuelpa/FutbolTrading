@@ -8,5 +8,4 @@ return [
     'order_number' => 'Order Number',
     'date' => 'Date',
     'total' => 'Total',
-
 ];

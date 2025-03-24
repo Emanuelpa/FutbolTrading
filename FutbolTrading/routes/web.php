@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+// Auth Routes
 Route::middleware('auth')->group(function () {
     // TradeProduct Routes
     Route::get('/tradeProduct/yourItems', 'App\Http\Controllers\TradeProductController@userTradeProductsIndex')->name('tradeProduct.userTradeProduct');
@@ -22,13 +23,13 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'App\Http\Middleware\Admin'])->group(function () {
     Route::get('/admin/index', 'App\Http\Controllers\AdminController@index')->name('admin.index');
     // TradeProduct Routes
-    Route::get('/admin/trades/dashboard', 'App\Http\Controllers\Admin\AdminTradeProductController@dashboard')->name('admin.trade.dashboard');
-    Route::get('/admin/trades/create', 'App\Http\Controllers\Admin\AdminTradeProductController@create')->name('admin.trade.create');
+    Route::get('/admin/trades/dashboard', 'App\Http\Controllers\Admin\AdminTradeProductController@dashboard')->name('admin.tradeProduct.dashboard');
+    Route::get('/admin/trades/create', 'App\Http\Controllers\Admin\AdminTradeProductController@create')->name('admin.tradeProduct.create');
     Route::post('/admin/trades/save', 'App\Http\Controllers\Admin\AdminTradeProductController@save')->name('admin.tradeProduct.save');
-    Route::delete('/admin/trades/{id}/delete', 'App\Http\Controllers\Admin\AdminTradeProductController@delete')->name('admin.trade.delete');
-    Route::get('/admin/trades/{id}/update', 'App\Http\Controllers\Admin\AdminTradeProductController@edit')->name('admin.trade.edit');
-    Route::put('/admin/trades/{id}/update', 'App\Http\Controllers\Admin\AdminTradeProductController@update')->name('admin.trade.update');
-    Route::get('/admin/trades/{id}', 'App\Http\Controllers\Admin\AdminTradeProductController@show')->name('admin.trade.show');
+    Route::delete('/admin/trades/{id}/delete', 'App\Http\Controllers\Admin\AdminTradeProductController@delete')->name('admin.tradeProduct.delete');
+    Route::get('/admin/trades/{id}/update', 'App\Http\Controllers\Admin\AdminTradeProductController@edit')->name('admin.tradeProduct.edit');
+    Route::put('/admin/trades/{id}/update', 'App\Http\Controllers\Admin\AdminTradeProductController@update')->name('admin.tradeProduct.update');
+    Route::get('/admin/trades/{id}', 'App\Http\Controllers\Admin\AdminTradeProductController@show')->name('admin.tradeProduct.show');
     // Card Routes
     Route::get('/admin/cards/dashboard', 'App\Http\Controllers\Admin\AdminCardController@dashboard')->name('admin.card.dashboard');
     Route::get('/admin/cards/create', 'App\Http\Controllers\Admin\AdminCardController@create')->name('admin.card.create');

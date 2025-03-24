@@ -28,13 +28,13 @@ class TradeProductController extends Controller
         try {
             $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('TradeProduct.see_product').$tradeProduct->getName();
+            $viewData['title'] = __('TradeProduct.see_product') . $tradeProduct->getName();
             $viewData['subtitle'] = __('TradeProduct.see_product');
             $viewData['tradeProduct'] = $tradeProduct;
 
             return view('tradeProduct.show')->with('viewData', $viewData);
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('trade.index');
+            return redirect()->route('tradeProduct.index');
         }
     }
 
@@ -78,7 +78,7 @@ class TradeProductController extends Controller
             'user' => $user->getId(),
         ]);
 
-        $success = __('TradeProduct.the_product').' '.$request->input('name').' '.__('TradeProduct.has_been_created');
+        $success = __('TradeProduct.the_product') . ' ' . $request->input('name') . ' ' . __('TradeProduct.has_been_created');
 
         return redirect()->route('tradeProduct.userTradeProduct')->with('success', $success);
     }
@@ -87,7 +87,7 @@ class TradeProductController extends Controller
     {
         TradeProduct::destroy($id);
 
-        $success = __('TradeProduct.the_product').' '.__('TradeProduct.has_been_deleted');
+        $success = __('TradeProduct.the_product') . ' ' . __('TradeProduct.has_been_deleted');
 
         return redirect()->route('tradeProduct.userTradeProduct')->with('success', $success);
     }
@@ -99,7 +99,7 @@ class TradeProductController extends Controller
         $viewData = [];
         $viewData['title'] = __('TradeProduct.tradeItem');
         $viewData['subtitle'] = __('TradeProduct.available');
-        $viewData['description'] = __('TradeProduct.filtered_by').' '.$type;
+        $viewData['description'] = __('TradeProduct.filtered_by') . ' ' . $type;
 
         $query = TradeProduct::where('user', '!=', Auth::id());
 

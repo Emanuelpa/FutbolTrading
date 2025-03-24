@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TradeProduct extends Model
 {
-    use HasFactory;
-
     /*  TRADEITEM ATTRIBUTES
         $this->attributes['id'] - int - contains the product primary key (id)
         $this->attributes['name'] - string - contains the TradeProduct name
