@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->integer('quantity');
             $table->decimal('subtotal', 8, 2);
-            $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->unsignedBigInteger('card_id');
-            $table->foreign('card_id')->references('id')->on('cards');
+            $table->unsignedBigInteger('order');
+            $table->foreign('order')->references('id')->on('orders');
+            $table->unsignedBigInteger('card');
+            $table->foreign('card')->references('id')->on('cards');
             $table->timestamps();
         });
     }

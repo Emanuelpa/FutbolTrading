@@ -12,22 +12,22 @@ class Item extends Model
      * $this->attributes['id'] - int - contains the item primary key (id)
      * $this->attributes['quantity'] - int - contains the item quantity
      * $this->attributes['subtotal'] - float - contains the item subtotal
-     * $this->attributes['order_id'] - int - contains the associated Order id
-     * $this->attributes['card_id'] - int - contains the associated Card id
+     * $this->attributes['order'] - int - contains the associated Order id
+     * $this->attributes['card'] - int - contains the associated Card id
      * $this->attributes['created_at'] - DateTime - contains the date and time of the item creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the item last update
      * $this->order - Order - contains the associated Order
      * $this->card - Card - contains the associated Card
      */
-    protected $fillable = ['quantity', 'subtotal', 'order_id', 'card_id'];
+    protected $fillable = ['quantity', 'subtotal', 'order', 'card'];
 
     public static function validate($request): void
     {
         $request->validate([
             'quantity' => 'required|integer|min:1',
             'subtotal' => 'required|numeric|min:0',
-            'order_id' => 'required|integer|exists:orders,id',
-            'card_id' => 'required|integer|exists:cards,id',
+            'order' => 'required|integer|exists:orders,id',
+            'card' => 'required|integer|exists:cards,id',
         ]);
     }
 
@@ -58,17 +58,17 @@ class Item extends Model
 
     public function order(): BelongsTo
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Order::class, 'order');
     }
 
     public function getOrderId(): int
     {
-        return $this->attributes['order_id'];
+        return $this->attributes['order'];
     }
 
     public function setOrderId(int $orderId): void
     {
-        $this->attributes['order_id'] = $orderId;
+        $this->attributes['order'] = $orderId;
     }
 
     public function getOrder(): Order
@@ -83,22 +83,22 @@ class Item extends Model
 
     public function card(): BelongsTo
     {
-        return $this->belongsTo(Card::class);
+        return $this->belongsTo(Card::class, 'card');
     }
 
     public function getCardId(): string
     {
-        return $this->attributes['card_id'];
+        return $this->attributes['card'];
     }
 
     public function setCardId(string $cardId): void
     {
-        $this->attributes['card_id'] = $cardId;
+        $this->attributes['card'] = $cardId;
     }
 
     public function getCard(): Card
     {
-        return $this->card;
+        return $this->card()->first();
     }
 
     public function setCard(Card $card): void
