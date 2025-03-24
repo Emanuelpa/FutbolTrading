@@ -1,75 +1,74 @@
-# Ejecución del proyecto FutbolTrading
+# Execution of the FutbolTrading Project
 
-Por: Emanuel Patiño, Marcela Londoño & Tomás Pineda
+By: Emanuel Patiño, Marcela Londoño & Tomás Pineda
 
-## 1. Instalación de Dependencias
+## 1. Configure the .env file, Run the following command:
 
-Ejecuta el siguiente comando en la raíz del proyecto para instalar las dependencias:
+cp .env.example .env
+
+## 2. Generate the application key
+
+run php artisan key:generate
+
+## 3. Dependencies Installation
+
+Run the following command in the root of the project to install the dependencies:
 
 composer install
 
-## 2. Configuración del Archivo .env
+## 4. .env File Configuration
 
-Abre el archivo `.env` y cambia los siguientes valores para la conexión con la base de datos MySQL:
+Open the `.env` file and update the following values for the MySQL database connection:
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=nombre_de_tu_base_de_datos
-DB_USERNAME=tu_usuario
-DB_PASSWORD=tu_contraseña
+- DB_CONNECTION=mysql
+- DB_HOST=127.0.0.1
+- DB_PORT=3306
+- DB_DATABASE=your_database_name
+- DB_USERNAME=your_user
+- DB_PASSWORD=your_password
 
-Asegúrate de reemplazar `nombre_de_tu_base_de_datos`, `tu_usuario` y `tu_contraseña` con los valores correctos.
+Make sure to replace your_database_name, your_user, and your_password with the correct values.
 
+## 5. Migrations
 
-## 3. Migraciones y Seeders
-
-Para configurar la base de datos, ejecuta las migraciones:
+To set up the database, run the migrations:
 
 php artisan migrate
 
-El proyecto esta configurado para tener datos iniciales, ejecuta el siguiente comando para crearlos:
 
-php artisan db:seed
+## 6. Run the server
 
-
-## 5. Iniciar el servidor
-
-Para iniciar el servidor de desarrollo, usa el siguiente comando:
+To start the development server, use the following command:
 
 php artisan serve
 
-Esto ejecutará el proyecto en `http://127.0.0.1:8000/`.
+This will run the project on `http://127.0.0.1:8000/`.
 
 
-## 6. Rutas principales
+## 7. Main Routes
 
 - http://127.0.0.1:8000/home
 
-(Al autenticarce)
+(Auth)
 - http://127.0.0.1:8000/cards
 - http://127.0.0.1:8000/tradeItem
 - http://127.0.0.1:8000/cart
 - http://127.0.0.1:8000/wishlist
 
 
-## Sobre Laravel
+## About Laravel
 
-Laravel es un framework de aplicaciones web con una sintaxis expresiva y elegante. Creemos que el desarrollo debe ser una experiencia agradable y creativa para ser verdaderamente gratificante. 
-Laravel simplifica el desarrollo al facilitar tareas comunes utilizadas en muchos proyectos web, como:
+Laravel is a web application framework with an expressive and elegant syntax. We believe that development should be an enjoyable and creative experience to be truly rewarding.
+Laravel simplifies development by making common tasks used in many web projects easier, such as:
 
-- Sintaxis clara y expresiva
+- Clear and expressive syntax
 
 - Eloquent ORM
 
-- Sistema de enrutamiento intuitivo
+- Intuitive routing system
 
-- Migraciones de base de datos
+- Database migrations
 
-- Autenticación integrada
+- Built-in authentication
 
-- Sistema de plantillas Blade
-
-- Ecosistema de paquetes y herramientas
-
-- Comunidad activa y documentación completa
+- Blade templating system
