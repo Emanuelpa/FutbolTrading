@@ -152,12 +152,12 @@ class User extends Authenticatable
         return $this->attributes['remember_token'];
     }
 
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): string
     {
         return $this->attributes['created_at'];
     }
 
-    public function getUpdatedAt(): DateTime
+    public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
     }

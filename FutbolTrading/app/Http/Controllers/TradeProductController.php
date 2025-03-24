@@ -106,6 +106,7 @@ class TradeProductController extends Controller
         if (! empty($type)) {
             $query->where('type', $type);
         }
+
         $viewData['tradeProducts'] = $query->get();
 
         return view('tradeProduct.index')->with('viewData', $viewData);

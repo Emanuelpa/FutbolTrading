@@ -34,5 +34,12 @@ return [
     'quantity' => 'Quantity',
     'update_product' => 'Update',
     'published_on' => 'Published on',
-
+    'available' => 'Available Cards',
+    'id' => 'ID',
+    'created' => 'Created',
+    'updated' => 'Updated',
+    'actions' => 'Actions',
+    'offer_type' => 'Offer Type',
+    'user' => 'User',
+    'type' => 'Type',
 ];

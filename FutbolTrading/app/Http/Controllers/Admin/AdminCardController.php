@@ -26,8 +26,8 @@ class AdminCardController extends Controller
     {
         try {
 
-            $viewData = [];
             $card = Card::findOrFail($id);
+            $viewData = [];
             $viewData['title'] = __('Admin.see_card').$card->getName();
             $viewData['subtitle'] = __('Admin.see_card');
             $viewData['card'] = $card;
@@ -42,8 +42,8 @@ class AdminCardController extends Controller
     {
         try {
 
-            $viewData = [];
             $card = Card::findOrFail($id);
+            $viewData = [];
             $viewData['title'] = __('Admin.see_card').$card->getName();
             $viewData['subtitle'] = __('Admin.see_card');
             $viewData['card'] = $card;

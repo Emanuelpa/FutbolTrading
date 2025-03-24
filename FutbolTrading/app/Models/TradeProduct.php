@@ -16,7 +16,7 @@ class TradeProduct extends Model
         $this->attributes['type'] - string - contains the TradeProduct type (card, clothes, virtual content...)
         $this->attributes['offerType'] - string - contains the type of offer for TradeProduct (To trade, To sell or Any)
         $this->attributes['offerDescription'] - string - contains more info about the TradeProduct (To trade, To sell or Any)
-        $this->attributes['image'] - string - image url
+        $this->attributes['image'] - string - image path
         $this->attributes['created_at'] - string - contains the date and time of the TradeProduct creation
         $this->attributes['updated_at'] - string - contains the date and time of the TradeProduct last update
         $this->user - User - contains the associated User

@@ -60,6 +60,7 @@ class AdminTradeProductController extends Controller
     {
 
         TradeProduct::validate($request);
+
         $storeInterface = app(ImageStorage::class);
         $imagePath = $storeInterface->store($request);
 
@@ -100,8 +101,10 @@ class AdminTradeProductController extends Controller
     public function save(Request $request): RedirectResponse
     {
         TradeProduct::validate($request);
+
         $storeInterface = app(ImageStorage::class);
         $imagePath = $storeInterface->store($request);
+
         TradeProduct::create(array_merge(
             $request->only(['name', 'type', 'offerType', 'offerDescription', 'user']),
             ['image' => $imagePath]
