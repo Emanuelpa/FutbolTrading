@@ -1,9 +1,6 @@
+<!-- TomasPineda -->
 @extends('layouts.app')
-
-
 @section('title', __('Home.welcome'))
-
-
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 <h1 class="mb-4">{{ __('Home.welcome') }}</h1>
