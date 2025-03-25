@@ -238,3 +238,7 @@ option:hover {
 .btn-secondary:hover {
     transform: translateY(-1px) !important;
 }
+
+.form-control:focus {
+    color: black !important;
+}

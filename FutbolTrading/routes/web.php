@@ -17,6 +17,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/wishlist', 'App\Http\Controllers\WishlistController@index')->name('wishlist.index');
     Route::post('/wishlist/remove/{cardId}', 'App\Http\Controllers\WishlistController@remove')->name('wishlist.remove');
     Route::post('/wishlist/add/{cardId}', 'App\Http\Controllers\WishlistController@add')->name('wishlist.add');
+    //Cart Routes
+    Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');
+    Route::get('/cart/downloadInvoice/{id}', 'App\Http\Controllers\CartController@downloadInvoice')->name('cart.downloadInvoice');
+    Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');
 });
 
 // Admin Routes
@@ -48,9 +52,6 @@ Auth::routes();
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
 Route::delete('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
-Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');
-Route::get('/cart/downloadInvoice/{id}', 'App\Http\Controllers\CartController@downloadInvoice')->name('cart.downloadInvoice');
-Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');
 // TradeProduct routes
 Route::get('/tradeProducts', 'App\Http\Controllers\TradeProductController@index')->name('tradeProduct.index');
 Route::get('/tradeProduct/{id}', 'App\Http\Controllers\TradeProductController@show')->name('tradeProduct.show');

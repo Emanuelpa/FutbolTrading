@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Cards - Online Store',
+    'title' => 'Cards',
     'subtitle' => 'List of cards',
     'title_show' => 'Online Store',
     'subtitle_show' => 'Product information',

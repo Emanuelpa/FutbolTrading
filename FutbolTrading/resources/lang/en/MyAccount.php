@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'My Orders - Online Store',
+    'title' => 'My Orders',
     'subtitle' => 'My Orders',
     'order' => 'Order #',
     'not_purchased' => 'Seems to be that you have not purchased anything in our store',

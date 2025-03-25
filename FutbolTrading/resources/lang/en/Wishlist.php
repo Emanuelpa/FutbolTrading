@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Wishlist - Online store',
+    'title' => 'Wishlist',
     'subtitle' => 'Your saved cards.',
     'no_cards' => 'No cards available.',
     'price' => 'Price:',
