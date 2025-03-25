@@ -2,7 +2,7 @@
 
 By: Emanuel Patiño, Marcela Londoño & Tomás Pineda
 
-First you must should import the database named futboltrading.sql
+First you should import the database named futboltrading.sql
 
 ## 1. Configure the .env file, Run the following command:
 
