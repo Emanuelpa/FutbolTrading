@@ -1,4 +1,5 @@
 <?php
+//Emanuel Patiño
 
 return [
     'typeOptions' => ['Card', 'Clothes', 'Exclusive', 'Signed Product', 'Virtual Product'],

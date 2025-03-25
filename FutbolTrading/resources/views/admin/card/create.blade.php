@@ -1,3 +1,4 @@
+<!-- Emanuel Patiño -->
 @extends('layouts.app')
 @section('title', __('card.create'))
 @section('content')

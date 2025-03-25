@@ -1,4 +1,5 @@
 <?php
+//Emanuel Patiño
 
 namespace App\Http\Controllers;
 
@@ -11,7 +12,7 @@ class AdminController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('Admin.admin');
-        $viewData['subtitle'] = __('Admin.welcome').Auth::user()->getName();
+        $viewData['subtitle'] = __('Admin.welcome') . Auth::user()->getName();
         $viewData['description'] = __('Admin.what_would');
 
         return view('admin.index')->with('viewData', $viewData);

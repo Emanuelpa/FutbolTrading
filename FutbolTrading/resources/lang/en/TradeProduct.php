@@ -1,4 +1,5 @@
 <?php
+//Emanuel Patiño
 
 return [
     'tradeProduct' => 'Trade Product',
