@@ -1,3 +1,4 @@
+<!-- TomasPineda -->
 @extends('layouts.app')
 @section('content')
 

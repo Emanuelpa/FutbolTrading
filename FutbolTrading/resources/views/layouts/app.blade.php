@@ -1,4 +1,3 @@
-<!-- Tomas Pineda -->
 <!DOCTYPE html>
 <html lang="en">
 
