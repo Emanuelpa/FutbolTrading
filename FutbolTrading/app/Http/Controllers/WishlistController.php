@@ -41,7 +41,7 @@ class WishlistController extends Controller
 
         if ($wishlist) {
             $cards = is_array($wishlist->cards) ? $wishlist->cards : [];
-            $cards = array_filter($cards, fn($id) => $id != $cardId);
+            $cards = array_filter($cards, fn ($id) => $id != $cardId);
 
             $wishlist->update(['cards' => array_values($cards)]);
         }

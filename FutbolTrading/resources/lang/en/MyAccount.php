@@ -12,5 +12,5 @@ return [
     'date' => 'Date',
     'total' => 'Total',
     'payment_method' => 'Payment Method',
-    'search' => 'Search'
+    'search' => 'Search',
 ];

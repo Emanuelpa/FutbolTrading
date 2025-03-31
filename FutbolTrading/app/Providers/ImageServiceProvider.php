@@ -1,5 +1,6 @@
 <?php
-//Emanuel Patiño
+
+// Emanuel Patiño
 
 namespace App\Providers;
 

@@ -1,5 +1,6 @@
 <?php
-//Emanuel Patiño
+
+// Emanuel Patiño
 
 return [
     'your_products' => 'Your Products',

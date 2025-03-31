@@ -1,5 +1,6 @@
 <?php
-//Emanuel Patiño
+
+// Emanuel Patiño
 
 namespace App\Http\Controllers\Admin;
 
@@ -26,7 +27,6 @@ class AdminCardController extends Controller
     public function show(string $id): View|RedirectResponse
     {
         try {
-
             $card = Card::findOrFail($id);
             $viewData = [];
             $viewData['title'] = __('Admin.see_card') . $card->getName();

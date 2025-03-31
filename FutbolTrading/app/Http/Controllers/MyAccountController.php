@@ -20,8 +20,8 @@ class MyAccountController extends Controller
 
         if ($searchTerm) {
             $query->where(function ($q) use ($searchTerm) {
-                $q->where('id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('paymentMethod', 'like', '%' . $searchTerm . '%');
+                $q->where('id', 'like', '%'.$searchTerm.'%')
+                    ->orWhere('paymentMethod', 'like', '%'.$searchTerm.'%');
             });
         }
 

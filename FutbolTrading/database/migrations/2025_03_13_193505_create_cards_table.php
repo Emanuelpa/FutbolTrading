@@ -18,8 +18,6 @@ return new class extends Migration
             $table->text('image');
             $table->float('price');
             $table->integer('quantity');
-            // $table->unsignedBigInteger('item')->nullable();
-            // $table->foreign('item')->references('id')->on('items');
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
-//Emanuel Marcela Tomas
+
+// Emanuel Marcela Tomas
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/wishlist', 'App\Http\Controllers\WishlistController@index')->name('wishlist.index');
     Route::post('/wishlist/remove/{cardId}', 'App\Http\Controllers\WishlistController@remove')->name('wishlist.remove');
     Route::post('/wishlist/add/{cardId}', 'App\Http\Controllers\WishlistController@add')->name('wishlist.add');
-    //Cart Routes
+    // Cart Routes
     Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');
     Route::get('/cart/downloadInvoice/{id}', 'App\Http\Controllers\CartController@downloadInvoice')->name('cart.downloadInvoice');
     Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');

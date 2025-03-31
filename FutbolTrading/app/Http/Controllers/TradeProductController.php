@@ -1,5 +1,6 @@
 <?php
-//Emanuel Patiño
+
+// Emanuel Patiño
 
 namespace App\Http\Controllers;
 
@@ -13,7 +14,7 @@ use Illuminate\View\View;
 
 class TradeProductController extends Controller
 {
-    public function index()
+    public function index(): view
     {
         $viewData = [];
         $viewData['title'] = __('TradeProduct.tradeProduct');
@@ -56,7 +57,7 @@ class TradeProductController extends Controller
         $viewData['title'] = __('TradeProduct.create');
         $viewData['subtitle'] = __('TradeProduct.create_product_to_trade');
         $viewData['description'] = __('TradeProduct.please_fill');
-        $viewData['typeOptions'] = config('tradeProduct.typeOptions');
+        $viewData['typeOptions'] = config('tradeProduct.typeOptions'); //enum
         $viewData['offerOptions'] = config('tradeProduct.offerOptions');
 
         return view('tradeProduct.create')->with('viewData', $viewData);
@@ -93,7 +94,7 @@ class TradeProductController extends Controller
         return redirect()->route('tradeProduct.userTradeProduct')->with('success', $success);
     }
 
-    public function filterByType(Request $request)
+    public function filterByType(Request $request): View
     {
         $type = $request->input('type');
 
