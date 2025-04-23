@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class User extends Authenticatable
 {
@@ -36,6 +38,7 @@ class User extends Authenticatable
      * $this->orders - Order[] - contains the associated Orders
      * $this->wishlist - Wishlist - contains the associated Wishlist
      */
+    use HasFactory;
     protected $fillable = [
         'name',
         'email',
