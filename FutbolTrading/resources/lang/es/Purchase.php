@@ -1,4 +1,5 @@
 <?php
+
 // Tomas Pineda
 return [
     'purchase_complete' => 'Compra Completa',

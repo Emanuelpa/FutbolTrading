@@ -1,5 +1,6 @@
 <?php
-//TomasPineda
+
+// TomasPineda
 return [
     'welcome' => '¡Welcome to FutbolTrading!',
     'transform' => 'Transform Your Collection with Our Soccer Cards',

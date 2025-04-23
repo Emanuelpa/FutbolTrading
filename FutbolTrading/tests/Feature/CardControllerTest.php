@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class CardControllerTest extends TestCase
 {
@@ -20,14 +20,14 @@ class CardControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->post(route('card.save'), [ 
+            ->post(route('card.save'), [
                 'name' => 'Messi Card',
                 'description' => 'A rare Messi collectible',
                 'image' => 'messi.jpg',
                 'price' => 199.99,
                 'quantity' => 10,
             ])
-            ->assertRedirect(); 
+            ->assertRedirect();
 
         $this->assertDatabaseHas('cards', [
             'name' => 'Messi Card',
