@@ -8,17 +8,14 @@ namespace App\Models;
 
 use DateTime;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 
 class User extends Authenticatable
 {
-    use Notifiable;
-
     /**
      * USER ATTRIBUTES
      * $this->attributes['id'] - int - contains the product primary key (id)
@@ -39,6 +36,9 @@ class User extends Authenticatable
      * $this->wishlist - Wishlist - contains the associated Wishlist
      */
     use HasFactory;
+
+    use Notifiable;
+
     protected $fillable = [
         'name',
         'email',

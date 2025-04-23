@@ -2,17 +2,15 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 use App\Models\User;
+use Tests\TestCase;
 
 class CartControllerTest extends TestCase
 {
     public function test_add_card_to_cart_authenticated()
     {
 
-        // Este test verifica que un usuario autenticado puede agregar una tarjeta al carrito con una cantidad específica, 
+        // Este test verifica que un usuario autenticado puede agregar una tarjeta al carrito con una cantidad específica,
         // y que luego es redirigido al índice del carrito, almacenando correctamente la cantidad en la sesión.
 
         $user = User::factory()->create([

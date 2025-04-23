@@ -46,6 +46,10 @@
               <a class="nav-link active text-white"
                 href="{{ route('tradeProduct.index') }}">{{ __('Layout.marketplace') }}</a>
             </li>
+            <li class="nav-item me-2">
+              <a class="nav-link active text-white"
+                href="{{ route('api.players') }}">Fútbol API</a>
+            </li>
             @auth
               <li class="nav-item me-2">
                 <a class="nav-link active text-white"

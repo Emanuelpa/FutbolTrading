@@ -1,5 +1,7 @@
 <?php
-//TomasPineda
+
+// TomasPineda
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
