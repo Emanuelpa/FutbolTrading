@@ -16,4 +16,13 @@ class FootballDataService
 
         return $response->json();
     }
+    public function getTeams($competitionCode)
+    {
+        $url = $this->apiUrl . $competitionCode . '/teams';
+        $response = Http::withHeaders([
+            'X-Auth-Token' => env('FOOTBALL_API_KEY'),
+        ])->get($url);
+
+        return $response->json();
+    }
 }
