@@ -20,8 +20,13 @@ class ApiController extends Controller
     public function players(): View
     {
 
-        $data = $this->footballDataService->getCompetition('PL');
+        $competitionData = $this->footballDataService->getCompetition('PL');
 
-        return view('api.players', ['data' => $data]);
+        $teamsData = $this->footballDataService->getTeams('PL');
+
+        return view('api.players', [
+            'data' => $competitionData,
+            'teams' => $teamsData['teams'] ?? []
+        ]);
     }
 }

@@ -7,4 +7,13 @@
     <p>Current Matchday: {{ $data['currentSeason']['currentMatchday'] }}</p>
     <p>Competition Area: {{ $data['area']['name'] }} ({{ $data['area']['code'] }})</p>
 
+    <h2>Participating Teams</h2>
+    <ul>
+        @foreach ($teams as $team)
+            <li>
+                <img src="{{ $team['crest'] }}" alt="{{ $team['name'] }} logo" style="width: 50px;">
+                {{ $team['name'] }} (Founded: {{ $team['founded'] ?? 'N/A' }})
+            </li>
+        @endforeach
+    </ul>
 @endsection
