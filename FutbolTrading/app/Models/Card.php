@@ -7,6 +7,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
 class Card extends Model
 {
@@ -24,7 +25,7 @@ class Card extends Model
      */
     protected $fillable = ['name', 'description', 'image', 'price', 'quantity'];
 
-    public static function validate($request): void
+    public static function validate(Request $request): void
     {
         $request->validate([
             'name' => 'required|string|max:255',

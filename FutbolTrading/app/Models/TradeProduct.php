@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 class TradeProduct extends Model
 {
@@ -23,7 +24,7 @@ class TradeProduct extends Model
 
     protected $fillable = ['name', 'type', 'offerType', 'offerDescription', 'image', 'user'];
 
-    public static function validate($request)
+    public static function validate(Request $request)
     {
         $request->validate([
             'name' => 'required|string|min:5',
@@ -109,7 +110,7 @@ class TradeProduct extends Model
         return User::findOrFail($this->attributes['user']);
     }
 
-    public function setUser(int $user): void
+    public function setUser(string $user): void
     {
         $this->attributes['user'] = $user;
     }

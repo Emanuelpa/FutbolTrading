@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 class Item extends Model
 {
@@ -23,7 +24,7 @@ class Item extends Model
      */
     protected $fillable = ['quantity', 'subtotal', 'order', 'card'];
 
-    public static function validate($request): void
+    public static function validate(Request $request): void
     {
         $request->validate([
             'quantity' => 'required|integer|min:1',
@@ -68,7 +69,7 @@ class Item extends Model
         return $this->attributes['order'];
     }
 
-    public function setOrderId(int $orderId): void
+    public function setOrderId(string $orderId): void
     {
         $this->attributes['order'] = $orderId;
     }

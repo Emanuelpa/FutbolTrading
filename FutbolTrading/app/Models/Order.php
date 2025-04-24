@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
 class Order extends Model
 {
@@ -26,7 +27,7 @@ class Order extends Model
      */
     protected $fillable = ['total', 'address', 'paymentMethod'];
 
-    public static function validate($request): void
+    public static function validate(Request $request): void
     {
         $request->validate([
             'item' => 'required|string|min:5',

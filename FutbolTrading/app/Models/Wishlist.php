@@ -7,6 +7,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
+
 
 class Wishlist extends Model
 {
@@ -24,7 +26,7 @@ class Wishlist extends Model
         'cards' => 'array',
     ];
 
-    public static function validate($request): void
+    public static function validate(Request $request): void
     {
         $request->validate([
             'user' => 'required|int',
@@ -57,7 +59,7 @@ class Wishlist extends Model
         return $this->attributes['user'];
     }
 
-    public function setUser(int $user): void
+    public function setUser(string $user): void
     {
         $this->attributes['user'] = $user;
     }
