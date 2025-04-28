@@ -4,6 +4,7 @@ RUN docker-php-ext-install pdo_mysql
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 COPY . /var/www/html
 COPY ./public/.htaccess /var/www/html/.htaccess
+RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 WORKDIR /var/www/html
 RUN composer install \
     --ignore-platform-reqs \
