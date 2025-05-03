@@ -15,6 +15,6 @@ class ImageAWSStorage implements ImageStorage
         $file = $request->file('image');
         $path = $file->storePublicly('tradeProducts', 's3');
 
-        return Storage::disk('s3')->url($path);
+        return 'https://' . env('AWS_BUCKET') . '.s3.' . env('AWS_DEFAULT_REGION') . '.amazonaws.com/' . $path;
     }
 }
