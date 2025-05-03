@@ -1,4 +1,5 @@
 <?php
+
 // Emanuel Patiño
 
 use Illuminate\Http\Request;

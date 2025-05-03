@@ -1,4 +1,5 @@
 <?php
+
 // Emanuel Patiño
 
 namespace App\Http\Controllers\Api;
@@ -13,6 +14,7 @@ class CardApiController extends Controller
     public function index(): JsonResponse
     {
         $cards = new CardCollection(Card::all());
+
         return response()->json($cards, 200);
     }
 }
