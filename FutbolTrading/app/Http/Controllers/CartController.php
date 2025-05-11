@@ -27,17 +27,8 @@ class CartController extends Controller
         }
 
         $viewData = [];
-        $viewData['title'] = __('Cart.title');
-        $viewData['products_in_cart'] = __('Cart.products_in_cart');
-        $viewData['total_to_pay'] = __('Cart.total_to_pay');
-        $viewData['purchase'] = __('Cart.purchase');
-        $viewData['remove_all'] = __('Cart.remove_all');
-        $viewData['total'] = $total;
         $viewData['cards'] = $cardsInCart;
-        $viewData['id'] = __('Cart.id');
-        $viewData['product_name'] = __('Cart.product_name');
-        $viewData['price'] = __('Cart.price');
-        $viewData['quantity'] = __('Cart.quantity');
+        $viewData['total'] = $total;
 
         return view('cart.index')->with('viewData', $viewData);
     }
@@ -88,18 +79,10 @@ class CartController extends Controller
             $order->save();
             $request->session()->forget('cards');
             $viewData = [];
-            $viewData['purchase_complete'] = __('Purchase.purchase_complete');
-            $viewData['congratulations'] = __('Purchase.congratulations');
-            $viewData['downloadPDF'] = __('Purchase.downloadPDF');
             $viewData['order'] = $order;
-            $viewData['purchase_invoice'] = __('Purchase.purchase_invoice');
-            $viewData['order_number'] = __('Purchase.order_number');
-            $viewData['date'] = __('Purchase.date');
-            $viewData['total'] = __('Purchase.total');
 
             return view('cart.purchase')->with('viewData', $viewData);
         } else {
-
             return redirect()->route('cart.index');
         }
     }
@@ -131,6 +114,6 @@ class CartController extends Controller
             'quantities' => $quantities,
         ]);
 
-        return $pdf->download('factura_'.$order->getId().'.pdf');
+        return $pdf->download('factura_' . $order->getId() . '.pdf');
     }
 }

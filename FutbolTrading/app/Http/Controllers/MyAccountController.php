@@ -14,16 +14,14 @@ class MyAccountController extends Controller
     public function orders(Request $request): View
     {
         $viewData = [];
-        $viewData['title'] = __('MyAccount.title');
-        $viewData['subtitle'] = __('MyAccount.subtitle');
 
         $searchTerm = $request->input('search');
         $query = Order::with(['items.card'])->where('user', Auth::user()->getId());
 
         if ($searchTerm) {
             $query->where(function ($q) use ($searchTerm) {
-                $q->where('id', 'like', '%'.$searchTerm.'%')
-                    ->orWhere('paymentMethod', 'like', '%'.$searchTerm.'%');
+                $q->where('id', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('paymentMethod', 'like', '%' . $searchTerm . '%');
             });
         }
 
