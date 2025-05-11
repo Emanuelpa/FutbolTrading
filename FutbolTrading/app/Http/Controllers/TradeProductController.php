@@ -59,7 +59,6 @@ class TradeProductController extends Controller
         TradeProduct::validate($request);
 
         $storeInterface = app(ImageStorage::class, ['storage' => 'AWS']);
-        $storeInterface->store($request);
         $imagePath = $storeInterface->store($request);
 
         TradeProduct::create([

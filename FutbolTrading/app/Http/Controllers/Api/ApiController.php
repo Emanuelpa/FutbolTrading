@@ -26,7 +26,7 @@ class ApiController extends Controller
 
         return view('api.players', [
             'data' => $competitionData,
-            'teams' => $teamsData['teams'] ?? []
+            'teams' => $teamsData['teams'] ?? [],
         ]);
     }
 }
