@@ -17,9 +17,6 @@ class TradeProductController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = __('TradeProduct.tradeProduct');
-        $viewData['subtitle'] = __('TradeProduct.available');
-        $viewData['description'] = __('TradeProduct.published');
         $viewData['tradeProducts'] = TradeProduct::where('user', '!=', Auth::id())->get();
 
         return view('tradeProduct.index')->with('viewData', $viewData);
@@ -30,8 +27,6 @@ class TradeProductController extends Controller
         try {
             $tradeProduct = TradeProduct::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('TradeProduct.see_product') . $tradeProduct->getName();
-            $viewData['subtitle'] = __('TradeProduct.see_product');
             $viewData['tradeProduct'] = $tradeProduct;
 
             return view('tradeProduct.show')->with('viewData', $viewData);
@@ -44,8 +39,6 @@ class TradeProductController extends Controller
     {
         $user = Auth::user();
         $viewData = [];
-        $viewData['title'] = __('UserTradeProduct.your_products');
-        $viewData['subtitle'] = __('UserTradeProduct.your_products');
         $viewData['userTradeProducts'] = $user->getTradeProducts();
 
         return view('tradeProduct.userTradeProduct')->with('viewData', $viewData);
@@ -54,9 +47,6 @@ class TradeProductController extends Controller
     public function create(): View
     {
         $viewData = [];
-        $viewData['title'] = __('TradeProduct.create');
-        $viewData['subtitle'] = __('TradeProduct.create_product_to_trade');
-        $viewData['description'] = __('TradeProduct.please_fill');
         $viewData['typeOptions'] = config('tradeProduct.typeOptions'); // enum
         $viewData['offerOptions'] = config('tradeProduct.offerOptions');
 

@@ -17,8 +17,6 @@ class AdminCardController extends Controller
     public function dashboard(): View
     {
         $viewData = [];
-        $viewData['title'] = __('Admin.cards_dash');
-        $viewData['subtitle'] = __('Admin.cards_admin_panel');
         $viewData['cards'] = Card::all();
 
         return view('admin.card.dashboard')->with('viewData', $viewData);
@@ -29,8 +27,6 @@ class AdminCardController extends Controller
         try {
             $card = Card::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('Admin.see_card').$card->getName();
-            $viewData['subtitle'] = __('Admin.see_card');
             $viewData['card'] = $card;
 
             return view('admin.card.show')->with('viewData', $viewData);
@@ -45,8 +41,6 @@ class AdminCardController extends Controller
 
             $card = Card::findOrFail($id);
             $viewData = [];
-            $viewData['title'] = __('Admin.see_card').$card->getName();
-            $viewData['subtitle'] = __('Admin.see_card');
             $viewData['card'] = $card;
 
             return view('admin.card.update')->with('viewData', $viewData);
@@ -77,19 +71,14 @@ class AdminCardController extends Controller
 
         $card->update($updateData);
 
-        $success = __('Admin.the_card').' '.$request->input('name').' '.__('Admin.has_been_updated');
+        $success = __('Admin.the_card') . ' ' . $request->input('name') . ' ' . __('Admin.has_been_updated');
 
         return redirect()->route('admin.card.dashboard')->with('success', $success);
     }
 
     public function create(): View
     {
-        $viewData = [];
-        $viewData['title'] = __('Admin.create');
-        $viewData['subtitle'] = __('Admin.create_card');
-        $viewData['description'] = __('Admin.please_fill');
-
-        return view('admin.card.create')->with('viewData', $viewData);
+        return view('admin.card.create');
     }
 
     public function save(Request $request): RedirectResponse
@@ -104,7 +93,7 @@ class AdminCardController extends Controller
             ['image' => $imagePath]
         ));
 
-        $success = __('Admin.the_card').' '.$request->input('name').' '.__('Admin.has_been_created');
+        $success = __('Admin.the_card') . ' ' . $request->input('name') . ' ' . __('Admin.has_been_created');
 
         return redirect()->route('admin.card.dashboard')->with('success', $success);
     }
@@ -113,7 +102,7 @@ class AdminCardController extends Controller
     {
         Card::destroy($id);
 
-        $success = __('Admin.the_card').' '.__('Admin.has_been_deleted');
+        $success = __('Admin.the_card') . ' ' . __('Admin.has_been_deleted');
 
         return redirect()->route('admin.card.dashboard')->with('success', $success);
     }

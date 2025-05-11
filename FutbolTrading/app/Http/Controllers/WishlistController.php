@@ -16,8 +16,6 @@ class WishlistController extends Controller
         $wishlist = Wishlist::where('user', Auth::id())->first();
 
         $viewData = [];
-        $viewData['title'] = __('wishlist.title');
-        $viewData['subtitle'] = __('wishlist.subtitle');
         $viewData['cards'] = $wishlist ? $wishlist->getCards() : collect();
 
         return view('wishlist.index')->with('viewData', $viewData);
@@ -43,7 +41,7 @@ class WishlistController extends Controller
 
         if ($wishlist) {
             $cards = is_array($wishlist->cards) ? $wishlist->cards : [];
-            $cards = array_filter($cards, fn ($id) => $id != $cardId);
+            $cards = array_filter($cards, fn($id) => $id != $cardId);
 
             $wishlist->update(['cards' => array_values($cards)]);
         }
