@@ -4,33 +4,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
-
 
 class Wishlist extends Model
 {
     /**
      * CARD ATTRIBUTES
      * $this->attributes['id'] - int - contains the wishlist primary key (id)
-     * $this->attributes['cards'] - array - contains the cards id in an array
      * $this->attributes['created_at'] - DateTime - contains the date and time of the Wishlist creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the Wishlist last update
      * $this->user - User - contains the associated User
+     * $this->cards - Cards - contains the associated cards
      */
-    protected $fillable = ['user', 'cards'];
-
-    protected $casts = [
-        'cards' => 'array',
-    ];
+    protected $fillable = ['user'];
 
     public static function validate(Request $request): void
     {
         $request->validate([
-            'user' => 'required|int',
-            'cards' => 'nullable',
+            'user' => 'required|int|exists:users,id',
         ]);
     }
 
@@ -64,15 +58,8 @@ class Wishlist extends Model
         $this->attributes['user'] = $user;
     }
 
-    public function getCards(): Collection
+    public function cards(): BelongsToMany
     {
-        $cardIds = is_array($this->cards) ? $this->cards : [];
-
-        return Card::whereIn('id', $cardIds)->get();
-    }
-
-    public function setCards(array $cards): void
-    {
-        $this->update(['cards' => $cards]);
+        return $this->belongsToMany(Card::class);
     }
 }
