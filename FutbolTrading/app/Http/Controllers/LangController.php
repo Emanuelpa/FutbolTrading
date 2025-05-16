@@ -9,7 +9,7 @@ class LangController extends Controller
     public function switchLanguage($locale)
     {
         logger("llego desde la ruta {$locale}");
-        if (!in_array($locale, ['en', 'es'])) {
+        if (! in_array($locale, ['en', 'es'])) {
             abort(400);
         }
 

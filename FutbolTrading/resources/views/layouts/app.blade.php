@@ -48,7 +48,10 @@
                             href="{{ route('tradeProduct.index') }}">{{ __('Layout.marketplace') }}</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link active text-white" href="{{ route('api.players') }}">Fútbol API</a>
+                        <a class="nav-link active text-white" href="{{ route('api.players') }}">{{ __('Api') }}</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link active text-white" href="{{ route('tcg.index') }}">{{ __('TCG') }}</a>
                     </li>
                     @auth
                     <li class="nav-item me-2">
@@ -68,22 +71,25 @@
 
                 <ul class="navbar-nav mx-2 mb-2 mb-lg-0 fs-5 ms-auto">
                     <li class="d-flex ms-auto me-3">
-                        <p>Idioma actual: {{ app()->getLocale() }}</p>
+                        @guest
+                        <a class="nav-link active fs-5 text-white"
+                            href="{{ route('login') }}">{{ __('Layout.login') }}</a>
+                        @endguest
+                    </li>
+                    <li class="d-flex ms-auto me-3">
                         @guest
                         @php
                         $currentLocale = session('locale', config('app.locale'));
                         $nextLocale = $currentLocale === 'es' ? 'en' : 'es';
                         @endphp
 
-                        <form action="{{ route('lang.switch', $nextLocale) }}" method="GET" class="d-inline">
+                        <form action="{{ route('lang.switch', $nextLocale) }}" method="GET">
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 {{ strtoupper($nextLocale) }}
                             </button>
                         </form>
-
-                        <a class="nav-link active fs-5 text-white"
-                            href="{{ route('login') }}">{{ __('Layout.login') }}</a>
                         @endguest
+
                     </li>
 
                     @auth

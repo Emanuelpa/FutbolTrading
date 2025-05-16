@@ -66,3 +66,4 @@ Route::get('/cards/search', 'App\Http\Controllers\CardController@search')->name(
 Route::get('/cards/{id}', 'App\Http\Controllers\CardController@show')->name('card.show');
 // Consume API Route
 Route::get('/players', 'App\Http\Controllers\Api\ApiController@players')->name('api.players');
+Route::get('/tcg', 'App\Http\Controllers\Api\TcgController@index')->name('tcg.index');
