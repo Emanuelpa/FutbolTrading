@@ -75,7 +75,7 @@ class AdminTradeProductController extends Controller
 
         $tradeProduct->update($updateData);
 
-        $success = __('Admin.the_product') . ' ' . $request->input('name') . ' ' . __('Admin.has_been_updated');
+        $success = __('Admin.the_product').' '.$request->input('name').' '.__('Admin.has_been_updated');
 
         return redirect()->route('admin.tradeProduct.dashboard')->with('success', $success);
     }
@@ -102,7 +102,7 @@ class AdminTradeProductController extends Controller
             ['image' => $imagePath]
         ));
 
-        $success = __('Admin.the_product') . ' ' . $request->input('name') . ' ' . __('Admin.has_been_created');
+        $success = __('Admin.the_product').' '.$request->input('name').' '.__('Admin.has_been_created');
 
         return redirect()->route('admin.tradeProduct.dashboard')->with('success', $success);
     }
@@ -111,7 +111,7 @@ class AdminTradeProductController extends Controller
     {
         TradeProduct::destroy($id);
 
-        $success = __('Admin.the_product') . ' ' . __('Admin.has_been_deleted');
+        $success = __('Admin.the_product').' '.__('Admin.has_been_deleted');
 
         return redirect()->route('admin.tradeProduct.dashboard')->with('success', $success);
     }

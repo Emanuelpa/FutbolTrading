@@ -114,6 +114,6 @@ class CartController extends Controller
             'quantities' => $quantities,
         ]);
 
-        return $pdf->download('factura_' . $order->getId() . '.pdf');
+        return $pdf->download('factura_'.$order->getId().'.pdf');
     }
 }
