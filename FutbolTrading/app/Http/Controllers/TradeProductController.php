@@ -70,7 +70,7 @@ class TradeProductController extends Controller
             'user' => $user->getId(),
         ]);
 
-        $success = __('TradeProduct.the_product') . ' ' . $request->input('name') . ' ' . __('TradeProduct.has_been_created');
+        $success = __('TradeProduct.the_product').' '.$request->input('name').' '.__('TradeProduct.has_been_created');
 
         return redirect()->route('tradeProduct.userTradeProduct')->with('success', $success);
     }
@@ -79,7 +79,7 @@ class TradeProductController extends Controller
     {
         TradeProduct::destroy($id);
 
-        $success = __('TradeProduct.the_product') . ' ' . __('TradeProduct.has_been_deleted');
+        $success = __('TradeProduct.the_product').' '.__('TradeProduct.has_been_deleted');
 
         return redirect()->route('tradeProduct.userTradeProduct')->with('success', $success);
     }
@@ -91,7 +91,7 @@ class TradeProductController extends Controller
         $viewData = [];
         $viewData['title'] = __('TradeProduct.tradeItem');
         $viewData['subtitle'] = __('TradeProduct.available');
-        $viewData['description'] = __('TradeProduct.filtered_by') . ' ' . $type;
+        $viewData['description'] = __('TradeProduct.filtered_by').' '.$type;
 
         $query = TradeProduct::where('user', '!=', Auth::id());
 
