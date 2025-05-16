@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 // Auth Routes
 Route::middleware('auth')->group(function () {
+    // Lang
     // TradeProduct Routes
     Route::get('/tradeProduct/yourItems', 'App\Http\Controllers\TradeProductController@userTradeProductsIndex')->name('tradeProduct.userTradeProduct');
     Route::get('/tradeProduct/create', 'App\Http\Controllers\TradeProductController@create')->name('tradeProduct.create');
@@ -47,6 +48,7 @@ Route::middleware(['auth', 'App\Http\Middleware\Admin'])->group(function () {
 });
 
 // Home Route
+Route::get('/lang/{locale}', 'App\Http\Controllers\LangController@switchLanguage')->name('lang.switch');
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 // Auth Routes
 Auth::routes();

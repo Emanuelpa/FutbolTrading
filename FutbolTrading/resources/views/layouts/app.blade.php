@@ -68,7 +68,19 @@
 
                 <ul class="navbar-nav mx-2 mb-2 mb-lg-0 fs-5 ms-auto">
                     <li class="d-flex ms-auto me-3">
+                        <p>Idioma actual: {{ app()->getLocale() }}</p>
                         @guest
+                        @php
+                        $currentLocale = session('locale', config('app.locale'));
+                        $nextLocale = $currentLocale === 'es' ? 'en' : 'es';
+                        @endphp
+
+                        <form action="{{ route('lang.switch', $nextLocale) }}" method="GET" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                {{ strtoupper($nextLocale) }}
+                            </button>
+                        </form>
+
                         <a class="nav-link active fs-5 text-white"
                             href="{{ route('login') }}">{{ __('Layout.login') }}</a>
                         @endguest
