@@ -2,11 +2,11 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <h1 class="text-white">{{ __('wishlist.title') }}</h1>
-    <h3 class="text-white">{{ __('wishlist.subtitle') }}</h3>
+    <h1 class="text-white">{{ __('Wishlist.title') }}</h1>
+    <h3 class="text-white">{{ __('Wishlist.subtitle') }}</h3>
 
     @if ($viewData['cards']->isEmpty())
-    <p class="text-white">{{ __('wishlist.no_cards') }}</p>
+    <p class="text-white">{{ __('Wishlist.no_cards') }}</p>
     @else
     <div class="row">
         @foreach ($viewData['cards'] as $card)
@@ -19,12 +19,13 @@
                     <h5 class="card-title text-uppercase fw-bold">{{ $card->getName() }}</h5>
                     <p class="card-text"><i class="fa-solid fa-circle-info me-2"></i> {{ $card->getDescription() }}</p>
                     <p class="card-text"><i class="fa-solid fa-money-bill me-2"></i>
-                        <strong>{{ __('wishlist.price') }}</strong> ${{ number_format($card->getPrice(), 2) }}</p>
+                        <strong>{{ __('Wishlist.price') }}</strong> ${{ number_format($card->getPrice(), 2) }}
+                    </p>
 
                     <form method="POST" action="{{ route('wishlist.remove', $card->getId()) }}">
                         @csrf
                         <button type="submit" class="btn btn-danger">
-                            <i class="fa-solid fa-trash"></i> {{ __('wishlist.remove') }}
+                            <i class="fa-solid fa-trash"></i> {{ __('Wishlist.remove') }}
                         </button>
                     </form>
                 </div>
