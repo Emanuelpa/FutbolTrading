@@ -3,17 +3,17 @@
 @section('title', __('Card.title'))
 @section('content')
 <div class="container">
-    <h1 class="text-white">{{ __('card.title') }}</h1>
-    <h3 class="text-white">{{ __('card.subtitle') }}</h3>
+    <h1 class="text-white">{{ __('Card.title') }}</h1>
+    <h3 class="text-white">{{ __('Card.subtitle') }}</h3>
 
     <form action="{{ route('card.search') }}" method="GET" class="d-flex mb-4">
-        <input type="text" name="query" class="form-control text-dark me-2" placeholder="{{ __('card.search_cards') }}"
+        <input type="text" name="query" class="form-control text-dark me-2" placeholder="{{ __('Card.search_cards') }}"
             required>
-        <button type="submit" class="btn btn-primary">{{ __('card.search') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('Card.search') }}</button>
     </form>
 
     @if ($viewData['cards']->isEmpty())
-    <p class="text-white">{{ __('card.no_results') }}</p>
+    <p class="text-white">{{ __('Card.no_results') }}</p>
     @else
     <div class="row">
         @foreach ($viewData['cards'] as $card)
@@ -23,17 +23,17 @@
                     alt="{{ $card->getName() }}" style="width: 100%; height: auto;">
                 <div class="card-body bg-dark">
                     <h5 class="card-title text-uppercase fw-bold">{{ $card->getName() }}</h5>
-                    <p class="card-text">{{ __('card.description_index') }} {{ $card->getDescription() }}</p>
-                    <p class="card-text"><strong>{{ __('card.price_index') }}</strong>
+                    <p class="card-text">{{ __('Card.description_index') }} {{ $card->getDescription() }}</p>
+                    <p class="card-text"><strong>{{ __('Card.price_index') }}</strong>
                         ${{ number_format($card->getPrice(), 2) }}</p>
                     <div class="d-flex">
                         <a href="{{ route('card.show', $card->getId()) }}" class="btn btn-primary me-2">
-                            <i class="fa-solid fa-eye"></i> {{ __('card.details') }}
+                            <i class="fa-solid fa-eye"></i> {{ __('Card.details') }}
                         </a>
                         <form method="POST" action="{{ route('wishlist.add', $card->getId()) }}">
                             @csrf
                             <button type="submit" class="btn btn-success">
-                                <i class="fa-solid fa-heart"></i> {{ __('card.wishlist') }}
+                                <i class="fa-solid fa-heart"></i> {{ __('Card.wishlist') }}
                             </button>
                         </form>
                     </div>
