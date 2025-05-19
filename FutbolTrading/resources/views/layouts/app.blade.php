@@ -76,21 +76,6 @@
                             href="{{ route('login') }}">{{ __('Layout.login') }}</a>
                         @endguest
                     </li>
-                    <li class="d-flex ms-auto me-3">
-                        @guest
-                        @php
-                        $currentLocale = session('locale', config('app.locale'));
-                        $nextLocale = $currentLocale === 'es' ? 'en' : 'es';
-                        @endphp
-
-                        <form action="{{ route('lang.switch', $nextLocale) }}" method="GET">
-                            <button type="submit" class="btn btn-sm btn-outline-secondary">
-                                {{ strtoupper($nextLocale) }}
-                            </button>
-                        </form>
-                        @endguest
-
-                    </li>
 
                     @auth
                     @if (auth()->user()->getRole() === 'admin')
