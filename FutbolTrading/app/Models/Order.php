@@ -22,8 +22,7 @@ class Order extends Model
      * $this->attributes['paymentMethod'] - string - contains the user payment method
      * $this->attributes['created_at'] - DateTime - contains the date and time of the card creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the card last update
-     * $this->user - User - contains the associated User
-     * $this->items - Item[] - contains the associated Items
+     * $this->attributes['user'] - User - contains the associated User
      */
     protected $fillable = ['total', 'address', 'paymentMethod'];
 
@@ -88,6 +87,16 @@ class Order extends Model
         $this->attributes['paymentMethod'] = $paymentMethod;
     }
 
+    public function getCreatedAt(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'];
+    }
+
     public function getUserId(): string
     {
         return $this->attributes['user'];
@@ -111,15 +120,5 @@ class Order extends Model
     public function setUser(User $user): void
     {
         $this->attributes['user'] = $user;
-    }
-
-    public function getCreatedAt(): string
-    {
-        return $this->attributes['created_at'];
-    }
-
-    public function getUpdatedAt(): string
-    {
-        return $this->attributes['updated_at'];
     }
 }

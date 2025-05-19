@@ -6,10 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['App\Http\Middleware\Locale'])->group(function () {
-
     // Auth Routes
     Route::middleware('auth')->group(function () {
-        // Lang
         // TradeProduct Routes
         Route::get('/tradeProduct/yourItems', 'App\Http\Controllers\TradeProductController@userTradeProductsIndex')->name('tradeProduct.userTradeProduct');
         Route::get('/tradeProduct/create', 'App\Http\Controllers\TradeProductController@create')->name('tradeProduct.create');

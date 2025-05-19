@@ -18,7 +18,7 @@
                         {{ $product['name'] ?? 'Unnamed product' }}
                     </h5>
                     <p class="card-text">
-                        {{ __('Tcg.description') }} {{ $product['description'] ?? '' }}
+                        <strong>{{ __('Tcg.description') }}</strong> {{ $product['description'] ?? '' }}
                     </p>
                     <p class="card-text">
                         <strong>{{ __('Tcg.price') }}</strong>
@@ -38,7 +38,6 @@
         <p><strong>{{ __('Tcg.store_name') }}:</strong> {{ $viewData['store']['storeName'] ?? 'N/A' }}</p>
         <p><strong>{{ __('Tcg.link') }}:</strong> <a href="{{ $viewData['store']['storeProductsLink'] ?? '#' }}"
                 class="text-primary" target="_blank">{{ $viewData['store']['storeProductsLink'] ?? '' }}</a></p>
-        <p><strong>{{ __('Tcg.request_time') }}:</strong> {{ $viewData['store']['requestTime'] ?? '' }}</p>
     </div>
 </div>
 @endsection

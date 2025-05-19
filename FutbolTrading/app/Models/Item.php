@@ -19,8 +19,6 @@ class Item extends Model
      * $this->attributes['card'] - int - contains the associated Card id
      * $this->attributes['created_at'] - DateTime - contains the date and time of the item creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the item last update
-     * $this->order - Order - contains the associated Order
-     * $this->card - Card - contains the associated Card
      */
     protected $fillable = ['quantity', 'subtotal', 'order', 'card'];
 
