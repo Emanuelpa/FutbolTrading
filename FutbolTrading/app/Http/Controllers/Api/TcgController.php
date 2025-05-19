@@ -11,7 +11,7 @@ class TcgController extends Controller
 {
     public function index()
     {
-        $response = Http::get('http://tcg-merket.shop/Api/tcgcards');
+        $response = Http::get('http://tcg-merket.shop/api/tcgcards');
         $json = $response->json();
 
         $products = $json['data'];
