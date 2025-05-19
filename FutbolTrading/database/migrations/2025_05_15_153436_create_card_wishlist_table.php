@@ -1,6 +1,5 @@
 <?php
 
-// MarcelaLondoño
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wishlists', function (Blueprint $table) {
+        Schema::create('card_wishlist', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user');
-            $table->foreign('user')->references('id')->on('users');
+            $table->unsignedBigInteger('card_id');
+            $table->unsignedBigInteger('wishlist_id');
+            $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');
+            $table->foreign('wishlist_id')->references('id')->on('wishlists')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wishlists');
+        Schema::dropIfExists('card_wishlist');
     }
 };

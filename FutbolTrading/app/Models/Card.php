@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,7 @@ class Card extends Model
      * $this->attributes['quantity'] - int - contains the card stock
      * $this->attributes['created_at'] - DateTime - contains the date and time of the Card creation
      * $this->attributes['updated_at'] - DateTime - contains the date and time of the Card last update
+     * $this->wishlist - Wishlist - contains the associated Wishlist
      * $this->items - Item[] - contains the associated Items
      */
     protected $fillable = ['name', 'description', 'image', 'price', 'quantity'];
@@ -124,5 +126,10 @@ class Card extends Model
     public function setItems(Collection $items): void
     {
         $this->items = $items;
+    }
+
+    public function wishlist(): BelongsToMany
+    {
+        return $this->belongsToMany(Wishlist::class);
     }
 }
