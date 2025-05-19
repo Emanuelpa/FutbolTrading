@@ -7,7 +7,8 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Models\Item;
 use App\Models\Order;
-use Barryvdh\DomPDF\Facade\Pdf;
+use App\Services\DomPdfInvoiceGenerator;
+use App\Services\MpPdfInvoiceGenerator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -16,6 +17,18 @@ use Illuminate\View\View;
 
 class CartController extends Controller
 {
+    private $domPdfGenerator;
+
+    private $snappyPdfGenerator;
+
+    private $mpPdfGenerator;
+
+    public function __construct(DomPdfInvoiceGenerator $domPdfGenerator, MpPdfInvoiceGenerator $mpPdfGenerator)
+    {
+        $this->domPdfGenerator = $domPdfGenerator;
+        $this->mpPdfGenerator = $mpPdfGenerator;
+    }
+
     public function index(Request $request): View
     {
         $total = 0;
@@ -87,7 +100,7 @@ class CartController extends Controller
         }
     }
 
-    public function downloadInvoice(string $id): Response
+    public function downloadInvoice(Request $request, string $id): Response
     {
         $order = Order::findOrFail($id);
         $cardsInCart = Card::findMany(explode(', ', $order->item));
@@ -108,12 +121,12 @@ class CartController extends Controller
             }
         }
 
-        $pdf = Pdf::loadView('cart.invoice', [
-            'order' => $order,
-            'cards' => $cardsInCart,
-            'quantities' => $quantities,
-        ]);
+        $type = $request->query('type', 'dompdf');
 
-        return $pdf->download('factura_'.$order->getId().'.pdf');
+        if ($type === 'mpdf') {
+            return $this->mpPdfGenerator->generateInvoice($order, $cardsInCart, $quantities);
+        }
+
+        return $this->domPdfGenerator->generateInvoice($order, $cardsInCart, $quantities);
     }
 }
