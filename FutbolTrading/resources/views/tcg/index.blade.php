@@ -15,14 +15,14 @@
             <div class="card mb-4 bg-dark text-white">
                 <div class="card-body">
                     <h5 class="card-title text-uppercase fw-bold">
-                        {{ $product['name'] }}
+                        {{ $product['name'] ?? 'Unnamed product' }}
                     </h5>
                     <p class="card-text">
-                        {{ __('Tcg.description') }} {{ $product['description'] }}
+                        {{ __('Tcg.description') }} {{ $product['description'] ?? '' }}
                     </p>
                     <p class="card-text">
                         <strong>{{ __('Tcg.price') }}</strong>
-                        ${{ number_format($product['price']) }}
+                        ${{ number_format($product['price'] ?? 0) }}
                     </p>
                 </div>
             </div>
