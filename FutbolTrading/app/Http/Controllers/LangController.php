@@ -4,16 +4,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+
 class LangController extends Controller
 {
-    public function switchLanguage($locale)
+    public function switchLanguage(): RedirectResponse
     {
-        logger("llego desde la ruta {$locale}");
-        if (! in_array($locale, ['en', 'es'])) {
-            abort(400);
-        }
+        $current = session('locale', config('app.locale'));
 
-        session(['locale' => $locale]);
+        if ($current === 'es') {
+            session()->put('locale', 'en');
+        } else {
+            session()->put('locale', 'es');
+        }
 
         return redirect()->back();
     }

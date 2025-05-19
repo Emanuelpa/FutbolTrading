@@ -76,6 +76,11 @@
                             href="{{ route('login') }}">{{ __('Layout.login') }}</a>
                         @endguest
                     </li>
+                    <li class="d-flex ms-auto me-3">
+                        <form action="{{ url('/toggle-language') }}" method="GET">
+                            <button class="btn btn-primary" type="submit">{{ __('Layout.language') }}</button>
+                        </form>
+                    </li>
 
                     @auth
                     @if (auth()->user()->getRole() === 'admin')
