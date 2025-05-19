@@ -8,4 +8,6 @@ return [
     'no_results' => 'No results',
     'description' => 'Description',
     'price' => 'Price',
+    'store_name' => 'Store',
+    'link' => 'Link',
 ];

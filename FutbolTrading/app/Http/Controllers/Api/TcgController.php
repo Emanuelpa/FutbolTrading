@@ -6,10 +6,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
+use Illuminate\View\View;
 
 class TcgController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $response = Http::get('http://tcg-merket.shop/api/tcgcards');
         $json = $response->json();

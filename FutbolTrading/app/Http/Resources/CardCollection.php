@@ -15,7 +15,7 @@ class CardCollection extends ResourceCollection
             'data' => CardResource::collection($this->collection),
             'additionalData' => [
                 'storeName' => 'FutbolTrading',
-                'storeProductsLink' => 'http://futboltrading.com',
+                'storeProductsLink' => 'http://44.194.99.117/cards',
             ],
         ];
     }

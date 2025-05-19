@@ -10,9 +10,9 @@ class LangController extends Controller
 {
     public function switchLanguage(): RedirectResponse
     {
-        $current = session('locale', config('app.locale'));
+        $currentLocale = session('locale', config('app.locale'));
 
-        if ($current === 'es') {
+        if ($currentLocale === 'es') {
             session()->put('locale', 'en');
         } else {
             session()->put('locale', 'es');
