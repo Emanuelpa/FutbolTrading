@@ -9,8 +9,15 @@
             {{__('Purchase.congratulations')}} <b>{{ $viewData["order"]->getId() }} </b>
         </div>
     </div>
-    </div> 
-    <a href="{{ route('cart.downloadInvoice', ['id' => $viewData['order']->getId()]) }}" class="btn btn-primary">{{__('Purchase.downloadPDF')}}</a>
-    </div> 
-    </div> 
+</div>
+
+<div class="mt-3">
+    <a href="{{ route('cart.downloadInvoice', ['id' => $viewData['order']->getId(), 'type' => 'dompdf']) }}" class="btn btn-primary">
+        {{__('Purchase.downloadPDF')}} (DomPDF)
+    </a>
+    <a href="{{ route('cart.downloadInvoice', ['id' => $viewData['order']->getId(), 'type' => 'mpdf']) }}" class="btn btn-success ml-2">
+        {{__('Purchase.downloadPDF')}} (mPDF)
+    </a>
+</div>
+
 @endsection
