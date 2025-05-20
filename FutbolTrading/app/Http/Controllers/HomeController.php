@@ -4,8 +4,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TradeProduct;
 use App\Models\Card;
+use App\Models\TradeProduct;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -18,6 +18,7 @@ class HomeController extends Controller
         $viewData = [];
         $viewData['cards'] = $featuredCards;
         $viewData['products'] = $featuredProducts;
-        return view('home.index')->with('viewData',$viewData);
+
+        return view('home.index')->with('viewData', $viewData);
     }
 }

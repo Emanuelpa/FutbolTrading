@@ -32,7 +32,6 @@ class TcgController extends Controller
         $viewData['products'] = $products;
         $viewData['store'] = $additional;
 
-
         return view('tcg.index')->with('viewData', $viewData);
     }
 }
