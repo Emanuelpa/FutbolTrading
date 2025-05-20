@@ -12,15 +12,26 @@ class TcgController extends Controller
 {
     public function index(): View
     {
-        $response = Http::get('http://tcg-merket.shop/api/tcgcards');
-        $json = $response->json();
+        try {
+            $response = Http::timeout(5)->get('http://tcg-merket.shop/api/tcgcards');
 
-        $products = $json['data'];
-        $additional = $json['additionalData'];
+            if ($response->successful()) {
+                $json = $response->json();
 
-        $viewData = [];
+                $products = $json['data'] ?? [];
+                $additional = $json['additionalData'] ?? [];
+            } else {
+                $products = [];
+                $additional = [];
+            }
+        } catch (\Exception $e) {
+            $products = [];
+            $additional = [];
+        }
+
         $viewData['products'] = $products;
         $viewData['store'] = $additional;
+
 
         return view('tcg.index')->with('viewData', $viewData);
     }

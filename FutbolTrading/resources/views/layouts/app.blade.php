@@ -51,7 +51,7 @@
                         <a class="nav-link active text-white" href="{{ route('api.players') }}">{{ __('Api') }}</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link active text-white" href="{{ route('tcg.index') }}">{{ __('TCG') }}</a>
+                        <a class="nav-link active text-white" href="{{ route('tcg.index') }}">{{ ('TCG') }}</a>
                     </li>
                     @auth
                     <li class="nav-item me-2">
