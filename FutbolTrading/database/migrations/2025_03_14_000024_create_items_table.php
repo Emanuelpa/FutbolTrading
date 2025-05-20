@@ -18,8 +18,8 @@ return new class extends Migration
             $table->decimal('subtotal', 8, 2);
             $table->unsignedBigInteger('order');
             $table->foreign('order')->references('id')->on('orders');
-            $table->unsignedBigInteger('card');
-            $table->foreign('card')->references('id')->on('cards');
+            $table->unsignedBigInteger('card')->nullable();
+            $table->foreign('card')->references('id')->on('cards')->onDelete('set null');
             $table->timestamps();
         });
     }

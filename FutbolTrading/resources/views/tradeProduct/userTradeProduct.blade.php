@@ -37,9 +37,11 @@
                   <a href="{{ route('tradeProduct.show', ['id' => $product->getId()]) }}" class="btn btn-primary me-2">
                     <i class="fa-solid fa-eye"></i> {{ __('userTradeProduct.view_details') }}
                   </a>
-                  <form action="{{ route('tradeProduct.delete', $product->getId()) }}" method="POST" @method('DELETE')
-                    <button class="btn btn-success">
-                    <i class="fa-solid fa-trash"></i>
+                  <form action="{{ route('tradeProduct.delete', $product->getId()) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-primary active" onclick="return confirm(__('Admin.are_you_sure'))">
+                      <i class="fa fa-trash"></i>
                     </button>
                   </form>
                 </div>

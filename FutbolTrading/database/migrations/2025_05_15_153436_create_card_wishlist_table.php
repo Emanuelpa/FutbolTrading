@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('card_wishlist', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('card_id');
+            $table->unsignedBigInteger('card_id')->nullable();
             $table->unsignedBigInteger('wishlist_id');
             $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');
             $table->foreign('wishlist_id')->references('id')->on('wishlists')->onDelete('cascade');
