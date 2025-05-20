@@ -15,7 +15,7 @@
             <div class="card mb-4 bg-dark text-white">
                 <div class="card-body">
                     <h5 class="card-title text-uppercase fw-bold">
-                        {{ $product['name'] ?? 'Unnamed product' }}
+                        {{ $product['name'] ?? '' }}
                     </h5>
                     <p class="card-text">
                         <strong>{{ __('Tcg.description') }}</strong> {{ $product['description'] ?? '' }}
@@ -34,7 +34,6 @@
     <hr class="bg-light">
 
     <div class="text-white mt-4">
-        <h5>{{ __('Tcg.store_info') }}</h5>
         <p><strong>{{ __('Tcg.store_name') }}:</strong> {{ $viewData['store']['storeName'] ?? 'N/A' }}</p>
         <p><strong>{{ __('Tcg.link') }}:</strong> <a href="{{ $viewData['store']['storeProductsLink'] ?? '#' }}"
                 class="text-primary" target="_blank">{{ $viewData['store']['storeProductsLink'] ?? '' }}</a></p>

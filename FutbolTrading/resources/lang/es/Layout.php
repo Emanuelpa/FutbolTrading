@@ -16,5 +16,5 @@ return [
     'wishlist' => 'Lista de deseos',
     'your_products' => 'Tus productos',
     'admin' => 'Administrador',
-    'language' => 'Language 🇺🇸',
+    'language' => 'Lenguaje 🇺🇸',
 ];
