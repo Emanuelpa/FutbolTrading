@@ -12,4 +12,8 @@ return [
     'shop' => 'Tienda',
     'login' => 'Iniciar sesión',
     'back' => 'Volver',
+    'featuredCards' => 'Cartas destacadas',
+    'featuredProducts' => 'Productos destacados',
+    'viewCards' => 'Ver todas las cartas',
+    'viewProducts' => 'Ver todos los productos',
 ];

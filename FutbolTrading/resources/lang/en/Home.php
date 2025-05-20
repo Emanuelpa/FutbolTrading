@@ -12,4 +12,8 @@ return [
     'shop' => 'Shop',
     'login' => 'Login',
     'back' => 'Back',
+    'featuredCards' => 'Featured cards',
+    'featuredProducts' => 'Featured products',
+    'viewCards' => 'View all cards',
+    'viewProducts' => 'View all products',
 ];
