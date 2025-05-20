@@ -47,7 +47,7 @@
                 href="{{ route('tradeProduct.index') }}">{{ __('Layout.marketplace') }}</a>
             </li>
             <li class="d-flex">
-              <a class="nav-link active text-white" href="{{ route('api.players') }}">{{ __('Api') }}</a>
+              <a class="nav-link active text-white" href="{{ route('api.players') }}">{{ __('Premier League') }}</a>
             </li>
             <li class="d-flex">
               <a class="nav-link active text-white" href="{{ route('tcg.index') }}">{{ 'TCG' }}</a>
