@@ -17,4 +17,6 @@ return [
     'your_products' => 'Your Products',
     'admin' => 'Admin',
     'language' => '🇺🇸 EN',
+    'en' => 'EN - English',
+    'es' => 'ES - Español',
 ];

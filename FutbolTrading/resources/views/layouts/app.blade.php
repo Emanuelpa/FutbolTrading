@@ -62,10 +62,26 @@
                             href="{{ route('login') }}">{{ __('Layout.login') }}</a>
                         @endguest
                     </li>
-                    <li class="d-flex">
-                        <form action="{{ url('/toggle-language') }}" method="GET">
-                            <button class="btn btn-primary fs-5" type="submit">{{ __('Layout.language') }}</button>
-                        </form>
+
+                    <li class="nav-item dropdown d-flex">
+                        <a class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ __('Layout.language') }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <form action="{{ url('/toggle-language') }}" method="GET">
+                                    <input type="hidden" name="lang" value="en">
+                                    <button class="dropdown-item" type="submit">{{ __('Layout.en') }}</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="{{ url('/toggle-language') }}" method="GET">
+                                    <input type="hidden" name="lang" value="es">
+                                    <button class="dropdown-item" type="submit">{{ __('Layout.es') }}</button>
+                                </form>
+                            </li>
+                        </ul>
                     </li>
                     @auth
                     @if (auth()->user()->getRole() === 'admin')

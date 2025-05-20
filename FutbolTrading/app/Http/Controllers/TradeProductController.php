@@ -87,16 +87,16 @@ class TradeProductController extends Controller
     public function filterByType(Request $request): View
     {
         $type = $request->input('type');
-
+    
         $query = TradeProduct::where('user', '!=', Auth::id());
-
-        if (! empty($type)) {
+    
+        if (!empty($type) && $type !== 'all') {
             $query->where('type', $type);
         }
-
+    
         $viewData = [];
         $viewData['tradeProducts'] = $query->get();
-
+    
         return view('tradeProduct.index')->with('viewData', $viewData);
-    }
+    }    
 }

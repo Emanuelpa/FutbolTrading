@@ -39,4 +39,5 @@ return [
     'name' => 'Name',
     'no_product' => 'No products yet',
     'last_update' => 'Last Updated On ',
+    'all' => 'All',
 ];

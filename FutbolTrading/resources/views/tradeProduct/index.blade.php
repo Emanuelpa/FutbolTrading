@@ -10,6 +10,7 @@
 
     <form action="{{ route('tradeProduct.filter') }}" method="GET" class="d-flex mb-4">
         <select name="type" class="form-control me-2 text-dark bg-white">
+        <option value="all" {{ request('type') == 'all' ? 'selected' : '' }}>{{ __('TradeProduct.all') }}</option>
             <option value="card" {{ request('type') == 'card' ? 'selected' : '' }}>{{ __('TradeProduct.card') }}</option>
             <option value="clothes" {{ request('type') == 'clothes' ? 'selected' : '' }}>{{ __('TradeProduct.clothes') }}</option>
             <option value="exclusive" {{ request('type') == 'exclusive' ? 'selected' : '' }}>{{ __('TradeProduct.exclusive') }}</option>
