@@ -11,17 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-    - name: docker login
-      env:
-        DOCKER_USER: ${{secrets.DOCKERHUB_USER}}
-        DOCKER_PASS: ${{secrets.DOCKERHUB_PASS}}
-      run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - name: Generate .env file from secret
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > ./FutbolTrading/.env
 
-    - name: Build the Docker image
-      run: docker build ./FutbolTrading --file ./FutbolTrading/Dockerfile --tag epatinov/futboltrading:latest
+      - name: Docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKERHUB_USER }}
+          DOCKER_PASS: ${{ secrets.DOCKERHUB_PASS }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
 
-    - name: Docker Push
-      run: docker push epatinov/futboltrading
+      - name: Build Docker image
+        run: |
+          docker build ./FutbolTrading \
+            --file ./FutbolTrading/Dockerfile \
+            --tag epatinov/futboltrading:latest
+
+      - name: Push Docker image
+        run: docker push epatinov/futboltrading:latest
