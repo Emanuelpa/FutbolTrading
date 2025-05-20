@@ -5,7 +5,7 @@
 return [
     'your_products' => 'Tus Productos',
     'no_products' => 'Aquí encontrarás tus productos publicados',
-    'see_more' => 'Ver más',
+    'view_details' => 'Ver detalles',
     'published_on' => 'Publicado En',
     'create' => 'Crear',
     'delete' => 'Eliminar',

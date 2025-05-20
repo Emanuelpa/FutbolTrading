@@ -22,7 +22,7 @@ return [
     'to_trade' => 'To trade',
     'to_sell' => 'To sell',
     'open_to_offers' => 'Open to Offers',
-    'see_more' => 'See more',
+    'view_details' => 'View details',
     'published_on' => 'Published On',
     'in' => 'In ',
     'offered_by' => 'Offered By  ',

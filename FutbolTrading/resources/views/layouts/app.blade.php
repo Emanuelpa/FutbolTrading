@@ -39,34 +39,20 @@
             </button>
             <div class="collapse navbar-collapse align-middle" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-2 mb-2 mb-lg-0 fs-5 align-middle">
-                    <li class="nav-item me-2">
+                    <li class="d-flex">
                         <a class="nav-link active text-white" aria-current="page"
                             href="{{ route('card.index') }}">{{ __('Layout.shop') }}</a>
                     </li>
-                    <li class="nav-item me-2">
+                    <li class="d-flex">
                         <a class="nav-link active text-white"
                             href="{{ route('tradeProduct.index') }}">{{ __('Layout.marketplace') }}</a>
                     </li>
-                    <li class="nav-item me-2">
+                    <li class="d-flex">
                         <a class="nav-link active text-white" href="{{ route('api.players') }}">{{ __('Api') }}</a>
                     </li>
-                    <li class="nav-item me-2">
+                    <li class="d-flex">
                         <a class="nav-link active text-white" href="{{ route('tcg.index') }}">{{ ('TCG') }}</a>
                     </li>
-                    @auth
-                    <li class="nav-item me-2">
-                        <a class="nav-link active text-white"
-                            href="{{ route('myaccount.orders') }}">{{ __('Layout.your_orders') }}</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link active text-white"
-                            href="{{ route('tradeProduct.userTradeProduct') }}">{{ __('Layout.your_products') }}</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link active text-white"
-                            href="{{ route('wishlist.index') }}">{{ __('Layout.wishlist') }}</a>
-                    </li>
-                    @endauth
                 </ul>
 
                 <ul class="navbar-nav mx-2 mb-2 mb-lg-0 fs-5 ms-auto">
@@ -76,12 +62,11 @@
                             href="{{ route('login') }}">{{ __('Layout.login') }}</a>
                         @endguest
                     </li>
-                    <li class="d-flex ms-auto me-3">
+                    <li class="d-flex">
                         <form action="{{ url('/toggle-language') }}" method="GET">
-                            <button class="btn btn-primary" type="submit">{{ __('Layout.language') }}</button>
+                            <button class="btn btn-primary fs-5" type="submit">{{ __('Layout.language') }}</button>
                         </form>
                     </li>
-
                     @auth
                     @if (auth()->user()->getRole() === 'admin')
                     <li class="d-flex ms-auto me-3">
@@ -89,6 +74,28 @@
                             href="{{ route('admin.index') }}">{{ __('Layout.admin') }}</a>
                     </li>
                     @endif
+                    <li class="nav-item dropdown d-flex">
+                        <a class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('tradeProduct.userTradeProduct') }}">
+                                    {{ __('Layout.your_products') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('myaccount.orders') }}">
+                                    {{ __('Layout.your_orders') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="d-flex">
+                        <a class="nav-link active text-white"
+                            href="{{ route('wishlist.index') }}"><i class="fa-solid fa-heart"></i></a>
+                    </li>
                     <li class="d-flex"><a class="nav-link active text-white fs-5" href={{ route('cart.index') }}>
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a></li>

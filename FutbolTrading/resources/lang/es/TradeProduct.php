@@ -22,7 +22,7 @@ return [
     'to_trade' => 'Para intercambiar',
     'to_sell' => 'Para vender',
     'open_to_offers' => 'Abierto a Ofertas',
-    'see_more' => 'Ver más',
+    'view_details' => 'Ver detalles',
     'published_on' => 'Publicado En',
     'in' => 'En',
     'offered_by' => 'Ofrecido Por',

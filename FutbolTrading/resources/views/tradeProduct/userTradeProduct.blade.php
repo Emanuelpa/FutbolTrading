@@ -1,14 +1,15 @@
 <!-- Emanuel Patiño -->
 @extends('layouts.app')
-@section('title', __('UserTradeProduct.your_products'))
-@section('subtitle', __('UserTradeProduct.your_products'))
-@section('content')
+@section('title', __('userTradeProduct.your_products'))
 
-<div class="row w-100">
-    <h4 class="text-center mb-2">{{ __('UserTradeProduct.your_products') }}</h4>
-    <div class="container d-flex justify-content-center mb-3">
-        <a href="{{ route('tradeProduct.create') }}"
-            class="btn btn-primary active">{{ __('UserTradeProduct.create') }}</a>
+@section('content')
+<div class="container">
+    <h1 class="text-white">{{ __('userTradeProduct.your_products') }}</h1>
+
+    <div class="container d-flex justify-content-center mb-4">
+        <a href="{{ route('tradeProduct.create') }}" class="btn btn-primary">
+            {{ __('userTradeProduct.create') }}
+        </a>
     </div>
 
     @if (session('success'))
@@ -17,37 +18,26 @@
     </div>
     @endif
 
-    @if ($viewData['userTradeProducts'])
-    @foreach ($viewData['userTradeProducts'] as $userTradeProduct)
-    <div class="col-md-6 col-lg-6 mb-3">
-        <div class="card mb-3 w-100 bg-dark h-100" style="min-height: 250px;">
-            <div class="row g-0 h-100">
-                <div class="col-md-4">
-                    <img src="{{ asset('storage/' . $userTradeProduct->image) }}"
-                        class="img-fluid rounded-start w-100 h-100 object-fit-cover"
-                        alt="{{ $userTradeProduct->getName() }}">
-                </div>
-                <div class="col-md-8 d-flex flex-column">
-                    <div class="card-body bg-dark flex-grow-1">
-                        <h5 class="card-title text-uppercase fw-bold">{{ $userTradeProduct->getName() }}</h5>
-                        <p class="card-text text-white"><i class="fa-solid fa-filter"></i>
-                            {{ $userTradeProduct->getType() }}
-                        </p>
-                        <p class="card-text text-white"><i class="fa-solid fa-money-bill"></i>
-                            {{ $userTradeProduct->getOfferType() }}
-                        </p>
-                        <p class="card-text fw-lighter"><small class="text-white">
-                                {{ __('UserTradeProduct.published_on') }} {{ $userTradeProduct->getCreatedAt() }}
-                            </small></p>
-                    </div>
-                    <div class="d-flex gap-2 p-3">
-                        <a href="{{ route('tradeProduct.show', ['id' => $userTradeProduct->getId()]) }}"
-                            class="btn btn-primary active"><i class="fa-solid fa-eye"></i>
-                            {{ __('UserTradeProduct.see_more') }}</a>
-                        <form action="{{ route('tradeProduct.delete', $userTradeProduct->getId()) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-primary active text-white">
+    @if ($viewData['userTradeProducts'] && count($viewData['userTradeProducts']) > 0)
+    <div class="row">
+        @foreach ($viewData['userTradeProducts'] as $product)
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white h-100">
+                <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid rounded-top"
+                    alt="{{ $product->getName() }}" style="width: 100%; height: auto;">
+                <div class="card-body bg-dark">
+                    <h5 class="card-title text-uppercase fw-bold">{{ $product->getName() }}</h5>
+                    <p class="card-text"><i class="fa-solid fa-filter"></i> {{ $product->getType() }}</p>
+                    <p class="card-text"><i class="fa-solid fa-tag"></i> {{ $product->getOfferType() }}</p>
+                    <p class="card-text">
+                        <small><i class="fa-solid fa-calendar"></i> {{ __('userTradeProduct.published_on') }} {{ $product->getCreatedAt() }}</small>
+                    </p>
+                    <div class="d-flex">
+                        <a href="{{ route('tradeProduct.show', ['id' => $product->getId()]) }}" class="btn btn-primary me-2">
+                            <i class="fa-solid fa-eye"></i> {{ __('userTradeProduct.view_details') }}
+                        </a>
+                        <form action="{{ route('tradeProduct.delete', $product->getId()) }}" method="POST" @method('DELETE')
+                            <button class="btn btn-success">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </form>
@@ -55,11 +45,13 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
-    @endforeach
     @else
-    <p>{{ __('UserTradeProduct.you_dont') }}</p>
+    <div class="text-white text-center">
+        <p>{{ __('userTradeProduct.no_products') }}</p>
+        <p>{{ __('userTradeProduct.you_dont') }}</p>
+    </div>
     @endif
 </div>
-
 @endsection
